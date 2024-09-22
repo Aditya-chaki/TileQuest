@@ -15,6 +15,10 @@ public class UIPopupAnimation : MonoBehaviour
         rectTransform.localScale = Vector3.zero; // Start scale is zero (hidden)
         StartPopup();
     }
+    public void PressStartPopup(){
+        
+        StartPopup();
+    }
 
     void StartPopup()
     {

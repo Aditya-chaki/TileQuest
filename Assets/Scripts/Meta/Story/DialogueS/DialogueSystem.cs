@@ -22,6 +22,16 @@ namespace VNGame
         {
             DisplayDialogueByInvariant(initialInvariant);
         }
+         public string GetInitialInvariant()
+        {
+            return initialInvariant;
+        }
+        public void SetInitialInvariant(string newInvariant)
+        {
+            initialInvariant = newInvariant;
+            Debug.Log("Initial Invariant has been set to: " + initialInvariant);
+            DisplayDialogueByInvariant(initialInvariant);
+        }
 
         public void DisplayDialogueByInvariant(string invariant)
         {

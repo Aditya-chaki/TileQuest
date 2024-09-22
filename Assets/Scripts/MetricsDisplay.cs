@@ -18,7 +18,6 @@ public class MetricsDisplay : MonoBehaviour
         // Initialize sliders and texts
         UpdateSliders();
         InitializeSliders();
-
     }
 
     void Update()
@@ -26,6 +25,7 @@ public class MetricsDisplay : MonoBehaviour
         // Continuously update sliders and texts in case the metrics change during runtime
         UpdateSliders();
     }
+
     void InitializeSliders()
     {
         // Set the max values for sliders based on Config
@@ -39,18 +39,18 @@ public class MetricsDisplay : MonoBehaviour
     {
         // Update Food
         foodSlider.value = Config.Food;
-        foodText.text = "Food";
+        foodText.text = $"Food: {Config.Food}";
 
         // Update Strength
         strengthSlider.value = Config.Strength;
-        strengthText.text = "Strength";
+        strengthText.text = $"Strength: {Config.Strength} ";
 
         // Update Health
         healthSlider.value = Config.Health;
-        healthText.text = "Health";
+        healthText.text = $"Health: {Config.Health} ";
 
         // Update Gold
         goldSlider.value = Config.Gold;
-        goldText.text = "Gold";
+        goldText.text = $"Gold: {Config.Gold}";
     }
 }

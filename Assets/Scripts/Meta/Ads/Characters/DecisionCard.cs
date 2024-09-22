@@ -4,77 +4,63 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using  VNGame;
+
 
 public class DecisionCard : MonoBehaviour
 {
-    [SerializeField] private Button OptionA_Loss;
-    [SerializeField] private Button OptionB_Gain;
-    [SerializeField] private Button Okay;
-    [SerializeField] private GameObject Reward;
-  
-    [SerializeField] private TextMeshProUGUI OpinionChangeText; 
-    [SerializeField] private int OpinionVariable;
-    [SerializeField] private int FoodVariable;
-    [SerializeField] private int StrengthVariable;
-    [SerializeField] private int HealthVariable;
-    [SerializeField] private int GoldVariable;
+    [SerializeField] private Button optionALoss;
+    [SerializeField] private Button optionBGain;
 
-    
+    [SerializeField] private GameObject card;
+
+    [SerializeField] private DialogueSystem dialogueSystem;
+
+    [SerializeField] private TextMeshProUGUI opinionChangeText;
+    [SerializeField] private int opinionVariable;
+    [SerializeField] private int foodVariable;
+    [SerializeField] private int strengthVariable;
+    [SerializeField] private int healthVariable;
+    [SerializeField] private int goldVariable;
+    [SerializeField] private string TutNumber;
 
 
-    public Character CharacterID;
+    public Character characterID;
 
     void Start()
     {
-        if (OptionA_Loss != null)
+        optionALoss?.onClick.AddListener(() => UpdateOpinion(-1));
+        optionBGain?.onClick.AddListener(() => UpdateOpinion(1));
+
+    }
+
+    private void UpdateOpinion(int changeDirection)
+    {
+        int opinionValue = characterID.GetOpinion();
+        characterID.SetOpinion(opinionValue + (opinionVariable * changeDirection));
+
+        // Update other variables
+        Config.Food += foodVariable * changeDirection;
+        Config.Strength += strengthVariable * changeDirection;
+        Config.Health += healthVariable * changeDirection;
+        Config.Gold += goldVariable * changeDirection;
+
+        card.SetActive(false);
+
+        // Update the text display
+        string changeType = changeDirection > 0 ? "Increased" : "Dropped";
+        opinionChangeText.text = $"Opinion {changeType} by {opinionVariable}";
+
+        StartCoroutine(HideOpinionTextAfterDelay(3f));
+         if (dialogueSystem != null)
         {
-            OptionA_Loss.onClick.AddListener(LoseOpinion);
-        }
-        if (OptionB_Gain != null)
-        {
-            OptionB_Gain.onClick.AddListener(GainOpinion);
-        }
-        if (Okay != null)
-        {
-            Okay.onClick.AddListener(CloseScene);
+            dialogueSystem.SetInitialInvariant(TutNumber); // Call the setter to change the invariant
         }
     }
 
-public void LoseOpinion()
-{
-    int opinionValue = CharacterID.GetOpinion();
-    CharacterID.SetOpinion(opinionValue - OpinionVariable);
-
-    
-
-    // Update other variables
-    Config.Food = Config.Food - FoodVariable;
-    Config.Strength = Config.Strength - StrengthVariable;
-    Config.Health = Config.Health - HealthVariable;
-    Config.Gold = Config.Gold - GoldVariable;
-
-    Reward.SetActive(true);
-    OpinionChangeText.text = "Opinion Dropped by " + OpinionVariable;
-}
-
-public void GainOpinion()
-{
-    int opinionValue = CharacterID.GetOpinion();
-    CharacterID.SetOpinion(opinionValue + OpinionVariable);
-
-   
-    // Update other variables
-    Config.Food = Config.Food + FoodVariable;
-    Config.Strength = Config.Strength + StrengthVariable;
-    Config.Health = Config.Health + HealthVariable;
-    Config.Gold = Config.Gold + GoldVariable;
-
-    Reward.SetActive(true);
-    OpinionChangeText.text = "Opinion Increased by " + OpinionVariable;
-}
-
-    public void CloseScene()
+    private IEnumerator HideOpinionTextAfterDelay(float delay)
     {
-        SceneManager.LoadScene("Menu");
+        yield return new WaitForSeconds(delay);
+        opinionChangeText.text = ""; // Clear the text after delay
     }
 }
