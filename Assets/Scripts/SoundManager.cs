@@ -29,7 +29,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip click1, click2, click3;
 
 
-    public void PlaySound_Click() {
+    public void PlaySound_Click()
+    {
         if (Config.isSound)
         {
             audioSound.PlayOneShot(click2);
