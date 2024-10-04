@@ -81,6 +81,52 @@ public class GameLevelManager : MonoBehaviour
     {
 
     }
+    public void MoveRecentThreeTilesToCluster()
+    {
+        // Ensure there are at least three tiles to move
+        if (listItemSlots.Count >= 3)
+        {
+            // Create a list to store the tiles that will be removed
+            List<ItemTile> tilesToMove = new List<ItemTile>();
+
+            // Get the last three tiles from the slots
+            for (int i = listItemSlots.Count - 3; i < listItemSlots.Count; i++)
+            {
+                tilesToMove.Add(listItemSlots[i].itemTile);
+            }
+
+            // Set a fixed position to move the tiles
+            Vector3 fixedPosition = new Vector3(0, 10f, 0);
+
+            // Move the tiles to the fixed position
+            foreach (var tile in tilesToMove)
+            {
+                // Set the tile's parent to null (if necessary) or leave it attached to the slotParentTranform
+                tile.transform.parent = null;
+
+                // Move the tile to the fixed position
+                tile.transform.position = fixedPosition;
+
+                // Optionally, reset its properties or state as needed
+                tile.SetItemTile_Undo();
+
+                // Remove the corresponding ItemTileSlot from the listItemSlots
+                int slotIndex = listItemSlots.FindIndex(slot => slot.itemTile == tile);
+                if (slotIndex != -1)
+                {
+                    Destroy(listItemSlots[slotIndex].gameObject);  // Destroy the slot object
+                    listItemSlots.RemoveAt(slotIndex);  // Remove from the list
+                }
+            }
+
+            // After moving the tiles, reset the remaining slot positions
+            StartCoroutine(SetListItemSlot_ResetPosition_Now());
+        }
+        else
+        {
+            Debug.LogWarning("Not enough tiles to move.");
+        }
+    }
 
 
     public void InitListMoveType()
