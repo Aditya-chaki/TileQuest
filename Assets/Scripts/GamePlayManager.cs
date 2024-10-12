@@ -51,6 +51,9 @@ public class GamePlayManager : MonoBehaviour
     [Header("Button RemoveAds")]
     public BBUIButton btnRemoveAds;
 
+    [Header("Button Reverse 3 tiles")]
+    public Button btnReverse3Tiles;
+
     [Header("Button PigBank")]
     public BBUIButton btnPigBank;
 
@@ -81,7 +84,7 @@ public class GamePlayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         Advertisements.Instance.ShowBanner(BannerPosition.BOTTOM, BannerType.Banner);
         lockGroup.SetActive(true);
         isRevive = false;
@@ -106,6 +109,7 @@ public class GamePlayManager : MonoBehaviour
             {
                 level = PlayerPrefs.GetInt(Config.CURR_LEVEL);
                 //level = Config.currLevel;
+
             }
         }
 
@@ -140,8 +144,14 @@ public class GamePlayManager : MonoBehaviour
                 }
             }
         }
-    
-        
+
+         if (btnReverse3Tiles != null)
+        {
+            // Add a listener to the button's onClick event
+            btnReverse3Tiles.onClick.AddListener(reverseTiles);
+        }
+
+
     }
 
     private GameObject levelGame;
@@ -157,7 +167,7 @@ public class GamePlayManager : MonoBehaviour
         starGroup.InitStarGroup(GameLevelManager.instance.configLevelGame);
 
         StartCoroutine(LoadLevelGame_IEnumerator());
-        
+
     }
 
     private IEnumerator LoadLevelGame_IEnumerator()
@@ -350,7 +360,14 @@ public class GamePlayManager : MonoBehaviour
         //     }
         // }
     }
+    #region REVERSE TILES
 
+    public void reverseTiles()
+    {
+        GameLevelManager.instance.MoveRecentThreeTiles();
+    }
+
+    #endregion
     #region PAUSE
     public void TouchPause()
     {

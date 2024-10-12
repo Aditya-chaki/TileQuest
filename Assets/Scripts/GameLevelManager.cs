@@ -81,12 +81,19 @@ public class GameLevelManager : MonoBehaviour
     {
 
     }
-    public void MoveRecentThreeTilesToCluster()
+    public void MoveRecentThreeTiles()
     {
         // Ensure there are at least three tiles to move
         if (listItemSlots.Count >= 3)
         {
-            // Create a list to store the tiles that will be removed
+            // Create a new GameObject named TileSlot to act as the parent
+            GameObject tileSlotParent = new GameObject("TileSlot");
+
+            // Adjust the position of the TileSlot parent slightly higher (or lower if needed)
+            Vector3 adjustedTileSlotPosition = slotParentTranform.position + new Vector3(0, 2.5f, 0); // Adjust Y-axis value for the required height
+            tileSlotParent.transform.position = adjustedTileSlotPosition;
+
+            // Create a list to store the tiles that will be moved
             List<ItemTile> tilesToMove = new List<ItemTile>();
 
             // Get the last three tiles from the slots
@@ -95,27 +102,30 @@ public class GameLevelManager : MonoBehaviour
                 tilesToMove.Add(listItemSlots[i].itemTile);
             }
 
-            // Set a fixed position to move the tiles
-            Vector3 fixedPosition = new Vector3(0, 10f, 0);
-
-            // Move the tiles to the fixed position
-            foreach (var tile in tilesToMove)
+            // Now remove the tiles from the slots and position them under the new TileSlot parent
+            for (int i = 0; i < tilesToMove.Count; i++)
             {
-                // Set the tile's parent to null (if necessary) or leave it attached to the slotParentTranform
-                tile.transform.parent = null;
+                ItemTile tile = tilesToMove[i];
 
-                // Move the tile to the fixed position
-                tile.transform.position = fixedPosition;
+                // Set the new parent to the TileSlot GameObject
+                tile.transform.parent = tileSlotParent.transform;
+
+                // Arrange tiles in a horizontal line
+                Vector3 newPos = new Vector3(i * 1.5f, tileSlotParent.transform.position.y, tileSlotParent.transform.position.z);
+                tile.transform.position = newPos;
+
+                // Debug log to check the position of each tile
+                Debug.Log($"Tile {i + 1} new position: {newPos}");
 
                 // Optionally, reset its properties or state as needed
                 tile.SetItemTile_Undo();
 
                 // Remove the corresponding ItemTileSlot from the listItemSlots
-                int slotIndex = listItemSlots.FindIndex(slot => slot.itemTile == tile);
-                if (slotIndex != -1)
+                int slotIdx = listItemSlots.FindIndex(slot => slot.itemTile == tile);
+                if (slotIdx != -1)
                 {
-                    Destroy(listItemSlots[slotIndex].gameObject);  // Destroy the slot object
-                    listItemSlots.RemoveAt(slotIndex);  // Remove from the list
+                    Destroy(listItemSlots[slotIdx].gameObject);  // Destroy the slot object
+                    listItemSlots.RemoveAt(slotIdx);  // Remove from the list
                 }
             }
 
@@ -127,6 +137,8 @@ public class GameLevelManager : MonoBehaviour
             Debug.LogWarning("Not enough tiles to move.");
         }
     }
+
+
 
 
     public void InitListMoveType()
