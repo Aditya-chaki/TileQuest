@@ -54,6 +54,9 @@ public class GamePlayManager : MonoBehaviour
     [Header("Button Reverse 3 tiles")]
     public Button btnReverse3Tiles;
 
+    [Header("Button inc Slot")]
+    public Button btnSlotInc;
+
     [Header("Button PigBank")]
     public BBUIButton btnPigBank;
 
@@ -145,10 +148,15 @@ public class GamePlayManager : MonoBehaviour
             }
         }
 
-         if (btnReverse3Tiles != null)
+        if (btnReverse3Tiles != null)
         {
             // Add a listener to the button's onClick event
             btnReverse3Tiles.onClick.AddListener(reverseTiles);
+        }
+        if (btnSlotInc != null)
+        {
+            // Add a listener to the button's onClick event
+            btnSlotInc.onClick.AddListener(SlotIncreament);
         }
 
 
@@ -368,6 +376,31 @@ public class GamePlayManager : MonoBehaviour
     }
 
     #endregion
+
+
+
+
+
+
+
+
+
+    #region SLOT INC
+
+    public void SlotIncreament()
+    {
+        GameLevelManager.instance.IncreaseSlotCount();
+    }
+
+    #endregion
+
+
+
+
+
+
+
+
     #region PAUSE
     public void TouchPause()
     {

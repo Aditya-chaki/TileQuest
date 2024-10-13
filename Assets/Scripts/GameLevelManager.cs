@@ -81,6 +81,8 @@ public class GameLevelManager : MonoBehaviour
     {
 
     }
+
+    #region REVERSE 3 TILES
     public void MoveRecentThreeTiles()
     {
         // Ensure there are at least three tiles to move
@@ -139,8 +141,35 @@ public class GameLevelManager : MonoBehaviour
     }
 
 
+    #endregion
+    #region SLOT INCREASE
+    public void IncreaseSlotCount()
+    {
+        // // Increase the slot number dynamically during gameplay
+        // if (listItemSlots.Count < 8)  // Assuming the maximum slot count is 8
+        // {
+        //     ItemTileSlot newSlot = Instantiate(itemTileSlotPrefab, slotParentTranform);
+        //     int newIndex = listItemSlots.Count;
 
+        //     // Adjust the position of the new slot
+        //     newSlot.transform.localPosition = new Vector3(-3 * ItemTile.TILE_SIZE + newIndex * ItemTile.TILE_SIZE, 0f, 0f);
 
+        //     // Optionally initialize the slot with default properties
+        //     // Set default values or prepare the slot for future item tile assignment
+        //     listItemSlots.Add(newSlot);
+
+        //     // Reset the positions of all slots
+        //     StartCoroutine(SetListItemSlot_ResetPosition_Now());
+
+        //     Debug.Log("Slot count increased by 1.");
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("Maximum slot count reached, cannot add more slots.");
+        // }
+    }
+
+    #endregion
     public void InitListMoveType()
     {
         Config.listStartMoveType.Clear();
