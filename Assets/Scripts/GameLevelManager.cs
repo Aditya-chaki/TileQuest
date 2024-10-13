@@ -82,7 +82,94 @@ public class GameLevelManager : MonoBehaviour
 
     }
 
+    #region REVERSE 3 TILES
+    public void MoveRecentThreeTiles()
+    {
+        // Ensure there are at least three tiles to move
+        if (listItemSlots.Count >= 3)
+        {
+            // Create a new GameObject named TileSlot to act as the parent
+            GameObject tileSlotParent = new GameObject("TileSlot");
 
+            // Adjust the position of the TileSlot parent slightly higher (or lower if needed)
+            Vector3 adjustedTileSlotPosition = slotParentTranform.position + new Vector3(0, 2.5f, 0); // Adjust Y-axis value for the required height
+            tileSlotParent.transform.position = adjustedTileSlotPosition;
+
+            // Create a list to store the tiles that will be moved
+            List<ItemTile> tilesToMove = new List<ItemTile>();
+
+            // Get the last three tiles from the slots
+            for (int i = listItemSlots.Count - 3; i < listItemSlots.Count; i++)
+            {
+                tilesToMove.Add(listItemSlots[i].itemTile);
+            }
+
+            // Now remove the tiles from the slots and position them under the new TileSlot parent
+            for (int i = 0; i < tilesToMove.Count; i++)
+            {
+                ItemTile tile = tilesToMove[i];
+
+                // Set the new parent to the TileSlot GameObject
+                tile.transform.parent = tileSlotParent.transform;
+
+                // Arrange tiles in a horizontal line
+                Vector3 newPos = new Vector3(i * 1.5f, tileSlotParent.transform.position.y, tileSlotParent.transform.position.z);
+                tile.transform.position = newPos;
+
+                // Debug log to check the position of each tile
+                Debug.Log($"Tile {i + 1} new position: {newPos}");
+
+                // Optionally, reset its properties or state as needed
+                tile.SetItemTile_Undo();
+
+                // Remove the corresponding ItemTileSlot from the listItemSlots
+                int slotIdx = listItemSlots.FindIndex(slot => slot.itemTile == tile);
+                if (slotIdx != -1)
+                {
+                    Destroy(listItemSlots[slotIdx].gameObject);  // Destroy the slot object
+                    listItemSlots.RemoveAt(slotIdx);  // Remove from the list
+                }
+            }
+
+            // After moving the tiles, reset the remaining slot positions
+            StartCoroutine(SetListItemSlot_ResetPosition_Now());
+        }
+        else
+        {
+            Debug.LogWarning("Not enough tiles to move.");
+        }
+    }
+
+
+    #endregion
+    #region SLOT INCREASE
+    public void IncreaseSlotCount()
+    {
+        // // Increase the slot number dynamically during gameplay
+        // if (listItemSlots.Count < 8)  // Assuming the maximum slot count is 8
+        // {
+        //     ItemTileSlot newSlot = Instantiate(itemTileSlotPrefab, slotParentTranform);
+        //     int newIndex = listItemSlots.Count;
+
+        //     // Adjust the position of the new slot
+        //     newSlot.transform.localPosition = new Vector3(-3 * ItemTile.TILE_SIZE + newIndex * ItemTile.TILE_SIZE, 0f, 0f);
+
+        //     // Optionally initialize the slot with default properties
+        //     // Set default values or prepare the slot for future item tile assignment
+        //     listItemSlots.Add(newSlot);
+
+        //     // Reset the positions of all slots
+        //     StartCoroutine(SetListItemSlot_ResetPosition_Now());
+
+        //     Debug.Log("Slot count increased by 1.");
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("Maximum slot count reached, cannot add more slots.");
+        // }
+    }
+
+    #endregion
     public void InitListMoveType()
     {
         Config.listStartMoveType.Clear();
