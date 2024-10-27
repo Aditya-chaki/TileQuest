@@ -39,7 +39,7 @@ public class GameLevelManager : MonoBehaviour
 
     public GameObject slotBG;
 
-    public int maxSlotCount = 8;  // Initialize with default value
+    public int maxSlotCount = 7;  // Initialize with default value
 
     Vector2 originalSlotBgPos;
     private void Awake()
@@ -92,36 +92,24 @@ public class GameLevelManager : MonoBehaviour
         {
             // Create a new GameObject named TileSlot to act as the parent
             GameObject tileSlotParent = new GameObject("TileSlot");
-
-            // Adjust the position of the TileSlot parent slightly higher (or lower if needed)
-            Vector3 adjustedTileSlotPosition = slotParentTranform.position + new Vector3(0, 2.5f, 0); // Adjust Y-axis value for the required height
+            Vector3 adjustedTileSlotPosition = slotParentTranform.position + new Vector3(0, 2.5f, 0);
             tileSlotParent.transform.position = adjustedTileSlotPosition;
 
-            // Create a list to store the tiles that will be moved
+            // Restrict to only the last three tiles
             List<ItemTile> tilesToMove = new List<ItemTile>();
 
-            // Get the last three tiles from the slots
+            // Get exactly the last three tiles
             for (int i = listItemSlots.Count - 3; i < listItemSlots.Count; i++)
             {
                 tilesToMove.Add(listItemSlots[i].itemTile);
             }
 
-            // Now remove the tiles from the slots and position them under the new TileSlot parent
-            for (int i = 0; i < tilesToMove.Count; i++)
+            // Now remove the selected tiles and position them under the new TileSlot parent
+            foreach (var tile in tilesToMove)
             {
-                ItemTile tile = tilesToMove[i];
-
-                // Set the new parent to the TileSlot GameObject
                 tile.transform.parent = tileSlotParent.transform;
-
-                // Arrange tiles in a horizontal line
-                Vector3 newPos = new Vector3(i * 1.5f, tileSlotParent.transform.position.y, tileSlotParent.transform.position.z);
+                Vector3 newPos = new Vector3(tilesToMove.IndexOf(tile) * 1.5f, tileSlotParent.transform.position.y, tileSlotParent.transform.position.z);
                 tile.transform.position = newPos;
-
-                // Debug log to check the position of each tile
-                Debug.Log($"Tile {i + 1} new position: {newPos}");
-
-                // Optionally, reset its properties or state as needed
                 tile.SetItemTile_Undo();
 
                 // Remove the corresponding ItemTileSlot from the listItemSlots
@@ -143,13 +131,20 @@ public class GameLevelManager : MonoBehaviour
     }
 
 
+
     #endregion
     #region SLOT INCREASE
-   public void IncreaseSlotCount()
+    public void IncreaseSlotCount()
 {
-     
-    // maxSlotCount++;  // Increment max slot count
+    // Increment the slot count by 1, ensuring it does not exceed a max limit if desired
+    maxSlotCount = 8;
+    
+    // Optionally, if there’s a maximum limit you want to enforce, you can do:
+    // maxSlotCount = Mathf.Min(maxSlotCount, MAX_ALLOWED_SLOTS);
+
+    Debug.Log($"Slot count increased. New max slot count: {maxSlotCount}");
 }
+
 
 
     #endregion
@@ -575,7 +570,7 @@ public class GameLevelManager : MonoBehaviour
 
     public bool CheckGameOver()
     {
-        if (listItemSlots.Count < 7)
+        if (listItemSlots.Count < maxSlotCount)
         {
             return false;
         }
@@ -591,7 +586,7 @@ public class GameLevelManager : MonoBehaviour
 
     public bool IsItemTileMoveToSlot()
     {
-        if (listItemSlots.Count >= 7)
+        if (listItemSlots.Count >= maxSlotCount)
         {
             return false;
         }
@@ -868,7 +863,7 @@ public class GameLevelManager : MonoBehaviour
             //Neu so itemSlot lon hon 4
 
             //Neu số itemSlot >= 6
-            if (listItemSlots.Count >= 6)
+            if (listItemSlots.Count >= maxSlotCount-1)
             {
                 //Duyet cac bo 2 cua itemslot ->Tim 1 item mo cho xuong
 

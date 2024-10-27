@@ -190,7 +190,7 @@ public class ItemTile : MonoBehaviour
 
 
                 if (!GameLevelManager.instance.IsItemTileMoveToSlot()) {
-                    Debug.Log("Chua the chuyen xuong slot");
+                    Debug.Log("Can't move to slot yet");
                     return;
                 }
 
