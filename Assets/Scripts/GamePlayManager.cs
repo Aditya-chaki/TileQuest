@@ -373,6 +373,7 @@ public class GamePlayManager : MonoBehaviour
     public void reverseTiles()
     {
         GameLevelManager.instance.MoveRecentThreeTiles();
+
     }
 
     #endregion

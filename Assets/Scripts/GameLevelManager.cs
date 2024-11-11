@@ -85,15 +85,16 @@ public class GameLevelManager : MonoBehaviour
     }
 
     #region REVERSE 3 TILES
+
     public void MoveRecentThreeTiles()
     {
+        GameObject reverseTileSlot = GameObject.FindGameObjectWithTag("StoreSlot");
         // Ensure there are at least three tiles to move
         if (listItemSlots.Count >= 3)
         {
             // Create a new GameObject named TileSlot to act as the parent
             GameObject tileSlotParent = new GameObject("TileSlot");
-            Vector3 adjustedTileSlotPosition = slotParentTranform.position + new Vector3(0, 2.5f, 0);
-            tileSlotParent.transform.position = adjustedTileSlotPosition;
+            tileSlotParent.transform.position = reverseTileSlot.transform.position-new Vector3(0,2,0);
 
             // Restrict to only the last three tiles
             List<ItemTile> tilesToMove = new List<ItemTile>();
@@ -104,11 +105,19 @@ public class GameLevelManager : MonoBehaviour
                 tilesToMove.Add(listItemSlots[i].itemTile);
             }
 
-            // Now remove the selected tiles and position them under the new TileSlot parent
-            foreach (var tile in tilesToMove)
+            // Set up spacing for tile layout at reverseTileSlot
+            float tileSpacing = 1.5f;  // Adjust as needed based on desired spacing between tiles
+
+            // Center the tiles horizontally around reverseTileSlot
+            for (int i = 0; i < tilesToMove.Count; i++)
             {
+                var tile = tilesToMove[i];
                 tile.transform.parent = tileSlotParent.transform;
-                Vector3 newPos = new Vector3(tilesToMove.IndexOf(tile) * 1.5f, tileSlotParent.transform.position.y, tileSlotParent.transform.position.z);
+
+                // Calculate the new position for each tile
+                Vector3 newPos = tileSlotParent.transform.position +
+                                 new Vector3((i - 1) , 0, 0); // Adjusts horizontally around center
+
                 tile.transform.position = newPos;
                 tile.SetItemTile_Undo();
 
@@ -129,6 +138,7 @@ public class GameLevelManager : MonoBehaviour
             Debug.LogWarning("Not enough tiles to move.");
         }
     }
+
 
 
 
