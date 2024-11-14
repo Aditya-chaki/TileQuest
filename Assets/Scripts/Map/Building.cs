@@ -1,8 +1,23 @@
 using UnityEngine;
+using UnityEngine.UI; // Include this for working with UI components
+using System.Collections.Generic;
 
 public class Building : MonoBehaviour
 {
-    public EventData eventData; // Reference to the building's event data
+    public List<EventData> eventList; // List of event data for the building
+    public Button completeButton; // Reference to the complete button in the UI
+
+    private int currentEventIndex = 0; // Tracks the current event index
+    private bool isEventComplete = false; // Flag to check if the current event is complete
+
+    void Start()
+    {
+        if (completeButton != null)
+        {
+            // Add a listener to the button's onClick event
+            completeButton.onClick.AddListener(CompleteEvent);
+        }
+    }
 
     void Update()
     {
@@ -20,14 +35,39 @@ public class Building : MonoBehaviour
 
                 if (hit.collider != null && hit.collider.gameObject == this.gameObject)
                 {
-                    // Find the BuildingDisplayManager in the scene and call ShowContent
-                    BuildingImageManager displayManager = FindObjectOfType<BuildingImageManager>();
-                    if (displayManager != null && eventData != null)
-                    {
-                        displayManager.ShowContent(eventData);
-                    }
+                    TriggerCurrentEvent();
                 }
             }
+        }
+    }
+
+    void TriggerCurrentEvent()
+    {
+        if (currentEventIndex < eventList.Count)
+        {
+            EventData currentEvent = eventList[currentEventIndex];
+
+            // Find the BuildingDisplayManager in the scene and call ShowContent
+            BuildingImageManager displayManager = FindObjectOfType<BuildingImageManager>();
+            if (displayManager != null && currentEvent != null)
+            {
+                displayManager.ShowContent(currentEvent);
+                isEventComplete = false; // Reset event completion status
+            }
+        }
+        else
+        {
+            Debug.Log("All events for this building have been triggered.");
+        }
+    }
+
+    public void CompleteEvent()
+    {
+        if (currentEventIndex < eventList.Count)
+        {
+            isEventComplete = true; // Mark the current event as complete
+            currentEventIndex++; // Move to the next event
+            Debug.Log("Event completed. Ready for the next event.");
         }
     }
 }
