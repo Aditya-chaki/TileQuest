@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewEventData", menuName = "Event Data")]
 public class EventData : ScriptableObject
 {
-    public Sprite backgroundImage; // The image to display
+
     public string eventText;       // The text to display
     public int food;               // Amount of food to deduct
     public int strength;           // Amount of strength to deduct

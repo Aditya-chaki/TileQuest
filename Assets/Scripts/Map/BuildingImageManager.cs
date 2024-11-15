@@ -50,7 +50,7 @@ public class BuildingImageManager : MonoBehaviour
 
         if (displayImage != null && displayText != null)
         {
-            displayImage.sprite = eventData.backgroundImage; // Set the image
+            
             displayText.text = eventData.eventText;          // Set the text
 
             // Set the metric values in the UI
