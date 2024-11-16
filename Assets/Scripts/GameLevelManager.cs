@@ -86,63 +86,117 @@ public class GameLevelManager : MonoBehaviour
 
     #region REVERSE 3 TILES
 
-    public void MoveRecentThreeTiles()
+    public bool MoveRecentThreeTiles()
     {
         GameObject reverseTileSlot = GameObject.FindGameObjectWithTag("StoreSlot");
-        // Ensure there are at least three tiles to move
+        if (reverseTileSlot == null)
+        {
+            Debug.LogWarning("ReverseTileSlot not found.");
+            return false;
+        }
+
+        // Ensure there are at least 3 tiles to move
         if (listItemSlots.Count >= 3)
         {
-            // Create a new GameObject named TileSlot to act as the parent
-            GameObject tileSlotParent = new GameObject("TileSlot");
-            tileSlotParent.transform.position = reverseTileSlot.transform.position-new Vector3(0,2,0);
+            GameObject tileSlotParent = GameObject.Find("TileSlot");
 
-            // Restrict to only the last three tiles
+            // Create a new TileSlot parent if it doesn't exist
+            if (tileSlotParent == null)
+            {
+                tileSlotParent = new GameObject("TileSlot");
+                tileSlotParent.transform.parent = reverseTileSlot.transform;
+                tileSlotParent.transform.localPosition = Vector3.zero; // Align with StoreSlot
+            }
+
+            tileSlotParent.transform.rotation = Quaternion.identity;
+            tileSlotParent.transform.localScale = Vector3.one;
+
+            // Check if the parent already has 3 tiles
+            if (tileSlotParent.transform.childCount >= 3)
+            {
+                
+                return false;
+            }
+
+            // Collect the last 3 tiles
             List<ItemTile> tilesToMove = new List<ItemTile>();
-
-            // Get exactly the last three tiles
             for (int i = listItemSlots.Count - 3; i < listItemSlots.Count; i++)
             {
                 tilesToMove.Add(listItemSlots[i].itemTile);
             }
-
-            // Set up spacing for tile layout at reverseTileSlot
-            float tileSpacing = 1.5f;  // Adjust as needed based on desired spacing between tiles
-
-            // Center the tiles horizontally around reverseTileSlot
+            int offsetX = 2;
+            // Position tiles within the parent
             for (int i = 0; i < tilesToMove.Count; i++)
             {
-                var tile = tilesToMove[i];
-                tile.transform.parent = tileSlotParent.transform;
+                ItemTile tile = tilesToMove[i];
 
-                // Calculate the new position for each tile
-                Vector3 newPos = tileSlotParent.transform.position +
-                                 new Vector3((i - 1) , 0, 0); // Adjusts horizontally around center
+                // Create a new slot for each tile
+                ItemTileSlot itemTileSlot = Instantiate(itemTileSlotPrefab, tileSlotParent.transform);
 
-                tile.transform.position = newPos;
+                // Position slots relative to the parent
+                
+                int tileXPosition = (int)(-3 * ItemTile.TILE_SIZE + i* ItemTile.TILE_SIZE);
+                itemTileSlot.transform.localPosition = new Vector3(tileXPosition+(offsetX*i), 0f, 0f);
+
+                // Set the tile to the slot
+                tile.transform.SetParent(itemTileSlot.transform);
+                tile.transform.localPosition = Vector3.zero; // Reset position within the slot
+
+                // Simulate the effect of SetMoveToSlot
+                AnimateTileMove(tile);
+
+                // Update the tile
                 tile.SetItemTile_Undo();
 
-                // Remove the corresponding ItemTileSlot from the listItemSlots
+                // Remove the tile from the current list
                 int slotIdx = listItemSlots.FindIndex(slot => slot.itemTile == tile);
                 if (slotIdx != -1)
                 {
-                    Destroy(listItemSlots[slotIdx].gameObject);  // Destroy the slot object
-                    listItemSlots.RemoveAt(slotIdx);  // Remove from the list
+                    Destroy(listItemSlots[slotIdx].gameObject);
+                    listItemSlots.RemoveAt(slotIdx);
                 }
+
+                // Add the slot to the undo list
+                listCheckUndo_ItemTileSlots.Add(itemTileSlot);
             }
 
-            // After moving the tiles, reset the remaining slot positions
-            StartCoroutine(SetListItemSlot_ResetPosition_Now());
+            StartCoroutine(SetListItemSlot_ResetPosition());
+            
         }
         else
         {
             Debug.LogWarning("Not enough tiles to move.");
+            return false;
         }
+        return true;
+    }
+
+    private void AnimateTileMove(ItemTile tile)
+    {
+        // Create a DOTween sequence for animations
+        Sequence moveToSlotSequence = DOTween.Sequence();
+        moveToSlotSequence.Insert(0f, tile.objGroup.transform.DOScale(Vector3.one * 1.1f, 0.1f).SetEase(Ease.OutQuad));
+        moveToSlotSequence.Insert(0f, tile.objGroup.transform.DOLocalRotate(new Vector3(0f, 0f, Random.Range(10f, 15f)), 0.1f));
+        moveToSlotSequence.Insert(0.1f, tile.objGroup.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.InQuad));
+        moveToSlotSequence.Insert(0.1f, tile.objGroup.transform.DOLocalRotate(Vector3.zero, 0.2f).SetEase(Ease.InQuad));
+        moveToSlotSequence.InsertCallback(0.1f, () =>
+        {
+            SoundManager.instance.PlaySound_Wind();
+        });
+        moveToSlotSequence.Insert(0f, tile.transform.DOLocalMove(Vector3.zero, 0.3f).SetEase(Ease.OutQuad));
+
+        moveToSlotSequence.OnComplete(() =>
+        {
+            //tile.itemTileState = Config.ITEMTILE_STATE.SLOT;
+            SoundManager.instance.PlaySound_BlockMoveFinish();
+            GameLevelManager.instance.SetMoveItemSlot_Finished(tile);
+        });
     }
 
 
-
-
     #endregion
+
+
     #region SLOT INCREASE
     public void IncreaseSlotCount()
 {
