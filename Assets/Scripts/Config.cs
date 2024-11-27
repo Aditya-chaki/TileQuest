@@ -83,7 +83,8 @@ public class Config
     {
         UNDO,
         SUGGEST,
-        SHUFFLE
+        SHUFFLE,
+        STORE
     }
 
 
@@ -99,6 +100,8 @@ public class Config
             return PlayerPrefs.GetInt(itemHelpType.ToString(), 3);
         if (itemHelpType == ITEMHELP_TYPE.SHUFFLE)
             return PlayerPrefs.GetInt(itemHelpType.ToString(), 4);
+        if(itemHelpType == ITEMHELP_TYPE.STORE)
+            return PlayerPrefs.GetInt(itemHelpType.ToString(), 1);
         else
             return PlayerPrefs.GetInt(itemHelpType.ToString(), 4);
     }

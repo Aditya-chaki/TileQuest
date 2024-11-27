@@ -372,7 +372,17 @@ public class GamePlayManager : MonoBehaviour
 
     public void reverseTiles()
     {
-        GameLevelManager.instance.MoveRecentThreeTiles();
+        bool abilityresult = GameLevelManager.instance.MoveRecentThreeTiles();
+        if (abilityresult)
+        {
+            btnReverse3Tiles.gameObject.SetActive(false);
+        }
+        else
+        {
+            btnReverse3Tiles.onClick.AddListener(reverseTiles);
+        }
+        //btnReverse3Tiles.gameObject.SetActive();
+
     }
 
     #endregion
@@ -390,6 +400,7 @@ public class GamePlayManager : MonoBehaviour
     public void SlotIncreament()
     {
         GameLevelManager.instance.IncreaseSlotCount();
+        btnSlotInc.gameObject.SetActive(false);
     }
 
     #endregion
@@ -553,6 +564,8 @@ public class GamePlayManager : MonoBehaviour
             winPopup.ShowWinPopup(level, starGroup.GetCurrStar(), GameLevelManager.instance.configLevelGame.listRewards_CoinValue[starGroup.GetCurrStar()]);
 
             Config.SetCurrLevel(level + 1);
+            btnReverse3Tiles.gameObject.SetActive(true);
+            btnSlotInc.gameObject.SetActive(true);
             Config.currSelectLevel = Config.currLevel;
 
             if (level >= 15 && level % 5 == 0 && !Config.GetRate())
