@@ -124,7 +124,7 @@ public class GameLevelManager : MonoBehaviour
             {
                 tilesToMove.Add(listItemSlots[i].itemTile);
             }
-            int offsetX = 2;
+            float offsetX = 1.5f;
             // Position tiles within the parent
             for (int i = 0; i < tilesToMove.Count; i++)
             {
@@ -199,15 +199,26 @@ public class GameLevelManager : MonoBehaviour
 
     #region SLOT INCREASE
     public void IncreaseSlotCount()
-{
-    // Increment the slot count by 1, ensuring it does not exceed a max limit if desired
-    maxSlotCount = 8;
-    
-    // Optionally, if there’s a maximum limit you want to enforce, you can do:
-    // maxSlotCount = Mathf.Min(maxSlotCount, MAX_ALLOWED_SLOTS);
+    {
+        // Increment the slot count by 1, ensuring it does not exceed a max limit if desired
+        maxSlotCount = 8;
 
-    Debug.Log($"Slot count increased. New max slot count: {maxSlotCount}");
-}
+        // Optionally, if there’s a maximum limit you want to enforce, you can do:
+        // maxSlotCount = Mathf.Min(maxSlotCount, MAX_ALLOWED_SLOTS);
+        
+        slotBG.gameObject.transform.DOScaleX(1.1f, 1.2f).SetEase(Ease.InQuad);
+        
+        //float offsetX = 0.4f;
+        for (int i = 0;i< listItemSlots.Count;i++)
+        {
+            Debug.Log(listItemSlots[i].gameObject.transform.localPosition);
+            float tileXPosition = -3 * ItemTile.TILE_SIZE + i * ItemTile.TILE_SIZE ;
+            listItemSlots[i].gameObject.transform.DOLocalMove(new Vector3(tileXPosition , 0f, 0f),1.2f).SetEase(Ease.InQuad);
+            Debug.Log(listItemSlots[i].gameObject.transform.localPosition);
+        }
+
+        Debug.Log($"Slot count increased. New max slot count: {maxSlotCount}");
+    }
 
 
 
@@ -421,7 +432,7 @@ public class GameLevelManager : MonoBehaviour
 
     public void AddItemSlot(ItemTile itemTile)
     {
-        if (listItemSlots.Count < 7)
+        if (listItemSlots.Count < maxSlotCount)
         {
             //Test1
             int indexNewSlot = FindIndexAddItemTileSlot(itemTile);

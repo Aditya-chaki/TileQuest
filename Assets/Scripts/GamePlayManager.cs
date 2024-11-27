@@ -400,6 +400,7 @@ public class GamePlayManager : MonoBehaviour
     public void SlotIncreament()
     {
         GameLevelManager.instance.IncreaseSlotCount();
+        btnSlotInc.gameObject.SetActive(false);
     }
 
     #endregion
@@ -564,6 +565,7 @@ public class GamePlayManager : MonoBehaviour
 
             Config.SetCurrLevel(level + 1);
             btnReverse3Tiles.gameObject.SetActive(true);
+            btnSlotInc.gameObject.SetActive(true);
             Config.currSelectLevel = Config.currLevel;
 
             if (level >= 15 && level % 5 == 0 && !Config.GetRate())
