@@ -36,7 +36,7 @@ public class BuildingImageManager : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
 
                 // Check if the touch is outside any building (hit is null or not a building)
-                if (hit.collider == null || !hit.collider.CompareTag("Building"))
+                if (hit.collider == null || !hit.collider.CompareTag("Cloud"))
                 {
                     HideContent();
                 }

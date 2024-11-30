@@ -10,6 +10,7 @@ TagManager:
   - Effects
   - Building
   - StoreSlot
+  - Cloud
   layers:
   - Default
   - TransparentFX
