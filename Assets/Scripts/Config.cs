@@ -132,33 +132,29 @@ public class Config
 
     private const string LAST_COMPLETED_DATE_KEY = "LastCompletedDate";
     private const string LEVELS_COMPLETED_KEY = "LevelsCompleted";
-    public const int REQUIRED_LEVELS = 10;
+    public const int REQUIRED_LEVELS = 2;
     public const int REWARD_COINS = 100;
+    private const string QUEST1_COMPLETED_KEY = "Quest1Completed";
 
     private static DateTime? _lastCompletedDateCache;
 
     // Method to check if the daily quest is available
-    public static bool IsDailyQuestAvailable()
+    public static bool IsQuest1Completed()
     {
-        DateTime lastCompletedDate = GetLastCompletedDate();
-        DateTime currentDate = DateTime.UtcNow.Date;
-
-        return lastCompletedDate < currentDate;
+        return PlayerPrefs.GetInt(QUEST1_COMPLETED_KEY, 0) == 1;
     }
 
     // Method to mark a level as completed
-    public static void CompleteLevel()
+    public static void UpdateLevelsCompleted()
     {
-        if (!IsDailyQuestAvailable()) return;
+        if (IsQuest1Completed()) return;
 
-        int levelsCompleted = PlayerPrefs.GetInt(LEVELS_COMPLETED_KEY, 0);
-        levelsCompleted++;
+        int levelsCompleted = PlayerPrefs.GetInt(LEVELS_COMPLETED_KEY, 0) + 1;
         PlayerPrefs.SetInt(LEVELS_COMPLETED_KEY, levelsCompleted);
 
         if (levelsCompleted >= REQUIRED_LEVELS)
         {
-            RewardPlayer();
-            ResetDailyQuest();
+            RewardQuest1();
         }
         else
         {
@@ -166,25 +162,23 @@ public class Config
         }
     }
 
-    // Method to reward the player
-    public static void RewardPlayer()
+    // Reward for completing quest 1
+    private static void RewardQuest1()
     {
-        int currentCoins = GetCoin();
-        SetCoin(currentCoins + REWARD_COINS);
-        Debug.Log($"Player rewarded with {REWARD_COINS} coins.");
-    }
-
-    // Method to reset the daily quest
-    private static void ResetDailyQuest()
-    {
-        PlayerPrefs.SetString(LAST_COMPLETED_DATE_KEY, DateTime.UtcNow.Date.ToString());
-        PlayerPrefs.SetInt(LEVELS_COMPLETED_KEY, 0);
+        PlayerPrefs.SetInt(QUEST1_COMPLETED_KEY, 1); // Mark quest 1 as completed
+        int currentCoins = Config.GetCoin();
+        Config.SetCoin(currentCoins + 100);
+        Debug.Log($"Quest 1 completed! Player rewarded with {100} coins.");
         PlayerPrefs.Save();
-
-        // Reset cache
-        _lastCompletedDateCache = DateTime.UtcNow.Date;
     }
 
+    // Reset quest 1
+    private static void ResetQuest1()
+    {
+        PlayerPrefs.SetInt(LEVELS_COMPLETED_KEY, 0);
+        PlayerPrefs.SetInt(QUEST1_COMPLETED_KEY, 0); // Reset completion status
+        PlayerPrefs.Save();
+    }
     // Method to get the last completed date
     private static DateTime GetLastCompletedDate()
     {
@@ -200,35 +194,19 @@ public class Config
     // Method to get the number of completed levels today
     public static int GetCompletedLevelsToday()
     {
-        return IsDailyQuestAvailable() ? PlayerPrefs.GetInt(LEVELS_COMPLETED_KEY, 0) : 0;
+        return IsQuest1Completed() ? PlayerPrefs.GetInt(LEVELS_COMPLETED_KEY, 0) : 0;
     }
 
     // Method to update levels completed using the current level from Config
-    public static void UpdateLevelsCompleted()
-    {
-        if (!IsDailyQuestAvailable()) return;
-
-        int currentLevel = currLevel;
-        int levelsCompleted = Mathf.Min(currentLevel, REQUIRED_LEVELS);
-        PlayerPrefs.SetInt(LEVELS_COMPLETED_KEY, levelsCompleted);
-
-        if (levelsCompleted >= REQUIRED_LEVELS)
-        {
-            RewardPlayer();
-            ResetDailyQuest();
-        }
-        else
-        {
-            PlayerPrefs.Save();
-        }
-    }
+    
 
     // New method to get the time remaining until the next quest reset
     public static TimeSpan GetTimeUntilNextReset()
     {
-        DateTime currentDate = DateTime.UtcNow;
-        DateTime nextResetDate = currentDate.Date.AddDays(1);
-        return nextResetDate - currentDate;
+        DateTime nextResetDate = DailyQuest.GetDailyQuestDate();
+        TimeSpan timeRemaining = nextResetDate - DateTime.UtcNow;
+        
+        return timeRemaining;
     }
     #endregion
 

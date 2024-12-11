@@ -29,7 +29,7 @@ public class LoadSceneManager : MonoBehaviour
         //  Config.Energy=0;
         // Config.SetCoin(1000);
         // Config.ResetLevel();
-        Config.SetCurrLevel(10);
+        Config.SetCurrLevel(1);
         Config.GetSound();
         Config.GetMusic();
         Config.currCoin = Config.GetCoin();
