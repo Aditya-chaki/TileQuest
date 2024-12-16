@@ -24,23 +24,23 @@ public class Building : MonoBehaviour
     void Update()
     {
         // Detect touch input for mobile
-        // if (Input.touchCount > 0)
-        // {
-        //     Touch touch = Input.GetTouch(0);
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
 
-        //     if (touch.phase == TouchPhase.Began)
-        //     {
-        //         Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            if (touch.phase == TouchPhase.Began)
+            {
+                Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
 
-        //         // Perform a raycast to detect if this building was tapped
-        //         RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+                // Perform a raycast to detect if this building was tapped
+                RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
 
-        //         if (hit.collider != null && hit.collider.gameObject == this.gameObject)
-        //         {
-        //             TriggerCurrentEvent();
-        //         }
-        //     }
-        // }
+                if (hit.collider != null && hit.collider.gameObject == this.gameObject)
+                {
+                    TriggerCurrentEvent();
+                }
+            }
+        }
     }
 
     void TriggerCurrentEvent()

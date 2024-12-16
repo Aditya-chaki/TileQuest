@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e836c7a2e4ff54aa75547d31a01593, type: 3}
   m_Name: Event1
   m_EditorClassIdentifier: 
-  eventText: Help me!!
+  eventText: Reduce the taxes on food
   food: 10
-  strength: 5
+  strength: 15
   health: 20
-  gold: 50
+  gold: -30

@@ -100,10 +100,10 @@ public class BuildingImageManager : MonoBehaviour
         if (currentEventData != null)
         {
             // Deduct the metric values from the player's resources
-            Config.Food -= currentEventData.food;
-            Config.Strength -= currentEventData.strength;
-            Config.Health -= currentEventData.health;
-            Config.Gold -= currentEventData.gold;
+            Config.Food += currentEventData.food;
+            Config.Strength += currentEventData.strength;
+            Config.Health += currentEventData.health;
+            Config.Gold += currentEventData.gold;
 
             Debug.Log("Event completed, metrics deducted.");
             HideContent(); // Hide the card after completing the event
