@@ -12,7 +12,7 @@ namespace VNGame
         public DialogueManager dialogueManager;
         public string initialInvariant = "Tut1"; 
         public string SceneName;
-        public GameObject DecisionCard;
+        public GameObject DialoguePrefab;
 
         private string currentInvariant;
         private int currentDialogueIndex;
@@ -72,21 +72,21 @@ namespace VNGame
             else
             {
                 Debug.LogWarning("Reached the end of dialogues for invariant " + currentInvariant);
-                SceneManager.LoadScene("Menu");
+                Destroy(DialoguePrefab);
             }
         }
-        public void OnNextAndContinueButton()
-        {
-            if (currentDialogues != null && currentDialogueIndex < currentDialogues.Count - 1)
-            {
-                currentDialogueIndex++;
-                DisplayCurrentDialogue();
-            }
-            else
-            {
-                Debug.LogWarning("Reached the end of dialogues for invariant " + currentInvariant);
-                DecisionCard.SetActive(true);
-            }
-        }
+        // public void OnNextAndContinueButton()
+        // {
+        //     if (currentDialogues != null && currentDialogueIndex < currentDialogues.Count - 1)
+        //     {
+        //         currentDialogueIndex++;
+        //         DisplayCurrentDialogue();
+        //     }
+        //     else
+        //     {
+        //         Debug.LogWarning("Reached the end of dialogues for invariant " + currentInvariant);
+        //         DecisionCard.SetActive(true);
+        //     }
+        // }
     }
 }
