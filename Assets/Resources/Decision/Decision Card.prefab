@@ -1229,18 +1229,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958418e314aac0c4eb28a31440f4a44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionALoss: {fileID: 0}
-  optionBGain: {fileID: 0}
-  card: {fileID: 0}
-  dialogueSystem: {fileID: 0}
-  opinionChangeText: {fileID: 0}
-  opinionVariable: 0
+  optionALoss: {fileID: 2158923097405553441}
+  optionBGain: {fileID: 667718353444212801}
+  card: {fileID: 4167621658377620508}
   foodVariable: 0
   strengthVariable: 0
   healthVariable: 0
   goldVariable: 0
-  TutNumber: 
-  characterID: {fileID: 0}
 --- !u!222 &5799246560916290442
 CanvasRenderer:
   m_ObjectHideFlags: 0

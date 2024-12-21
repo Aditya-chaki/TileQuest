@@ -537,6 +537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2475386789268150708}
   - component: {fileID: 954541251606556597}
+  - component: {fileID: 5054901936617932825}
   m_Layer: 5
   m_Name: Event1
   m_TagString: Untagged
@@ -585,6 +586,20 @@ MonoBehaviour:
   strengthToAdd: 10
   goldToAdd: -10
   healthToAdd: 0
+--- !u!114 &5054901936617932825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7773247500941444751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a50674a337b8e1418f546f68b4a8549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupDuration: 0.5
+  popupScale: 1.2
 --- !u!1 &8040016491219296530
 GameObject:
   m_ObjectHideFlags: 0
