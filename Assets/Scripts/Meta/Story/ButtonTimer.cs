@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using TMPro;
 using System;
 
@@ -11,38 +10,26 @@ public class ButtonTimer : MonoBehaviour
     [SerializeField] float countdown = 72.0f; // Countdown time in seconds
     private bool isCountingDown = false;
     private DateTime startTime;
-    private string characterId;
 
     void Start()
     {
-        // Assuming Character component is on the same GameObject
-        Character character = GetComponent<Character>();
-        if (character != null)
+        if (PlayerPrefs.HasKey("StartTime"))
         {
-            characterId = character.GetCharacterId();
-        }
-
-        myButton.onClick.AddListener(OnButtonClicked);
-
-        if (!string.IsNullOrEmpty(characterId) && PlayerPrefs.HasKey("StartTime_" + characterId))
-        {
-            startTime = DateTime.Parse(PlayerPrefs.GetString("StartTime_" + characterId));
+            startTime = DateTime.Parse(PlayerPrefs.GetString("StartTime"));
             float elapsed = (float)(DateTime.Now - startTime).TotalSeconds;
             countdown -= elapsed;
 
             if (countdown > 0)
             {
-                isCountingDown = true;
-                myButton.interactable = false;
-                countdownText.text = " " + FormatTime(countdown);
+                StartCountdown();
             }
             else
             {
-                countdown = 0;
-                myButton.interactable = true;
-                countdownText.text = "";
+                ResetButton();
             }
         }
+
+        myButton.onClick.AddListener(OnButtonClicked);
     }
 
     void Update()
@@ -52,37 +39,45 @@ public class ButtonTimer : MonoBehaviour
             if (countdown > 0)
             {
                 countdown -= Time.deltaTime;
-                countdownText.text = " " + FormatTime(countdown);
+                countdownText.text = " " + FormatTime((int)countdown); // Cast countdown to int for formatting
             }
             else
             {
-                countdownText.text = "";
-                isCountingDown = false;
-                myButton.interactable = true;
-                countdown = 7200.0f; // reset countdown
+                ResetButton();
             }
         }
+      
     }
 
     void OnButtonClicked()
     {
-        myButton.interactable = false;
-        isCountingDown = true;
-        startTime = DateTime.Now;
-        if (!string.IsNullOrEmpty(characterId))
-        {
-            PlayerPrefs.SetString("StartTime_" + characterId, startTime.ToString());
-            PlayerPrefs.Save();
-        }
+        
+        StartCountdown();
         countdown = 7200.0f; // Reset the countdown to its initial value
-        countdownText.text = "" + FormatTime(countdown);
+        countdownText.text = FormatTime((int)countdown); // Cast countdown to int for formatting
+        startTime = DateTime.Now;
+        PlayerPrefs.SetString("StartTime", startTime.ToString());
+        PlayerPrefs.Save();
     }
 
-    string FormatTime(float timeInSeconds)
+    void StartCountdown()
     {
-        int hours = (int)(timeInSeconds / 3600);
-        int minutes = (int)((timeInSeconds % 3600) / 60);
-        int seconds = (int)(timeInSeconds % 60);
+        isCountingDown = true;
+        myButton.interactable = false; // Disable the button
+    }
+
+    void ResetButton()
+    {
+        isCountingDown = false;
+        myButton.interactable = true; // Re-enable the button
+        countdownText.text = "";
+    }
+
+    string FormatTime(int timeInSeconds) // Changed parameter type to int
+    {
+        int hours = timeInSeconds / 3600;
+        int minutes = (timeInSeconds % 3600) / 60;
+        int seconds = timeInSeconds % 60;
         return string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
     }
 }
