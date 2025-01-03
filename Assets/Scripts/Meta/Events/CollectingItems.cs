@@ -47,7 +47,7 @@ public class CollectingItems : MonoBehaviour
                 // Timer is finished
                 isTimerActive = false;
                 canCollect = true;
-                buttonText.text = "Tap to Collect";  // Change button text to "Tap to Collect"
+                buttonText.text = "Gold Collector";  // Change button text to "Tap to Collect"
             }
         }
     }
@@ -94,7 +94,7 @@ public class CollectingItems : MonoBehaviour
                 // Timer has already finished
                 isTimerActive = false;
                 canCollect = true;
-                buttonText.text = "Tap to Collect";
+                buttonText.text = "Gold Collector";
             }
             else
             {

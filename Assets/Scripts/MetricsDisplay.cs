@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class MetricsDisplay : MonoBehaviour
 {
@@ -7,35 +8,77 @@ public class MetricsDisplay : MonoBehaviour
     public TextMeshProUGUI strengthText;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI goldText;
-    public TextMeshProUGUI energyText; // Added for energy display
+    public TextMeshProUGUI energyText;
+
+    public GameObject foodUpSign, foodDownSign;
+    public GameObject strengthUpSign, strengthDownSign;
+    public GameObject healthUpSign, healthDownSign;
+    public GameObject goldUpSign, goldDownSign;
+    public GameObject energyUpSign, energyDownSign;
+
+    private int lastFood, lastStrength, lastHealth, lastGold, lastEnergy;
 
     void Start()
     {
-        // Initialize texts
+        // Initialize texts and previous values
+        lastFood = Config.Food;
+        lastStrength = Config.Strength;
+        lastHealth = Config.Health;
+        lastGold = Config.Gold;
+        lastEnergy = Config.Energy;
+
         UpdateMetrics();
     }
 
     void Update()
     {
-        // Continuously update texts in case the metrics change during runtime
+        // Continuously update texts and signs
         UpdateMetrics();
     }
+   
 
     void UpdateMetrics()
     {
         // Update Food
-        foodText.text = $"Food: {Config.Food}";
+        UpdateMetric(foodText, foodUpSign, foodDownSign, Config.Food, ref lastFood, "Food");
 
         // Update Strength
-        strengthText.text = $"Strength: {Config.Strength}";
+        UpdateMetric(strengthText, strengthUpSign, strengthDownSign, Config.Strength, ref lastStrength, "Strength");
 
         // Update Health
-        healthText.text = $"Health: {Config.Health}";
+        UpdateMetric(healthText, healthUpSign, healthDownSign, Config.Health, ref lastHealth, "Health");
 
         // Update Gold
-        goldText.text = $"Gold: {Config.Gold}";
+        UpdateMetric(goldText, goldUpSign, goldDownSign, Config.Gold, ref lastGold, "Gold");
 
         // Update Energy
-        energyText.text = $"Energy: {Config.Energy}"; // New energy text
+        UpdateMetric(energyText, energyUpSign, energyDownSign, Config.Energy, ref lastEnergy, "Energy");
+    }
+
+    void UpdateMetric(TextMeshProUGUI textElement, GameObject upSign, GameObject downSign, int currentValue, ref int lastValue, string metricName)
+    {
+        // Update the text
+        textElement.text = $"{metricName}: {currentValue}";
+
+        // Compare with the last value
+        if (currentValue > lastValue)
+        {
+            StartCoroutine(ShowSignForDuration(upSign, downSign, 30f));
+        }
+        else if (currentValue < lastValue)
+        {
+            StartCoroutine(ShowSignForDuration(downSign, upSign, 30f));
+        }
+
+        // Update the last value
+        lastValue = currentValue;
+    }
+
+    IEnumerator ShowSignForDuration(GameObject show, GameObject hide, float duration)
+    {
+        show.SetActive(true);
+        hide.SetActive(false);
+        yield return new WaitForSeconds(duration);
+        show.SetActive(false);
     }
 }

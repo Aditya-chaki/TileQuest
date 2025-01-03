@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class MetricsDecay : MonoBehaviour
 {
+    // Singleton instance
+    public static MetricsDecay Instance { get; private set; }
+
     // Decay rates (per second) in integers
     public int foodDecayRate = 1; // Decay 1 unit per second
     public int strengthDecayRate = 1; // Decay 1 unit per second
@@ -14,6 +17,20 @@ public class MetricsDecay : MonoBehaviour
 
     private string lastSaveTimeKey = "LastSaveTime";
     private int elapsedDecayTime = 0;
+
+    void Awake()
+    {
+        // Ensure only one instance exists
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: Makes the instance persistent across scenes
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -73,4 +90,11 @@ public class MetricsDecay : MonoBehaviour
         PlayerPrefs.SetString(lastSaveTimeKey, DateTime.UtcNow.ToString());
         PlayerPrefs.Save();
     }
+
+    // Public access methods
+    public int GetFoodDecayRate() => foodDecayRate;
+    public int GetStrengthDecayRate() => strengthDecayRate;
+    public int GetHealthDecayRate() => healthDecayRate;
+    public int GetGoldDecayRate() => goldDecayRate;
+    public int GetDecayDuration() => decayDuration;
 }
