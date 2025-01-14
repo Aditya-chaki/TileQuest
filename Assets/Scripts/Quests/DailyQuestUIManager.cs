@@ -4,56 +4,99 @@ using TMPro;
 
 public class DailyQuestUI : MonoBehaviour
 {
-    [SerializeField] private Slider levelCompletionSlider;  // Slider for level completion
-    [SerializeField] private TextMeshProUGUI progressText;  // New text to show progress (e.g., "3/10 Levels Completed")
-    [SerializeField] private Image Completed;  // New text to show progress (e.g., "3/10 Levels Completed")
+    [Header("Quest Configuration")]
+    [SerializeField] private string questKey;  // Unique identifier for the quest
+    [SerializeField] private int requiredValue;  // Value needed to complete the quest
+    [SerializeField] private int questNumber;
 
-    private int lastTrackedLevel;
+    [Header("UI Elements")]
+    [SerializeField] private Slider progressSlider;  // Slider for quest progress
+    [SerializeField] private TextMeshProUGUI progressText;  // Text to show progress
+    [SerializeField] private Image completedIndicator;  // Indicator for quest completion
 
     private void Start()
     {
-        lastTrackedLevel = Config.currLevel;
         UpdateUI();
-
-        // Update the UI whenever the scene starts
-        UpdateLevelsBasedOnCurrentLevel();
     }
 
+    public void ResetUI()
+    {
+        int currentValue = PlayerPrefs.GetInt($"{questKey}", 0);
+        progressSlider.value = 0;
+        //progressSlider.value = currentValue;
+        progressText.text = $"{currentValue}/{requiredValue}";
+        completedIndicator.enabled = false;
+    }
     private void Update()
     {
-        // Continuously track the current level and update UI if level changes
-        if (Config.currLevel > lastTrackedLevel)
+        UpdateUI();
+        if (DailyRewards.instance.isTimeToReset)
         {
-            UpdateLevelsBasedOnCurrentLevel();
-            lastTrackedLevel = Config.currLevel;
-            UpdateUI();
+            ResetUI();
         }
-    }
-
-    private void UpdateLevelsBasedOnCurrentLevel()
-    {
-        Config.UpdateLevelsCompleted();
     }
 
     private void UpdateUI()
     {
-        int completedLevels = Config.GetCompletedLevelsToday();
-        int requiredLevels = Config.REQUIRED_LEVELS;
-
-        if (Config.IsDailyQuestAvailable())
+        int currentValue = PlayerPrefs.GetInt($"{questKey}", 0);
+        
+        if (questNumber == 1)
         {
-            levelCompletionSlider.maxValue = requiredLevels;  // Set the max value based on required levels
-            levelCompletionSlider.value = completedLevels;    // Set the current value as the completed levels
-
-            progressText.text = $"{completedLevels}/{requiredLevels} ";  // Display progress
-             Completed.enabled = false;
+            bool isCompleted = false;
+            isCompleted = DailyQuest.IsQuest1Completed();
+            if (isCompleted)
+            {
+                progressSlider.value = requiredValue;
+                progressText.text = "Completed!";
+                completedIndicator.enabled = true;
+            }
+            else
+            {
+                progressSlider.maxValue = requiredValue;
+                progressSlider.value = currentValue;
+                progressText.text = $"{currentValue}/{requiredValue}";
+                completedIndicator.enabled = false;
+            }
         }
-        else
+        else if (questNumber == 2)
         {
-            levelCompletionSlider.value = levelCompletionSlider.maxValue;  // Set the slider to full when the quest is completed
-            progressText.text = "Daily Quest Completed!";
-            Completed.enabled = true;
-            
+            bool isCompleted = false;
+            isCompleted = DailyQuest.IsQuest2Completed();
+            if (isCompleted)
+            {
+                progressSlider.value = requiredValue;
+                progressText.text = "Completed!";
+                completedIndicator.enabled = true;
+            }
+            else
+            {
+                progressSlider.maxValue = requiredValue;
+                progressSlider.value = currentValue;
+                progressText.text = $"{currentValue}/{requiredValue}";
+                completedIndicator.enabled = false;
+            }
         }
+        else if (questNumber == 3)
+        {
+            bool isCompleted = false;
+            isCompleted = DailyQuest.IsQuest3Completed();
+            if (isCompleted)
+            {
+                progressSlider.value = requiredValue;
+                progressText.text = "Completed!";
+                completedIndicator.enabled = true;
+            }
+            else
+            {
+                progressSlider.maxValue = requiredValue;
+                progressSlider.value = currentValue;
+                progressText.text = $"{currentValue}/{requiredValue}";
+                completedIndicator.enabled = false;
+            }
+        }
+
+
     }
+
+    
 }

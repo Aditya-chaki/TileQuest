@@ -19,8 +19,6 @@ public class GameLevelManager : MonoBehaviour
     [Title("CONFIG LEVEL")]
     public ConfigLevelGame configLevelGame;
 
-
-
     [InfoBox("Các item hiện trên map")]
     public List<ItemData> listItemDataOnMaps = new List<ItemData>();
 
@@ -501,7 +499,19 @@ public class GameLevelManager : MonoBehaviour
                 listItemSlots.Remove(listCheckMatch3Slots[i]);
                 //Undo
                 listCheckUndo_ItemTileSlots.Remove(listCheckMatch3Slots[i]);
+                DailyQuest.UpdateTilesMatched(3);
+                Debug.Log(listCheckMatch3Slots[i].itemTile.itemData.itemType);
+                Debug.Log(Config.ITEM_TYPE.ITEM_12);
+                if(listCheckMatch3Slots[i].itemTile.itemData.itemType == Config.ITEM_TYPE.ITEM_12)
+                {
+                    if (!DailyQuest.IsQuest3Completed())
+                    {
+                        DailyQuest.UpdateSetTiles(3);
+                    }
+                    
 
+                }
+                Debug.Log("Match 3 tiles");
                 listCheckMatch3Slots[i].SetItemSlot_Match3();
             }
             StartCoroutine(SetListItemSlot_ResetPosition());
