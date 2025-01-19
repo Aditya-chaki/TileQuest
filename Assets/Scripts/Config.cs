@@ -779,135 +779,65 @@ public class Config
 
     #endregion
 
+#region METRICS
 
-    #region METRICS
+private const string FOOD_KEY = "food";
+private const string STRENGTH_KEY = "strength";
+private const string HEALTH_KEY = "health";
+private const string GOLD_KEY = "gold";
+private const string ENERGY_KEY = "energy";
 
-    private const string FOOD_KEY = "food";
-    private const string STRENGTH_KEY = "strength";
-    private const string HEALTH_KEY = "health";
-    private const string GOLD_KEY = "gold";
-    private const string ENERGY_KEY = "energy";
-
-    private const string MAX_FOOD_KEY = "max_food";
-    private const string MAX_STRENGTH_KEY = "max_strength";
-    private const string MAX_HEALTH_KEY = "max_health";
-    private const string MAX_GOLD_KEY = "max_gold";
-
-    private static int baseEnergyMax = 30;
-
-    public static int Food
+public static int Food
+{
+    get => PlayerPrefs.GetInt(FOOD_KEY, 0);
+    set
     {
-        get => PlayerPrefs.GetInt(FOOD_KEY, 0);
-        set
-        {
-            int maxFood = GetMaxFood();
-            value = Mathf.Clamp(value, 0, maxFood);
-            PlayerPrefs.SetInt(FOOD_KEY, value);
-            PlayerPrefs.Save();
-        }
-    }
-
-    public static int Strength
-    {
-        get => PlayerPrefs.GetInt(STRENGTH_KEY, 0);
-        set
-        {
-            int maxStrength = GetMaxStrength();
-            value = Mathf.Clamp(value, 0, maxStrength);
-            PlayerPrefs.SetInt(STRENGTH_KEY, value);
-            PlayerPrefs.Save();
-        }
-    }
-
-    public static int Health
-    {
-        get => PlayerPrefs.GetInt(HEALTH_KEY, 0);
-        set
-        {
-            int maxHealth = GetMaxHealth();
-            value = Mathf.Clamp(value, 0, maxHealth);
-            PlayerPrefs.SetInt(HEALTH_KEY, value);
-            PlayerPrefs.Save();
-        }
-    }
-
-    public static int Gold
-    {
-        get => PlayerPrefs.GetInt(GOLD_KEY, 0);
-        set
-        {
-            int maxGold = GetMaxGold();
-            value = Mathf.Clamp(value, 0, maxGold);
-            PlayerPrefs.SetInt(GOLD_KEY, value);
-            PlayerPrefs.Save();
-        }
-    }
-
-    public static int Energy
-    {
-        get => PlayerPrefs.GetInt(ENERGY_KEY, 30);
-        set
-        {
-            int maxEnergy = GetMaxEnergy();
-            value = Mathf.Clamp(value, 0, maxEnergy);
-            PlayerPrefs.SetInt(ENERGY_KEY, value);
-            PlayerPrefs.Save();
-        }
-    }
-
-    // Methods to get and set maximum values with PlayerPrefs
-    public static int GetMaxFood()
-    {
-        return PlayerPrefs.GetInt(MAX_FOOD_KEY, 1000); // Default to 1000 if not set
-    }
-
-    public static void SetMaxFood(int value)
-    {
-        PlayerPrefs.SetInt(MAX_FOOD_KEY, value);
+        PlayerPrefs.SetInt(FOOD_KEY, value);
         PlayerPrefs.Save();
     }
+}
 
-    public static int GetMaxStrength()
+public static int Strength
+{
+    get => PlayerPrefs.GetInt(STRENGTH_KEY, 0);
+    set
     {
-        return PlayerPrefs.GetInt(MAX_STRENGTH_KEY, 1000); // Default to 1000 if not set
-    }
-
-    public static void SetMaxStrength(int value)
-    {
-        PlayerPrefs.SetInt(MAX_STRENGTH_KEY, value);
+        PlayerPrefs.SetInt(STRENGTH_KEY, value);
         PlayerPrefs.Save();
     }
+}
 
-    public static int GetMaxHealth()
+public static int Health
+{
+    get => PlayerPrefs.GetInt(HEALTH_KEY, 0);
+    set
     {
-        return PlayerPrefs.GetInt(MAX_HEALTH_KEY, 1000); // Default to 1000 if not set
-    }
-
-    public static void SetMaxHealth(int value)
-    {
-        PlayerPrefs.SetInt(MAX_HEALTH_KEY, value);
+        PlayerPrefs.SetInt(HEALTH_KEY, value);
         PlayerPrefs.Save();
     }
+}
 
-    public static int GetMaxGold()
+public static int Gold
+{
+    get => PlayerPrefs.GetInt(GOLD_KEY, 0);
+    set
     {
-        return PlayerPrefs.GetInt(MAX_GOLD_KEY, 1000); // Default to 1000 if not set
-    }
-
-    public static void SetMaxGold(int value)
-    {
-        PlayerPrefs.SetInt(MAX_GOLD_KEY, value);
+        PlayerPrefs.SetInt(GOLD_KEY, value);
         PlayerPrefs.Save();
     }
+}
 
-    public static int GetMaxEnergy()
+public static int Energy
+{
+    get => PlayerPrefs.GetInt(ENERGY_KEY, 30);
+    set
     {
-        int level = currLevel; // Assuming currLevel is a static field in Config representing the current level
-        int maxEnergy = baseEnergyMax + ((level / 50) * 10);
-        return maxEnergy;
+        PlayerPrefs.SetInt(ENERGY_KEY, value);
+        PlayerPrefs.Save();
     }
+}
 
-    #endregion
+#endregion
 
 
 

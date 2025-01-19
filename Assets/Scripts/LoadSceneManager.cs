@@ -26,7 +26,7 @@ public class LoadSceneManager : MonoBehaviour
         //     Config.Strength =500;
         //     Config.Gold =500;
         //     Config.Health = 500;
-        //  Config.Energy=0;
+         Config.Energy=30;
         // Config.SetCoin(1000);
         // Config.ResetLevel();
         Config.SetCurrLevel(1);

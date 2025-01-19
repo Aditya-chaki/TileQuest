@@ -41,7 +41,6 @@ public class MenuManager : MonoBehaviour
         Debug.Log($"Strength: {Config.Strength}");
         Debug.Log($"Health: {Config.Health}");
         Debug.Log($"Gold: {Config.Gold}");
-        Debug.Log($"Max Energy: {Config.GetMaxEnergy()}");
         Debug.Log($"Current Energy: {Config.Energy}");
         Debug.Log("Menu opened");
 

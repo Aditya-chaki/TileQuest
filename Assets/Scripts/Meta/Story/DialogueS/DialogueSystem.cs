@@ -13,6 +13,7 @@ namespace VNGame
         public string initialInvariant = "Tut1"; 
         public string SceneName;
         public GameObject DialoguePrefab;
+        public GameObject DecisionCard;
 
         private string currentInvariant;
         private int currentDialogueIndex;
@@ -72,7 +73,7 @@ namespace VNGame
             else
             {
                 Debug.LogWarning("Reached the end of dialogues for invariant " + currentInvariant);
-                Destroy(DialoguePrefab);
+                DecisionCard.SetActive(true);
             }
         }
         // public void OnNextAndContinueButton()
