@@ -166,6 +166,7 @@ public class GamePlayManager : MonoBehaviour
     public void LoadLevelGame()
     {
         if (level == 0) level = 1;
+        Debug.Log(Resources.Load("DM_Level/Level" + level));
         levelGame = Instantiate(Resources.Load("DM_Level/Level" + level)) as GameObject;
         // levelGame.transform.position = new Vector3(0f,-0.5f,0f);
         // Debug.Log(slotBGTranform.position);

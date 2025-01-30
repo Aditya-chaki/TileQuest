@@ -1177,6 +1177,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: abaebc0c7cadcbf4594d21fb83bf87e9,
         type: 3}
+    - target: {fileID: 4319784114548482231, guid: f57910ae8d3abe44b9f9fe8082255999,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4319784114548482231, guid: f57910ae8d3abe44b9f9fe8082255999,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4319784114548482231, guid: f57910ae8d3abe44b9f9fe8082255999,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4319784114548482231, guid: f57910ae8d3abe44b9f9fe8082255999,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UITweening, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5311805748445328717, guid: f57910ae8d3abe44b9f9fe8082255999,
         type: 3}
       propertyPath: m_Sprite

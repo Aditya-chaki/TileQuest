@@ -38,7 +38,9 @@ public class BBUIButton : UIComponentBase<BBUIButton>, IPointerEnterHandler, IPo
         base.Start();
         OnPointerClickCallBack_Start.AddListener(() =>
         {
-            SoundManager.instance.PlaySound_Click();
+            if(SoundManager.instance!=null)
+                SoundManager.instance.PlaySound_Click();
+            
         });
     }
 

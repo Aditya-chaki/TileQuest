@@ -265,7 +265,8 @@ public class MenuManager : MonoBehaviour
 
     public void HideView()
     {
-        SoundManager.instance.PlaySound_HideView();
+        
+        SoundManager.instance?.PlaySound_HideView();
         lockGroup.gameObject.SetActive(true);
         //Sequence sequenceShowView = DOTween.Sequence();
         //sequenceShowView.InsertCallback(0.01f, () =>
