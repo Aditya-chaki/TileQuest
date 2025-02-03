@@ -33,7 +33,6 @@ public class WaterSortController : MonoBehaviour
                     cam.transform.position.y+cam.orthographicSize,pos.y);
                 Vector2 pos2D = new Vector2(worldx,worldy);
                 RaycastHit2D hit = Physics2D.Raycast(pos2D,Vector2.zero);
-                Debug.Log(hit.collider);
                 if(hit.collider!=null){
                     if(hit.collider.GetComponent<BottleController>()!=null)
                     {
