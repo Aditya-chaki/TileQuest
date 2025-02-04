@@ -63,6 +63,8 @@ public class BottleController : MonoBehaviour
             StartCoroutine(RotateBottle());
 
         }
+        
+
     }
 
     public void StartColorTransfer()
@@ -83,7 +85,7 @@ public class BottleController : MonoBehaviour
     }
   
 
-    void UpdateColorsOnShader(){
+    public void UpdateColorsOnShader(){
         bottleMask.material.SetColor("_Color1",bottlesColor[0]);
         bottleMask.material.SetColor("_Color2",bottlesColor[1]);
         bottleMask.material.SetColor("_Color3",bottlesColor[2]);
@@ -148,7 +150,7 @@ public class BottleController : MonoBehaviour
             {
                 if(lineRenderer.enabled == false)
                 {
-                    Debug.Log("LineRender");
+                 
                     lineRenderer.enabled = true;
                     lineRenderer.startColor = topColor;
                     lineRenderer.endColor = topColor;

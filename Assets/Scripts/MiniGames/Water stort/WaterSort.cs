@@ -68,7 +68,6 @@ public class WaterSort : MonoBehaviour
 
     private void RandomAddColor(){
         loopBreak = 0;
-        Debug.Log("Adding color");
         for(int i=0;i<all_bottles.Length-1;i++){
             int j=0;
             while(j<3){
@@ -82,8 +81,6 @@ public class WaterSort : MonoBehaviour
             all_bottles[i].AddLiquidAtStart(waterColors[idx]);
             colorBottleFrq[waterColors[idx]]++;
             j++;
-            Debug.Log("New color added");
-            //Debug.Log(waterColors[idx] +" "+colorBottleFrq[waterColors[idx]]+" bottole"+i);
             }
             }
         }
