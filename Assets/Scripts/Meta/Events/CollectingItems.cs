@@ -50,14 +50,14 @@ public class CollectingItems : MonoBehaviour
                 // Timer is finished
                 isTimerActive = false;
                 canCollect = true;
-                buttonText.text = "Gold is Ready";  // Change button text to "Gold is Ready"
+                buttonText.text = "Tap to Collect";  // Change button text to "Tap to Collect"
             }
         }
     }
 
     void OnButtonClick()
     {
-        if (!isTimerActive && !canCollect && buttonText.text == "Tap to Collect")
+        if (!isTimerActive && !canCollect && buttonText.text == "")
         {
             // Start the timer
             isTimerActive = true;
@@ -73,7 +73,7 @@ public class CollectingItems : MonoBehaviour
         }
         else if (canCollect)
         {
-            // Gold is Ready and trigger coin animation
+            // Tap to Collect and trigger coin animation
             CollectGold();
 
             // Trigger coin animation
@@ -82,7 +82,7 @@ public class CollectingItems : MonoBehaviour
                 coinAnimationController.AnimateCoins(); // Use AnimateCoins function
             }
 
-            buttonText.text = "Tap to Collect";  // Reset button text
+            buttonText.text = "";  // Reset button text
             canCollect = false;
 
             // Clear saved timer data
@@ -104,7 +104,7 @@ public class CollectingItems : MonoBehaviour
                 // Timer has already finished
                 isTimerActive = false;
                 canCollect = true;
-                buttonText.text = "Gold is Ready";
+                buttonText.text = "Tap to Collect";
             }
             else
             {
@@ -117,7 +117,7 @@ public class CollectingItems : MonoBehaviour
         else
         {
             // No active timer, show default state
-            buttonText.text = "Tap to Collect";
+            buttonText.text = "";
             isTimerActive = false;
             canCollect = false;
         }

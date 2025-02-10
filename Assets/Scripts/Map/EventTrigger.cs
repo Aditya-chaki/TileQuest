@@ -9,7 +9,7 @@ public class EventTrigger : MonoBehaviour
     private int currentIndex = 0; // Index of the current prefab
     private GameObject instantiatedPrefab; // Currently instantiated prefab
     [SerializeField] private int energyCostPerClick = 5; // Energy cost for each click
-    [SerializeField] private float instantiateDelay = 2f; // Delay in seconds before instantiating the prefab
+    [SerializeField] private float instantiateDelay = 0f; // Delay in seconds before instantiating the prefab
 
     private Coroutine instantiateCoroutine; // To manage ongoing coroutines
 

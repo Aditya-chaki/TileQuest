@@ -21,7 +21,6 @@ public class BottleController : MonoBehaviour
     public int numberOfTopColorLayers = 1;
 
     public BottleController bottleController;
-    public bool justThisBottle = false;
     private int numberOfColorToTransfer = 0;
 
     public Transform leftRotationPoint;
@@ -46,25 +45,15 @@ public class BottleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P) && justThisBottle==true){
-            UpdateTopColorValues();
-            if(bottleController.FillBottleCheck(topColor))
-            {   
-                ChoseRotationPointAndDirection();
-                numberOfColorToTransfer = Mathf.Min(numberOfTopColorLayers,4-bottleController.numberOfColorsInBottle);
-
-                for(int i=0;i<numberOfColorToTransfer;i++){
-                    bottleController.bottlesColor[bottleController.numberOfColorsInBottle+i] = topColor;
-
-                }
-                bottleController.UpdateColorsOnShader();
-            }
-            CalculateRotationIndex(4 - bottleController.numberOfColorsInBottle);
-            StartCoroutine(RotateBottle());
-
-        }
         
 
+    }
+    public void ResetBottle(int num)
+    {
+        numberOfColorsInBottle = num;
+        bottleMask.material.SetFloat("_FillAmount",fillAmounts[numberOfColorsInBottle]);
+        UpdateColorsOnShader();
+        UpdateTopColorValues();
     }
 
     public void StartColorTransfer()
@@ -74,7 +63,7 @@ public class BottleController : MonoBehaviour
 
         for(int i=0;i<numberOfColorToTransfer;i++){
            bottleController.bottlesColor[bottleController.numberOfColorsInBottle+i] = topColor;
-
+            Debug.Log(bottleController.numberOfColorsInBottle+i);
            }
         bottleController.UpdateColorsOnShader();
         CalculateRotationIndex(4 - bottleController.numberOfColorsInBottle);
@@ -90,6 +79,7 @@ public class BottleController : MonoBehaviour
         bottleMask.material.SetColor("_Color2",bottlesColor[1]);
         bottleMask.material.SetColor("_Color3",bottlesColor[2]);
         bottleMask.material.SetColor("_Color4",bottlesColor[3]);
+        
     }
 
 

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class WaterSortController : MonoBehaviour
 {
+    [Range(1,3)]
+    public int Difficulty = 1;
+
+    public GameObject[] DifficultyBottlesHolder;
     public BottleController FirstBottle;
     public BottleController SecondBottle;
-    public BottleController[] AllBottles;
-    public GameObject extraBottle;
+    BottleController[] AllBottles;
+    public GameObject[] extraBottle;
     public Color[] waterColors;
     private Touch touch;
     private float width;
@@ -19,9 +23,13 @@ public class WaterSortController : MonoBehaviour
     {
         width = (float)Screen.width;
         height = (float)Screen.height;
-        for(int i=0;i<waterColors.Length;i++){
+        DifficultyBottlesHolder[Difficulty-1].SetActive(true);
+        AllBottles = DifficultyBottlesHolder[Difficulty-1].GetComponentsInChildren<BottleController>();
+
+        for(int i=0;i<Difficulty*2;i++){
             colorBottleFrq.Add(waterColors[i],0);
         }
+        Debug.Log("Start Bottles"+AllBottles.Length);
         AssignColors();
     }
 
@@ -66,6 +74,8 @@ public class WaterSortController : MonoBehaviour
                                 if(SecondBottle.FillBottleCheck(FirstBottle.topColor)==true)
                                 {
                                     FirstBottle.StartColorTransfer();
+                                    FirstBottle.UpdateTopColorValues();
+                                    SecondBottle.UpdateTopColorValues();
                                     FirstBottle = null;
                                     SecondBottle = null;
                                 }
@@ -85,38 +95,48 @@ public class WaterSortController : MonoBehaviour
 
     
     void AssignColors()
-    {   int loopBreak = 0;
-        for(int i=0;i<AllBottles.Length-1;i++)
-        {
+    {   
+        
+        for(int i=0;i<AllBottles.Length-2;i++)
+        {   int loopBreak = 0;
             Color[] newColors = new Color[4]; 
             int j=0;
             while(j<4){
                 if(loopBreak>5000){
-                    return;
+                    Debug.Log("Loop reached limit");
+                    break;
                 }
                 loopBreak++;
-            int idx = Random.Range(0,waterColors.Length-1);
-            if(colorBottleFrq[waterColors[idx]]<4){
+            int idx = Random.Range(0,waterColors.Length);
+            if(colorBottleFrq.ContainsKey(waterColors[idx]) && colorBottleFrq[waterColors[idx]]<4){
             newColors[j]=waterColors[idx];
             colorBottleFrq[waterColors[idx]]++;
             j++;
+            //Debug.Log(j);
             }
             }
             AllBottles[i].bottlesColor = newColors;
             AllBottles[i].UpdateColorsOnShader();
+            AllBottles[i].UpdateTopColorValues();
             }
     }
 
     public void ExtraBottle()
     {
-        extraBottle.SetActive(true);
+        extraBottle[Difficulty-1].SetActive(true);
     }
 
     public void ResetBottle()
     {
-          for(int i=0;i<waterColors.Length;i++){
+          for(int i=0;i<Difficulty*2;i++){
             colorBottleFrq[waterColors[i]]=0;
         }
+        for(int i=0;i<AllBottles.Length-2;i++){
+            AllBottles[i].ResetBottle(4);
+        }
+        Debug.Log("ResetBottles "+AllBottles.Length);
+        AllBottles[AllBottles.Length-1].ResetBottle(0);
+        AllBottles[AllBottles.Length-2].ResetBottle(0);
         AssignColors();
     }
     

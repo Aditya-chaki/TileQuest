@@ -14,13 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TileMatch/Scenes/Play.unity
     guid: c5cabc288ed98704081f141ebe25edba
-  - enabled: 1
-    path: Assets/TileMatch/Scenes/Story/King.unity
-    guid: 751b959813e48f9429ee2e18431529db
-  - enabled: 1
-    path: Assets/TileMatch/Scenes/Story/Manager.unity
-    guid: 469801fde36d95846bdad1811019e81b
-  - enabled: 1
-    path: Assets/TileMatch/Scenes/Story/Map.unity
-    guid: 3b5044d95aee1064ea5b4dadabdd07c0
   m_configObjects: {}

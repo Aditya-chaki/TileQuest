@@ -50,14 +50,14 @@ public class CollectingFood : MonoBehaviour
                 // Timer is finished
                 isTimerActive = false;
                 canCollect = true;
-                buttonText.text = "Food is Ready";  // Change button text to "Food is Ready"
+                buttonText.text = "Tap to Collect";  // Change button text to "Tap to Collect"
             }
         }
     }
 
     void OnButtonClick()
     {
-        if (!isTimerActive && !canCollect && buttonText.text == "Tap to Collect")
+        if (!isTimerActive && !canCollect && buttonText.text == "")
         {
             // Start the timer
             isTimerActive = true;
@@ -82,7 +82,7 @@ public class CollectingFood : MonoBehaviour
                 coinAnimationController.AnimateCoins(); // Use AnimateCoins function
             }
 
-            buttonText.text = "Tap to Collect";  // Reset button text
+            buttonText.text = "";  // Reset button text
             canCollect = false;
 
             // Clear saved timer data
@@ -104,7 +104,7 @@ public class CollectingFood : MonoBehaviour
                 // Timer has already finished
                 isTimerActive = false;
                 canCollect = true;
-                buttonText.text = "Food is Ready";
+                buttonText.text = "Tap to Collect";
             }
             else
             {
@@ -117,7 +117,7 @@ public class CollectingFood : MonoBehaviour
         else
         {
             // No active timer, show default state
-            buttonText.text = "Tap to Collect";
+            buttonText.text = "";
             isTimerActive = false;
             canCollect = false;
         }

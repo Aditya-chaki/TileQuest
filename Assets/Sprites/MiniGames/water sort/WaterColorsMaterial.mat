@@ -50,7 +50,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0, a: 0}
     - _Color1: {r: 1, g: 0, b: 0, a: 0}
-    - _Color2: {r: 1, g: 0.8469602, b: 0, a: 0}
+    - _Color2: {r: 0.28341162, g: 0.6833435, b: 0.2963545, a: 0}
     - _Color3: {r: 0.7214348, g: 0.96461225, b: 0.4730416, a: 0}
     - _Color4: {r: 0, g: 1, b: 0.62777686, a: 0}
   m_BuildTextureStacks: []
