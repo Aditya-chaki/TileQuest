@@ -18,6 +18,8 @@ public class WaterSortController : MonoBehaviour
     private float height;
     public Camera cam;
     Dictionary<Color,int> colorBottleFrq = new Dictionary<Color,int>();
+    int NumerOfEmptyBottles = 1;
+    bool extraBottleActive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,14 +31,17 @@ public class WaterSortController : MonoBehaviour
         for(int i=0;i<Difficulty*2;i++){
             colorBottleFrq.Add(waterColors[i],0);
         }
-        Debug.Log("Start Bottles"+AllBottles.Length);
+        if(Difficulty==3)
+        {
+            NumerOfEmptyBottles = 2;
+        }
         AssignColors();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        GameWin();
         if(Input.touchCount>0){
             touch = Input.GetTouch(0);
             if(touch.phase == TouchPhase.Ended){    
@@ -59,6 +64,8 @@ public class WaterSortController : MonoBehaviour
                             {
                                 FirstBottle = null;
                             }
+                            else
+                                FirstBottle.transform.localScale *=1.1f;
                         }
                         else
                         {
@@ -76,13 +83,16 @@ public class WaterSortController : MonoBehaviour
                                     FirstBottle.StartColorTransfer();
                                     FirstBottle.UpdateTopColorValues();
                                     SecondBottle.UpdateTopColorValues();
+                                    FirstBottle.transform.localScale *=0.9f;
                                     FirstBottle = null;
                                     SecondBottle = null;
                                 }
                                 else
                                 {
+                                    FirstBottle.transform.localScale *=0.9f;
                                     FirstBottle = null;
                                     SecondBottle = null;
+                                   
                                 }
                                 
                             }
@@ -97,7 +107,7 @@ public class WaterSortController : MonoBehaviour
     void AssignColors()
     {   
         
-        for(int i=0;i<AllBottles.Length-2;i++)
+        for(int i=0;i<AllBottles.Length-NumerOfEmptyBottles;i++)
         {   int loopBreak = 0;
             Color[] newColors = new Color[4]; 
             int j=0;
@@ -124,6 +134,7 @@ public class WaterSortController : MonoBehaviour
     public void ExtraBottle()
     {
         extraBottle[Difficulty-1].SetActive(true);
+        extraBottleActive = true;
     }
 
     public void ResetBottle()
@@ -131,13 +142,28 @@ public class WaterSortController : MonoBehaviour
           for(int i=0;i<Difficulty*2;i++){
             colorBottleFrq[waterColors[i]]=0;
         }
-        for(int i=0;i<AllBottles.Length-2;i++){
+        for(int i=0;i<AllBottles.Length-NumerOfEmptyBottles;i++){
             AllBottles[i].ResetBottle(4);
         }
-        Debug.Log("ResetBottles "+AllBottles.Length);
         AllBottles[AllBottles.Length-1].ResetBottle(0);
-        AllBottles[AllBottles.Length-2].ResetBottle(0);
+        if(Difficulty==3)
+        {
+            AllBottles[AllBottles.Length-2].ResetBottle(0);
+        }
+        if(extraBottleActive==true)
+        {
+            extraBottle[Difficulty-1].GetComponent<BottleController>().ResetBottle(0);
+        }
         AssignColors();
     }
     
+    void GameWin()
+    {
+        foreach(BottleController bottle in AllBottles)
+        {
+            if(bottle.IsSorted()!=false)
+                return;    
+        }
+        Debug.Log("Game Win");
+    }
 }

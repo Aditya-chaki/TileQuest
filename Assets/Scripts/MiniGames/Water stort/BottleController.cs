@@ -277,4 +277,11 @@ public class BottleController : MonoBehaviour
             directionMulti = 1.0f;
         }
     }
+
+    public bool IsSorted()
+    {
+        if(numberOfColorToTransfer==4||numberOfTopColorLayers==0)
+            return true;
+        return false;    
+    }
 }
