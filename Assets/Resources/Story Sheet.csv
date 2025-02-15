@@ -1,22 +1,82 @@
-Invariant,EN,Character
-Tut1,"It smelled like a normal day with the scent of my baked bread.
-It felt like a normal summer day with clear blue skies painted above.
-But this day was most unlike all the rest.",Player
-Tut1,You... slave girl !! what's your name?,Lisia Slave Manager
-Tut1,Today was the day I would become king!,Player
-Tut1,The king has called but Sylia is sick - you're up! Collect three of each item by tapping.,Lisia Slave Manager
-Tut1,Good job. Try the honey next. ,Lisia Slave Manager
-Tut1,You'll need to try again if you have 7 items in your box that aren't in groups of 3.,Lisia Slave Manager
-Tut1,Great! Now take those to the king. And don't embarrass us!,Lisia Slave Manager
-Tut2,Knock knock,Player
-Tut2,Yes.. come in. ,King
-Tut2,Thank you... your majesty.,Player
-Tut2,You're new. Tell me !! do you ever forget where you keep things? ,King
-Tut2,I'm looking for something sticky. I feel someone's watching us so I want to block the window.,King
-Tut3,I think I can stick the carpet on the outside.,King
-Tut3,Get an extra tray to make things easier.,King
-Tut3,What do you have for me?,King
-Tut3,We can use this honey - it's the sticky type.,Player
-Tut3,I've got this resin for you.,Player
-Tut3,Thanks! my skin boil disappeared completely. ,King
-Tut3,I noticed mine had too. Strange.,Player
+Invariant,EN,Character,Trigger
+tut1,The people are starving Lysander. What do you propose?,Player,Chat
+tut1,Your Grace the peasants must be taxed. Their suffering will pass but the army must remain strong.,Advisor Lysander,Chat
+tut1,Taxes may break their spirits further. Is there no other way?,Player,Chat
+tut1,None that ensures the kingdom’s safety. An unfed army is as good as no army at all.,Advisor Lysander,Chat
+tut1,And if rebellion stirs because of this? Shall we fight our own people?,Player,Chat
+tut1,A crown must sometimes carry the weight of hard decisions. Let them grumble as long as the borders remain secure.,Advisor Lysander,Chat
+tut1_end,"Divert funds to feed the people.  
+OR
+Increase taxes to strengthen the army.",,Decision
+tut2,Rowena what do you think of this alliance with Norrath?,Player,Chat
+tut2,Your Grace it feels like a trap. They want access to our ports not peace.,Spymaster,Chat
+tut2,And yet rejecting them could provoke war. What do we gain by refusing?,Player,Chat
+tut2,We keep control Majesty. An alliance gives them influence over our land.,Spymaster,Chat
+tut2,And what of the benefits they offer—trade and stability?,Player,Chat
+tut2,Promises are only words. Judge their actions and you may find a blade hidden beneath them.,Spymaster,Chat
+tut2_end,"Accept the alliance and risk vulnerability. OR
+
+Refuse and prepare for potential conflict.",,Decision
+tut3,Your Majesty I have come to reveal a traitor. Your own advisor Lysander.,Chancellor,Chat
+tut3,These are grave accusations Lord Edwin. Speak plainly what proof do you have?,Player,Chat
+tut3,Letters to Norrath sealed with his hand offering secrets in exchange for gold.,Chancellor,Chat
+tut3,And if these letters are forged? Would you risk such accusations on baseless claims?,Player,Chat
+tut3,Majesty I speak only the truth. Lysander threatens your throne with his schemes.,Chancellor,Chat
+tut3,Very well I will consider your words carefully Lord Edwin but tread lightly.,Player,Chat
+tut3_end,"Execute Lord Edwin to silence dissent.
+OR
+Spare him and investigate further.",,Decision
+tut4,General Alric I have heard news of rebellion. What do you say?,Player,Chat
+tut4,Your Grace strike swiftly and decisively. Crush them before they grow bold.,General,Chat
+tut4,And what of those who are innocent? Would you have me spill their blood as well?,Player,Chat
+tut4,War spares no one Majesty. Mercy will only make the rabble bolder.,General,Chat
+tut4,But their grievances are not without merit. Hunger drives men to desperation.,Player,Chat
+tut4,Perhaps but hunger will not stop their blades if you hesitate. Choose strength Your Grace.,General,Chat
+tut4_end,"Crush the rebellion brutally.
+OR
+Attempt diplomacy.",,Decision
+tut5,Rowena these letters accuse Lysander. Can they be trusted?,Player,Chat
+tut5,They carry his seal and signature Majesty. Forgery is possible but unlikely.,Spymaster,Chat
+tut5,He claims loyalty above all. What motive would he have for treason?,Player,Chat
+tut5,Power Your Grace. Even the loyal can waver when ambition clouds their judgment.,Spymaster,Chat
+tut5,I must move carefully. If he is guilty removing him could weaken the kingdom.,Player,Chat
+tut5,True but keeping a snake in your garden invites its bite. Choose wisely Majesty.,Spymaster,Chat
+tut5_end,"Confront Lysander publicly.
+OR
+Investigate in secret.",,Decision
+tut6,Elara the ambassador's terms seem harsh. Should we accept?,Player,Chat
+tut6,Their demands serve the elite not the realm. Yet refusing could leave us more isolated.,Queen,Chat
+tut6,Can we survive isolation? The coffers are nearly empty and the people grow restless.,Player,Chat
+tut6,True but sovereignty comes at a price. Bow too low and we may never stand again.,Queen,Chat
+tut6,And if refusal provokes hostilities? Can the kingdom endure such risks?,Player,Chat
+tut6,Strength comes from unity. We must balance pride against necessity Majesty.,Queen,Chat
+tut6_end,"Accept the trade demands.
+OR
+Refuse and risk economic fallout.",,Decision
+tut7,Seraphina the winter is harsh this year. How should we prepare for illness?,Player,Chat
+tut7,Majesty gathering remedies is wise but supplies are scarce and expensive.,Healer,Chat
+tut7,Would rationing the potions not stretch our reserves?,Player,Chat
+tut7,It would but many lives will be lost. We risk a plague if we do not act swiftly.,Healer,Chat
+tut7,Bold actions require bold funds. The treasury is already strained.,Player,Chat
+tut7,Then the choice is clear Your Grace. Gold or lives but time is running out.,Healer,Chat
+tut7_end,"Prioritize stockpiling remedies, draining the treasury.
+OR
+Ration potions and risk a plague.",,Decision
+tut8,General bandits have been raiding our trade routes. The reports grow troubling.,Player,Chat
+tut8,With respect Majesty we must send soldiers to eliminate them quickly.,General,Chat
+tut8,And leave our borders exposed? What if we are attacked?,Player,Chat
+tut8,Your Grace a kingdom cannot prosper if trade is blocked. We must secure the roads.,General,Chat
+tut8,But soldiers are expensive and our resources are already stretched. Is there another way?,Player,Chat
+tut8,No other way guarantees success. Wait too long and the bandits will only grow bolder.,General,Chat
+tut8_end,"Deploy soldiers to the trade routes.
+OR
+Fortify borders and let merchants fend for themselves.",,Decision
+tut9,Lysander refugees are gathering at the city gates seeking shelter. What should we do?,Player,Chat
+tut9,"Turn them away, Majesty. We cannot spare the resources for outsiders.",Advisor Lysander,Chat
+tut9,Are they not people worthy of mercy? Shall we abandon our humanity?,Player,Chat
+tut9,Mercy is a luxury we cannot afford. Charity weakens the kingdom's foundations.,Advisor Lysander,Chat
+tut9,And what if we refuse? Will they not become enemies at our door?,Player,Chat
+tut9,Enemies or beggars we cannot save them all.,Advisor Lysander,Chat
+tut9_end,"Accept the refugees and strain resources.
+OR
+Turn them away and risk hostility.",,Decision
