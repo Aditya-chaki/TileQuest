@@ -1,89 +1,86 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-// using TMPro;
-// using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
-// public class LevelManager : MonoBehaviour
-// {
-//     public TextMeshProUGUI castleLevelText;
-//     public Button upgradeButton;  // Reference to the Upgrade button
+public class LevelManager : MonoBehaviour
+{
+    public TextMeshProUGUI castleLevelText;
+    public Button upgradeButton;  // Reference to the Upgrade button
+    public int baseFoodIncrease = 10;  // Base food increase per level
+    public int baseGoldIncrease = 20;  // Base gold increase per level
+    public float collectionMultiplier = 1.1f; // 10% increase per level
 
-//     private int foodRequired;
-//     private int strengthRequired;
-//     private int goldRequired;
-//     private int healthRequired;
+    private CollectingItems collectingItems;
+    private CollectingFood collectingFood;
 
-//     void Start()
-//     {
-//         // Set required values to the current maximum values of each metric
-//         foodRequired = Config.GetMaxFood();
-//         strengthRequired = Config.GetMaxStrength();
-//         goldRequired = Config.GetMaxGold();
-//         healthRequired = Config.GetMaxHealth();
 
-//         UpdateCastleLevel();
-//         UpdateUpgradeButtonVisibility();  // Update button visibility at start
-//     }
 
-//     void Update()
-//     {
-//         UpdateCastleLevel();
-//         UpdateUpgradeButtonVisibility();  // Update button visibility continuously
-//     }
+    void Start()
+    {
 
-//     void UpdateCastleLevel()
-//     {
-//         int castleLevel = Config.GetCastleLevel();
-//         castleLevelText.text = "Castle Level " + castleLevel;
-//     }
+        collectingItems = FindObjectOfType<CollectingItems>();
+        collectingFood = FindObjectOfType<CollectingFood>();
+        ApplyResourceBoosts();
+        
+    
+    }
 
-//     public void UpgradeCastleLevel()
-//     {
-//         if (CanUpgrade())
-//         {
-//             // Deduct the required resources
-//             Config.Food -= foodRequired;
-//             Config.Strength -= strengthRequired;
-//             Config.Gold -= goldRequired;
-//             Config.Health -= healthRequired;
+    void Update()
+    {
+        UpdateCastleLevel();
+       
+    }
 
-//             // Upgrade the castle level
-//             int currentLevel = Config.GetCastleLevel();
-//             Config.SetCastleLevel(currentLevel + 1);
+    void UpdateCastleLevel()
+    {
+        int castleLevel = Config.GetCastleLevel();
+        castleLevelText.text = "Castle Level " + castleLevel;
+    }
 
-//             // Increase the max values of each metric by 1000
-//             Config.SetMaxFood(Config.GetMaxFood() + 1000);
-//             Config.SetMaxStrength(Config.GetMaxStrength() + 1000);
-//             Config.SetMaxGold(Config.GetMaxGold() + 1000);
-//             Config.SetMaxHealth(Config.GetMaxHealth() + 1000);
+    
 
-//             // Update required values for the next upgrade
-//             foodRequired = Config.GetMaxFood();
-//             strengthRequired = Config.GetMaxStrength();
-//             goldRequired = Config.GetMaxGold();
-//             healthRequired = Config.GetMaxHealth();
+    public void IncreaseCastleLevel()
+    {
+        int currentLevel = Config.GetCastleLevel();
+        int newLevel = currentLevel + 1;
+        Config.SetCastleLevel(newLevel);
 
-//             Debug.Log("Castle upgraded to level " + (currentLevel + 1));
-//         }
-//         else
-//         {
-//             Debug.Log("Not enough resources to upgrade the castle.");
-//         }
-//     }
+        ApplyResourceBoosts();
+        UpdateCollectionAmounts();
 
-//     private bool CanUpgrade()
-//     {
-//         return Config.Food >= foodRequired &&
-//                Config.Strength >= strengthRequired &&
-//                Config.Gold >= goldRequired &&
-//                Config.Health >= healthRequired;
-//     }
+        Debug.Log($"Castle level increased to {newLevel}. Food and Gold collection boosted!");
+    }
 
-//     private void UpdateUpgradeButtonVisibility()
-//     {
-//         // Check if all metrics are full
-//         bool canUpgrade = CanUpgrade();
-//         upgradeButton.gameObject.SetActive(canUpgrade);
-//     }
-// }
+    private void ApplyResourceBoosts()
+    {
+        int castleLevel = Config.GetCastleLevel();
+        int foodBoost = baseFoodIncrease * castleLevel;
+        int goldBoost = baseGoldIncrease * castleLevel;
+
+        Config.Food += foodBoost;
+        Config.Gold += goldBoost;
+
+        Debug.Log($"Resources updated: +{foodBoost} Food, +{goldBoost} Gold.");
+    }
+
+    private void UpdateCollectionAmounts()
+    {
+        int castleLevel = Config.GetCastleLevel();
+
+        if (collectingItems != null)
+        {
+            collectingItems.goldToCollect = Mathf.RoundToInt(collectingItems.goldToCollect * collectionMultiplier);
+            Debug.Log($"Gold collection increased to {collectingItems.goldToCollect} per cycle.");
+        }
+
+        if (collectingFood != null)
+        {
+            collectingFood.foodToCollect = Mathf.RoundToInt(collectingFood.foodToCollect * collectionMultiplier);
+            Debug.Log($"Food collection increased to {collectingFood.foodToCollect} per cycle.");
+        }
+    }
+
+
+}

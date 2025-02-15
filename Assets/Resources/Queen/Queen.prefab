@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 4447810499115820382}
   - component: {fileID: 6173981331745890835}
   m_Layer: 0
-  m_Name: Prefab1
+  m_Name: Queen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1093,7 +1093,7 @@ MonoBehaviour:
   characterNameText: {fileID: 1096802772132958918}
   dialogueText: {fileID: 4468398309594744652}
   dialogueManager: {fileID: 9024894503413147620}
-  initialInvariant: Tut1
+  initialInvariant: tut6
   SceneName: Manager
   DialoguePrefab: {fileID: 1710758491274760961}
   DecisionCard: {fileID: 4544743988432546504}
@@ -1479,8 +1479,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 708.47, y: -811.27}
-  m_SizeDelta: {x: 1516.94, y: 2169.405}
+  m_AnchoredPosition: {x: 576, y: -940}
+  m_SizeDelta: {x: 1516.94, y: 2963.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1014813150199162183
 CanvasRenderer:
@@ -1510,7 +1510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 92a61da02b5ea5040984401a7eb62690, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27769977c91ca0b4dbde2a8c5ea406c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2750,6 +2750,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2362053981434413825, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
+        type: 3}
+      propertyPath: m_text
+      value: Refuse and risk economic fallout.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362053981434413825, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362053981434413825, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784818797067179133, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
+        type: 3}
+      propertyPath: m_text
+      value: Accept the trade demands
+      objectReference: {fileID: 0}
     - target: {fileID: 4167621658377620508, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
         type: 3}
       propertyPath: m_Name
@@ -2879,6 +2899,16 @@ PrefabInstance:
         type: 3}
       propertyPath: healthVariable
       value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001614341059361901, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -51.0374
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001614341059361901, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -10.7361
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
