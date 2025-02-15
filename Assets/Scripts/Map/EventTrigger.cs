@@ -17,6 +17,7 @@ public class EventTrigger : MonoBehaviour
 
     void Start()
     {
+        
        
         // Load all prefabs from the specified folder in Resources
         prefabs = Resources.LoadAll<GameObject>(folderPath);
