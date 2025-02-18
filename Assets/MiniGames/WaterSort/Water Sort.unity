@@ -4511,7 +4511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3185de28451c552ddabd1426e3ea38bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Difficulty: 3
+  Difficulty: 1
   DifficultyBottlesHolder:
   - {fileID: 638945406}
   - {fileID: 402084962}

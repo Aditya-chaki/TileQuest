@@ -1,56 +1,83 @@
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 public class BoardManager : MonoBehaviour
 {
     public int rows = 6;
     public int cols = 10;
+    public float time = 60;
     public Vector3 offset;
     public GameObject tilePrefab;
     public Transform boardParent;
     public Sprite[] tileSprites; // Assign in Unity Editor
-
+    public LineRenderer lineRender;
+    public GameObject[] allTiles;
+    public TMP_Text timeText;
     private OnetTile[,] grid;
     private List<Vector2Int> availablePositions = new List<Vector2Int>();
     private OnetTile firstTile, secondTile;
-
+    private List<Vector2Int> points = new List<Vector2Int>();
+    private Dictionary<Vector2Int,Vector3> allTilePosition = new Dictionary<Vector2Int,Vector3>();
+    float nextTime = 0;
     void Start()
     {
         InitializeBoard();
     }
 
+    void Update()
+    {
+        GameTime();
+    }
 
     void InitializeBoard()
     {
-        grid = new OnetTile[rows, cols];
-
-        // Create a list of pairs
-        List<int> tileIDs = new List<int>();
-        for (int i = 0; i < (rows * cols) / 2; i++)
+        grid = new OnetTile[cols, rows];
+        int totalTiles = rows * cols;
+        if (totalTiles % 2 != 0)
         {
-            tileIDs.Add(i);
-            tileIDs.Add(i); // Each tile appears twice
+            Debug.LogError("Grid size must be even!");
+            return;
         }
-        Debug.Log(tileIDs.Count+"tiles");
+        // Create a list of pairs
+        int uniqueTileCount = Mathf.Min(tileSprites.Length, totalTiles / 4); // Multiple of 2 or 4 per type
+        List<int> tileIDs = new List<int>();
+
+        // Generate multiple pairs for each tile type
+        for (int i = 0; i < uniqueTileCount; i++)
+        {
+            int numPairs = totalTiles / uniqueTileCount; // Distribute evenly
+            for (int j = 0; j < numPairs; j++)
+            {
+                tileIDs.Add(i);
+            }
+        }
         Shuffle(tileIDs);
 
+        if(cols>4)
+            offset.x = -250;
+
         int index = 0;
-        for (int r = 0; r < rows; r++)
+        for (int c = 0; c < cols; c++)
         {
-            for (int c = 0; c < cols; c++)
+            for (int r = 0; r < rows; r++)
             {
                 Vector2Int pos = new Vector2Int(r, c);
-                availablePositions.Add(pos);
-
-                GameObject tileObj = Instantiate(tilePrefab, boardParent);
+                allTiles[index].SetActive(true);
+               //GameObject tileObj = Instantiate(tilePrefab, boardParent);
+                GameObject tileObj = allTiles[index];
                 OnetTile tile = tileObj.GetComponent<OnetTile>();
-                Debug.Log(index+" "+pos);
                 tile.tileID = tileIDs[index++];
                 tile.gridPosition = pos;
+                if(tileSprites.Length>tile.tileID){
                 tileObj.GetComponent<Image>().sprite = tileSprites[tile.tileID];
-                tileObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(pos.x*100,pos.y*100,0)+offset;
-                grid[r, c] = tile;
+                //tileObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(pos.x*100,pos.y*100,0)+offset;
+                grid[c, r] = tile;
+                availablePositions.Add(pos);
+                allTilePosition[pos] = tileObj.GetComponent<RectTransform>().anchoredPosition; 
+                }
                 if(tileIDs.Count==index)
                     return;
             }
@@ -80,8 +107,14 @@ public class BoardManager : MonoBehaviour
         {
             if (IsValidMatch(firstTile.gridPosition, secondTile.gridPosition))
             {
-                RemoveTiles(firstTile, secondTile);
+               
+                lineRender.enabled = true;
+                int idx=0;
+                StartCoroutine(RemoveEffect());
+                 RemoveTiles(firstTile, secondTile);
             }
+            lineRender.enabled = false;
+            points.Clear();
         }
 
         firstTile = secondTile = null;
@@ -105,7 +138,7 @@ public class BoardManager : MonoBehaviour
         if (visited.Contains(pos)) continue;
 
         visited.Add(pos);
-
+        points.Add(pos);
         foreach (var dir in new Vector2Int[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right })
         {
             Vector2Int nextPos = pos + dir;
@@ -134,36 +167,14 @@ public class BoardManager : MonoBehaviour
     }
 
 
-   public void ShuffleBoard()
-    {
-    List<OnetTile> tiles = new List<OnetTile>();
-    foreach (var tile in grid)
-    {
-        if (tile != null) tiles.Add(tile);
-    }
-
-    //Shuffle(tiles);
-
-    int index = 0;
-    for (int r = 0; r < rows; r++)
-    {
-        for (int c = 0; c < cols; c++)
-        {
-            if (grid[r, c] != null)
-            {
-                grid[r, c] = tiles[index++];
-                grid[r, c].gridPosition = new Vector2Int(r, c);
-            }
-        }
-    }
-    }
-
    public void ShowHint()
     {
     foreach (var tile1 in grid)
     {
         foreach (var tile2 in grid)
         {
+            if( tile1==null || tile2==null)
+                continue;
             if (tile1 != tile2 && tile1.tileID == tile2.tileID && IsValidMatch(tile1.gridPosition, tile2.gridPosition))
             {
                 tile1.GetComponent<Image>().color = Color.green;
@@ -173,6 +184,28 @@ public class BoardManager : MonoBehaviour
         }
     }
     }
+    IEnumerator RemoveEffect()
+    {
+        int idx=0;
+        foreach(Vector2Int pos in points)
+        {
+            lineRender.SetPosition(idx,allTilePosition[pos]);
+        }
+           yield return new WaitForEndOfFrame();
+    }
 
+    void GameTime()
+    {
+       if(Time.time>nextTime&&time>0)
+       { nextTime = Time.time + 1;
+       time--;
+       }
+       if(time<=0)
+       {
+        Debug.Log("Game Over");
+       }
+        timeText.text = time.ToString();
 
+    }
+   
 }   
