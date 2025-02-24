@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class WaterSortController : MonoBehaviour
 {
+     enum GAME_STATE
+    {
+        PLAYING,
+        PAUSE,
+        END,
+        WIN,
+        LOSE,
+        REWARD
+    }
+    GAME_STATE gameState = GAME_STATE.PLAYING;
     [Range(1,3)]
     public int Difficulty = 1;
 
@@ -17,6 +27,7 @@ public class WaterSortController : MonoBehaviour
     private float width;
     private float height;
     public Camera cam;
+    public PausePopup2 pausePopUp;
     Dictionary<Color,int> colorBottleFrq = new Dictionary<Color,int>();
     int NumerOfEmptyBottles = 1;
     bool extraBottleActive = false;
@@ -161,9 +172,16 @@ public class WaterSortController : MonoBehaviour
     {
         foreach(BottleController bottle in AllBottles)
         {
-            if(bottle.IsSorted()!=false)
+            if(bottle.IsSorted()==false)
                 return;    
         }
+        gameState = GAME_STATE.WIN;
         Debug.Log("Game Win");
+    }
+
+    public void Pause()
+    {
+        
+        pausePopUp.OpenPausePopup(1);
     }
 }

@@ -48,12 +48,12 @@ public class PausePopup2 : MonoBehaviour
         popup.GetComponent<BBUIView>().HideView();
     }
 
-    enum STATE_CLOSEPOPUP
+    public enum STATE_CLOSEPOPUP
     {
         CONTINNUE, RESTART,HOME, LEVELSELECT
     }
     
-    STATE_CLOSEPOPUP stateClosePopup = STATE_CLOSEPOPUP.CONTINNUE;
+    public STATE_CLOSEPOPUP stateClosePopup = STATE_CLOSEPOPUP.CONTINNUE;
 
     // Update is called once per frame
     void Update()
@@ -73,7 +73,9 @@ public class PausePopup2 : MonoBehaviour
     
     private void ShowViews()
     {
+        if(SoundManager.instance!=null){
         SoundManager.instance.PlaySound_Popup();
+        }
         lockGroup.SetActive(true);
 
        
@@ -115,7 +117,9 @@ public class PausePopup2 : MonoBehaviour
     {
         if (stateClosePopup == STATE_CLOSEPOPUP.CONTINNUE) {
             Time.timeScale = 1f;
+             if(GamePlayManager.instance!=null){
             GamePlayManager.instance.SetUnPause();
+             }
         }
         else if (stateClosePopup == STATE_CLOSEPOPUP.RESTART)
         {
@@ -180,6 +184,8 @@ public class PausePopup2 : MonoBehaviour
 
     private void TouchRate()
     {
+        if(GamePlayManager.instance!=null){
         GamePlayManager.instance.OpenRatePopup();
+        }
     }
 }

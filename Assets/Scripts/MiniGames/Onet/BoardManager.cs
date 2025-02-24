@@ -3,9 +3,19 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-
+using DG.Tweening;
 public class BoardManager : MonoBehaviour
 {
+     enum GAME_STATE
+    {
+        PLAYING,
+        PAUSE,
+        END,
+        WIN,
+        LOSE,
+        REWARD
+    }
+    GAME_STATE gameState = GAME_STATE.PLAYING;
     public int rows = 6;
     public int cols = 10;
     public float time = 60;
@@ -14,8 +24,10 @@ public class BoardManager : MonoBehaviour
     public Transform boardParent;
     public Sprite[] tileSprites; // Assign in Unity Editor
     public LineRenderer lineRender;
-    public GameObject[] allTiles;
     public TMP_Text timeText;
+    public GameObject gameOverPanel;
+    public GameObject WatchAdPopup;
+    public PausePopup2 pausePopUp;
     private OnetTile[,] grid;
     private List<Vector2Int> availablePositions = new List<Vector2Int>();
     private OnetTile firstTile, secondTile;
@@ -25,11 +37,16 @@ public class BoardManager : MonoBehaviour
     void Start()
     {
         InitializeBoard();
+
     }
 
     void Update()
     {
-        GameTime();
+        if(gameState == GAME_STATE.PLAYING)
+            GameTime();
+
+        if(pausePopUp.gameObject.active==false)
+            gameState = GAME_STATE.PLAYING;
     }
 
     void InitializeBoard()
@@ -59,27 +76,28 @@ public class BoardManager : MonoBehaviour
         if(cols>4)
             offset.x = -250;
 
+        if(cols>=6)
+            offset.y = -200;    
+
         int index = 0;
         for (int c = 0; c < cols; c++)
         {
             for (int r = 0; r < rows; r++)
             {
                 Vector2Int pos = new Vector2Int(r, c);
-                allTiles[index].SetActive(true);
-               //GameObject tileObj = Instantiate(tilePrefab, boardParent);
-                GameObject tileObj = allTiles[index];
+                GameObject tileObj = Instantiate(tilePrefab, boardParent);
                 OnetTile tile = tileObj.GetComponent<OnetTile>();
                 tile.tileID = tileIDs[index++];
                 tile.gridPosition = pos;
-                if(tileSprites.Length>tile.tileID){
+                
                 tileObj.GetComponent<Image>().sprite = tileSprites[tile.tileID];
-                //tileObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(pos.x*100,pos.y*100,0)+offset;
+                tileObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(pos.x*100,pos.y*100,0)+offset;
                 grid[c, r] = tile;
                 availablePositions.Add(pos);
                 allTilePosition[pos] = tileObj.GetComponent<RectTransform>().anchoredPosition; 
-                }
-                if(tileIDs.Count==index)
-                    return;
+                
+                if(index>=tileIDs.Count)
+                    break;
             }
         }
     }
@@ -110,7 +128,8 @@ public class BoardManager : MonoBehaviour
                
                 lineRender.enabled = true;
                 int idx=0;
-                StartCoroutine(RemoveEffect());
+                firstTile.transform.DOShakePosition(0.3f,5f,10,90,false,true);
+                secondTile.transform.DOShakePosition(0.3f,5f,10,90,false,true);
                  RemoveTiles(firstTile, secondTile);
             }
             lineRender.enabled = false;
@@ -124,6 +143,9 @@ public class BoardManager : MonoBehaviour
 
     bool IsValidMatch(Vector2Int start, Vector2Int end)
     {
+    if(start==end)
+        return false;
+
     Queue<(Vector2Int pos, int turns, Vector2Int lastDir)> queue = new Queue<(Vector2Int, int, Vector2Int)>();
     HashSet<Vector2Int> visited = new HashSet<Vector2Int>();
 
@@ -142,7 +164,7 @@ public class BoardManager : MonoBehaviour
         foreach (var dir in new Vector2Int[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right })
         {
             Vector2Int nextPos = pos + dir;
-            if (IsInsideGrid(nextPos) && (grid[nextPos.x, nextPos.y] == null || nextPos == end))
+            if (IsInsideGrid(nextPos) && (grid[nextPos.y, nextPos.x] == null || nextPos == end))
             {
                 int newTurns = (lastDir == Vector2Int.zero || lastDir == dir) ? turns : turns + 1;
                 queue.Enqueue((nextPos, newTurns, dir));
@@ -159,16 +181,22 @@ public class BoardManager : MonoBehaviour
 
     void RemoveTiles(OnetTile t1, OnetTile t2)
     {   
-    grid[t1.gridPosition.x, t1.gridPosition.y] = null;
-    grid[t2.gridPosition.x, t2.gridPosition.y] = null;
+    grid[t1.gridPosition.y, t1.gridPosition.x] = null;
+    grid[t2.gridPosition.y, t2.gridPosition.x] = null;
 
     Destroy(t1.gameObject);
     Destroy(t2.gameObject);
     }
 
+    public void HintPressed()
+    {
+        WatchAdPopup.SetActive(true);
+        gameState = GAME_STATE.PAUSE;
+    }
 
    public void ShowHint()
     {
+    
     foreach (var tile1 in grid)
     {
         foreach (var tile2 in grid)
@@ -193,19 +221,49 @@ public class BoardManager : MonoBehaviour
         }
            yield return new WaitForEndOfFrame();
     }
-
+    bool gameover = false;
     void GameTime()
     {
        if(Time.time>nextTime&&time>0)
        { nextTime = Time.time + 1;
        time--;
        }
-       if(time<=0)
+       if(time<=0 && gameover==false)
        {
+        gameover = true;
+        gameOverPanel.SetActive(true);
+        boardParent.gameObject.SetActive(false);
         Debug.Log("Game Over");
+
        }
         timeText.text = time.ToString();
 
     }
-   
+
+    public void CloseWatchAdPopUp()
+    {
+        WatchAdPopup.SetActive(false);
+        gameState = GAME_STATE.PLAYING;
+    }    
+    
+    public void WatchAd()
+    {
+        Debug.Log("PlayAd");
+        WatchAdPopup.SetActive(false);
+        gameState = GAME_STATE.PLAYING;
+        ShowHint();
+
+    }
+
+    public void Pause()
+    {
+        if(gameState==GAME_STATE.PLAYING){
+        gameState = GAME_STATE.PAUSE;
+        pausePopUp.OpenPausePopup(0);
+        }
+        else
+        {
+            gameState = GAME_STATE.PLAYING;
+        }
+    }
 }   

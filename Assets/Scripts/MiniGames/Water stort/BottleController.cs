@@ -60,7 +60,7 @@ public class BottleController : MonoBehaviour
     {
         ChoseRotationPointAndDirection();
          numberOfColorToTransfer = Mathf.Min(numberOfTopColorLayers,4-bottleController.numberOfColorsInBottle);
-
+        //numberOfColorToTransfer = 1;
         for(int i=0;i<numberOfColorToTransfer;i++){
            bottleController.bottlesColor[bottleController.numberOfColorsInBottle+i] = topColor;
             Debug.Log(bottleController.numberOfColorsInBottle+i);
