@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.UI;
 public class WaterSortController : MonoBehaviour
 {
      enum GAME_STATE
@@ -16,7 +17,7 @@ public class WaterSortController : MonoBehaviour
     GAME_STATE gameState = GAME_STATE.PLAYING;
     [Range(1,3)]
     public int Difficulty = 1;
-
+    public bool isDebug = false;
     public GameObject[] DifficultyBottlesHolder;
     public BottleController FirstBottle;
     public BottleController SecondBottle;
@@ -28,12 +29,23 @@ public class WaterSortController : MonoBehaviour
     private float height;
     public Camera cam;
     public PausePopup2 pausePopUp;
+    public GameObject gameOverPanel;
+    public TMP_Text rewardText;
+    public Image rewardSprite;
+    public Sprite food,strength,health,Gold;
+
     Dictionary<Color,int> colorBottleFrq = new Dictionary<Color,int>();
     int NumerOfEmptyBottles = 1;
     bool extraBottleActive = false;
+
+    float diffRewardFactor = 0f;
+
+
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        if(isDebug==false)
+             Difficulty = Random.Range(1,4);
         width = (float)Screen.width;
         height = (float)Screen.height;
         DifficultyBottlesHolder[Difficulty-1].SetActive(true);
@@ -52,7 +64,9 @@ public class WaterSortController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameWin();
+        if(gameState == GAME_STATE.PLAYING)
+            GameWin();
+
         if(Input.touchCount>0){
             touch = Input.GetTouch(0);
             if(touch.phase == TouchPhase.Ended){    
@@ -65,7 +79,7 @@ public class WaterSortController : MonoBehaviour
                     cam.transform.position.y+cam.orthographicSize,pos.y);
                 Vector2 pos2D = new Vector2(worldx,worldy);
                 RaycastHit2D hit = Physics2D.Raycast(pos2D,Vector2.zero);
-                Debug.Log(hit.collider);
+                
                 if(hit.collider!=null){
                     if(hit.collider.GetComponent<BottleController>()!=null)
                     {
@@ -171,12 +185,46 @@ public class WaterSortController : MonoBehaviour
     void GameWin()
     {
         foreach(BottleController bottle in AllBottles)
-        {
+        {   Debug.Log(bottle.IsSorted());
             if(bottle.IsSorted()==false)
                 return;    
         }
-        gameState = GAME_STATE.WIN;
         Debug.Log("Game Win");
+        ShowWinPanel();
+        gameState  = GAME_STATE.WIN;
+    }
+
+    void ShowWinPanel() 
+    {
+        gameOverPanel.SetActive(true);
+        gameState = GAME_STATE.WIN;
+        diffRewardFactor = Difficulty;
+        int randReward = Random.Range(0,4);
+        switch(randReward)
+        {
+            case 0:Config.Food = Config.Food+(int)diffRewardFactor*40;
+                    rewardSprite.sprite = food;
+                    rewardText.text = Config.Food.ToString();
+                     Debug.Log(Config.Food+" Food Reward");
+                     break;
+            case 1:Config.Strength = Config.Strength+(int)diffRewardFactor*40;
+                    rewardSprite.sprite = strength;
+                    rewardText.text = Config.Strength.ToString();
+                     Debug.Log(Config.Strength+" Strength Reward");
+                     break;
+            case 2:Config.Health = Config.Health+(int)diffRewardFactor*40;
+                    rewardSprite.sprite = health;
+                    rewardText.text = Config.Health.ToString();
+                     Debug.Log(Config.Health+" Health Reward");
+                     break; 
+            case 3:Config.Gold = Config.Gold+(int)diffRewardFactor*40;
+                    rewardSprite.sprite = Gold;
+                    rewardText.text = Config.Gold.ToString();
+                     Debug.Log(Config.Gold+" Gold Reward");
+                     break;                 
+        }
+       
+        
     }
 
     public void Pause()

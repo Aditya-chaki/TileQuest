@@ -28,16 +28,24 @@ public class BoardManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject WatchAdPopup;
     public PausePopup2 pausePopUp;
+    public TMP_Text rewardText;
+    public Image rewardSprite;
+    public Sprite food,strength,health,Gold;
+
     private OnetTile[,] grid;
     private List<Vector2Int> availablePositions = new List<Vector2Int>();
     private OnetTile firstTile, secondTile;
     private List<Vector2Int> points = new List<Vector2Int>();
     private Dictionary<Vector2Int,Vector3> allTilePosition = new Dictionary<Vector2Int,Vector3>();
     float nextTime = 0;
+    float diffRewardFactor = 0f;
+    int score = 0;
+
     void Start()
     {
+        SetDifficulty();
         InitializeBoard();
-
+        Debug.Log(Config.Food+" Food At Start");
     }
 
     void Update()
@@ -47,6 +55,35 @@ public class BoardManager : MonoBehaviour
 
         if(pausePopUp.gameObject.active==false)
             gameState = GAME_STATE.PLAYING;
+    }
+    void SetDifficulty()
+    {
+        int randTime = Random.Range(0,3);
+        int randCol = Random.Range(0,3);
+        switch(randTime)
+        {
+            case 0:time = 30;
+                break;
+
+            case 1:time = 20;
+                break;
+
+            case 2:time = 10;
+                break;        
+        }
+
+        switch(randCol)
+        {
+            case 0:cols = 6;
+                break;
+
+            case 1:cols = 8;
+                break;
+
+            case 2:cols = 10;
+                break;        
+        }
+        diffRewardFactor = randTime+randCol/2;
     }
 
     void InitializeBoard()
@@ -130,7 +167,8 @@ public class BoardManager : MonoBehaviour
                 int idx=0;
                 firstTile.transform.DOShakePosition(0.3f,5f,10,90,false,true);
                 secondTile.transform.DOShakePosition(0.3f,5f,10,90,false,true);
-                 RemoveTiles(firstTile, secondTile);
+                score++;
+                RemoveTiles(firstTile, secondTile);
             }
             lineRender.enabled = false;
             points.Clear();
@@ -234,7 +272,30 @@ public class BoardManager : MonoBehaviour
         gameOverPanel.SetActive(true);
         boardParent.gameObject.SetActive(false);
         Debug.Log("Game Over");
-
+        int randReward = Random.Range(0,4);
+        switch(randReward)
+        {
+            case 0:Config.Food = Config.Food+score*(int)diffRewardFactor*20;
+                    rewardSprite.sprite = food;
+                    rewardText.text = Config.Food.ToString();
+                     Debug.Log(Config.Food+" Food Reward");
+                     break;
+            case 1:Config.Strength = Config.Strength+score*(int)diffRewardFactor*20;
+                    rewardSprite.sprite = strength;
+                    rewardText.text = Config.Strength.ToString();
+                     Debug.Log(Config.Strength+" Strength Reward");
+                     break;
+            case 2:Config.Health = Config.Health+score*(int)diffRewardFactor*20;
+                    rewardSprite.sprite = health;
+                    rewardText.text = Config.Health.ToString();
+                     Debug.Log(Config.Health+" Health Reward");
+                     break; 
+            case 3:Config.Gold = Config.Gold+score*(int)diffRewardFactor*20;
+                    rewardSprite.sprite = Gold;
+                    rewardText.text = Config.Gold.ToString();
+                     Debug.Log(Config.Gold+" Gold Reward");
+                     break;                 
+        }
        }
         timeText.text = time.ToString();
 

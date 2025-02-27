@@ -280,8 +280,11 @@ public class BottleController : MonoBehaviour
 
     public bool IsSorted()
     {
-        if(numberOfColorToTransfer==4||numberOfTopColorLayers==0)
+        if(numberOfTopColorLayers==4||numberOfTopColorLayers==0||numberOfColorsInBottle==0)
+        {   Debug.Log(transform.name+" is sorted");
             return true;
+        }
+         Debug.Log(transform.name+" "+numberOfTopColorLayers);
         return false;    
     }
 }
