@@ -3,13 +3,17 @@ using UnityEngine.UI;
 
 public class ToggleObjects : MonoBehaviour
 {
-    public GameObject imageObject; // Assign the Image GameObject in the Inspector
-    private bool isImageVisible = false; // Track whether the image is visible
+    public GameObject imageObject1;    // First GameObject to toggle
+    public GameObject imageObject2;    // Second GameObject to toggle
+    private bool isImageVisible = false;  // Tracks the toggle state
 
     // This method will be called when the button is clicked
     public void ToggleImageVisibility()
     {
-        isImageVisible = !isImageVisible; // Toggle the boolean value
-        imageObject.SetActive(isImageVisible); // Show or hide the image based on the boolean value
+        isImageVisible = !isImageVisible;  // Toggle the boolean value
+
+        // Set opposite states for the two objects
+        imageObject1.SetActive(isImageVisible);    // Enable/disable first object
+        imageObject2.SetActive(!isImageVisible);   // Enable/disable second object (opposite state)
     }
 }
