@@ -312,14 +312,14 @@ RectTransform:
   m_GameObject: {fileID: 718768780980933618}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.33039647, y: 0.33039647, z: 0.33039647}
+  m_LocalScale: {x: 1.6519824, y: 1.6519824, z: 1.6519824}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 5990832081321143484}
+  m_Father: {fileID: 3350259272439858543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.5240479, y: 87.00452}
+  m_AnchoredPosition: {x: -854.62024, y: -1045.9775}
   m_SizeDelta: {x: 163.7724, y: 163.7724}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7763175275006334350
@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 6317641421727562765}
   - component: {fileID: 4105004309791104170}
   - component: {fileID: 1710728940751098118}
+  - component: {fileID: 7207856711628133286}
   m_Layer: 5
   m_Name: Gold collector
   m_TagString: Untagged
@@ -465,7 +466,6 @@ RectTransform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 3702752877168108725}
   - {fileID: 7041384316462420906}
   m_Father: {fileID: 3350259272439858543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -590,6 +590,27 @@ MonoBehaviour:
   endPoint: {fileID: 8599922857653198174}
   coinCount: 10
   spawnDelay: 0.1
+--- !u!95 &7207856711628133286
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421934288997908415}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fd4e3977c7f8d6042bf153b5f2ba32b2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1827599957090202126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,6 +1454,7 @@ GameObject:
   - component: {fileID: 1410872795627842909}
   - component: {fileID: 1754158951342524515}
   - component: {fileID: 439634473223594658}
+  - component: {fileID: 1900246476228943953}
   m_Layer: 5
   m_Name: Shop Button
   m_TagString: Untagged
@@ -1554,6 +1576,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!95 &1900246476228943953
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2972936549872696265}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aec33fa00306ef2468b53031a2f3dc88, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3093948189501736375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,6 +1758,7 @@ GameObject:
   - component: {fileID: 3702752877168108725}
   - component: {fileID: 4532202443526463802}
   - component: {fileID: 4457079420769906076}
+  - component: {fileID: 832329151879270807}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1731,14 +1775,14 @@ RectTransform:
   m_GameObject: {fileID: 3495931373036557900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2851711, y: 0.2851711, z: 0.2851711}
+  m_LocalScale: {x: 1.4258555, y: 1.4258555, z: 1.4258555}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1540852794772626302}
+  m_Father: {fileID: 3350259272439858543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.8519287, y: 111.97717}
+  m_AnchoredPosition: {x: -1233.7404, y: 550}
   m_SizeDelta: {x: 163.7724, y: 163.7724}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4532202443526463802
@@ -1779,6 +1823,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &832329151879270807
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3495931373036557900}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7dde095d4e301e746b92d1a5e7b60fec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3730836278551058737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +1919,103 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3802447905485070505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1548237154633828437}
+  - component: {fileID: 2507046380819998078}
+  - component: {fileID: 8265542501853373823}
+  - component: {fileID: 5879539019661267878}
+  m_Layer: 5
+  m_Name: Image (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1548237154633828437
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3802447905485070505}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3350259272439858543}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1233.7404, y: 550.00006}
+  m_SizeDelta: {x: 163.7724, y: 163.7724}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2507046380819998078
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3802447905485070505}
+  m_CullTransparentMesh: 1
+--- !u!114 &8265542501853373823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3802447905485070505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: ce0b1e8ea9cd65a4580548b6afef5fc0, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!95 &5879539019661267878
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3802447905485070505}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8285b138d6441b944905fab99622eecc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3931206266796908502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,6 +2028,7 @@ GameObject:
   - component: {fileID: 7377980109607320676}
   - component: {fileID: 9081813955430180766}
   - component: {fileID: 3552216599143997948}
+  - component: {fileID: 1357101710618917070}
   m_Layer: 5
   m_Name: Castle Button
   m_TagString: Untagged
@@ -1987,6 +2150,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!95 &1357101710618917070
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3931206266796908502}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2dae4decc7d9d874493eb21490a4f846, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4024930532578516333
 GameObject:
   m_ObjectHideFlags: 0
@@ -2407,6 +2591,7 @@ GameObject:
   - component: {fileID: 40902760564627675}
   - component: {fileID: 8782932291174975867}
   - component: {fileID: 1141484980892139755}
+  - component: {fileID: 4735042610293950919}
   m_Layer: 5
   m_Name: Castleglow
   m_TagString: Untagged
@@ -2471,6 +2656,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &4735042610293950919
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4788829327703244184}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 45e1dc1305aea0445b55030eaea07aa4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5028593646417279368
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,6 +2766,7 @@ GameObject:
   - component: {fileID: 6118667095353976990}
   - component: {fileID: 8192072430533103451}
   - component: {fileID: 5096922751254187373}
+  - component: {fileID: 8745894176967154299}
   m_Layer: 5
   m_Name: Food Collector
   m_TagString: Untagged
@@ -2579,7 +2786,6 @@ RectTransform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 4077734963408254421}
   - {fileID: 8253733042159282913}
   m_Father: {fileID: 3350259272439858543}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2704,6 +2910,27 @@ MonoBehaviour:
   endPoint: {fileID: 2713578229597012450}
   coinCount: 10
   spawnDelay: 0.1
+--- !u!95 &8745894176967154299
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5239601338924527925}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 94520399f894e8c4ab7767408ac3051c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5276378837508398122
 GameObject:
   m_ObjectHideFlags: 0
@@ -3326,6 +3553,7 @@ GameObject:
   - component: {fileID: 6418686910929207995}
   - component: {fileID: 2120447579997814591}
   - component: {fileID: 2720768947694806440}
+  - component: {fileID: 6899036163323805412}
   m_Layer: 5
   m_Name: Army Button
   m_TagString: Untagged
@@ -3435,6 +3663,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &6899036163323805412
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7391616326317091383}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1870f2c3335313046b9bfa694e39e817, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7623188986827291401
 GameObject:
   m_ObjectHideFlags: 0
@@ -3898,8 +4147,11 @@ RectTransform:
   - {fileID: 40902760564627675}
   - {fileID: 601209030919226041}
   - {fileID: 8901362696855296010}
+  - {fileID: 1548237154633828437}
+  - {fileID: 3702752877168108725}
   - {fileID: 1540852794772626302}
   - {fileID: 6674215264469357238}
+  - {fileID: 4077734963408254421}
   - {fileID: 5990832081321143484}
   - {fileID: 6485030950836430999}
   - {fileID: 198306627445810241}
