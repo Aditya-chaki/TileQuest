@@ -24,7 +24,7 @@ public class MenuManager : MonoBehaviour
     public BBUIButton btnRemoveAd;
     public Image logo;
     public GameObject lockGroup;
-    public GameObject Story;
+   
     private void Awake()
     {
         instance = this;
@@ -69,7 +69,7 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Story.SetActive(true);
+        
 
     }
 
@@ -78,7 +78,7 @@ public class MenuManager : MonoBehaviour
     public void TouchSetting()
     {
         OpenSettingPopup();
-        Story.SetActive(false);
+        
     }
 
     public void TouchGift()
@@ -96,7 +96,7 @@ public class MenuManager : MonoBehaviour
     public void TouchShop()
     {
         shopPopup.OpenPopup();
-        Story.SetActive(false);
+        
     }
 
 
@@ -107,13 +107,13 @@ public class MenuManager : MonoBehaviour
             shopPopup.TouchClose(); // Close the shop popup using the TouchClose method
         }
         spinPopup.OpenSpinPopup();
-        Story.SetActive(false);
+        
     }
 
     public void OpenShopCoin()
     {
         shopPopup.OpenPopup();
-        Story.SetActive(false);
+        
 
     }
 
