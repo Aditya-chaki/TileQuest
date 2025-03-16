@@ -50,7 +50,7 @@ public class MetricsDisplay : MonoBehaviour
     void UpdateMetric(TextMeshProUGUI textElement, int currentValue, ref int lastValue, string metricName)
     {
         // Update the text
-        textElement.text = $"{metricName}: {currentValue}";
+        textElement.text = $"{currentValue}";
 
         // Update the last value
         lastValue = currentValue;
