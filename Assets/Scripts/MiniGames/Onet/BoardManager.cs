@@ -122,10 +122,12 @@ public class BoardManager : MonoBehaviour
         {
             for (int r = 0; r < rows; r++)
             {
+                if(index>=tileIDs.Count)
+                    break;
                 Vector2Int pos = new Vector2Int(r, c);
                 GameObject tileObj = Instantiate(tilePrefab, boardParent);
                 OnetTile tile = tileObj.GetComponent<OnetTile>();
-                tile.tileID = tileIDs[index++];
+                tile.tileID = tileIDs[index];
                 tile.gridPosition = pos;
                 
                 tileObj.GetComponent<Image>().sprite = tileSprites[tile.tileID];
@@ -133,9 +135,8 @@ public class BoardManager : MonoBehaviour
                 grid[c, r] = tile;
                 availablePositions.Add(pos);
                 allTilePosition[pos] = tileObj.GetComponent<RectTransform>().anchoredPosition; 
+                index++;
                 
-                if(index>=tileIDs.Count)
-                    break;
             }
         }
     }
@@ -276,22 +277,22 @@ public class BoardManager : MonoBehaviour
         int randReward = Random.Range(0,4);
         switch(randReward)
         {
-            case 0:Config.Food = Config.Food+score*(int)diffRewardFactor*20;
+            case 0://Config.Food = Config.Food+score*(int)diffRewardFactor*20;
                     rewardSprite.sprite = food;
                     rewardText.text = Config.Food.ToString();
                      Debug.Log(Config.Food+" Food Reward");
                      break;
-            case 1:Config.Strength = Config.Strength+score*(int)diffRewardFactor*20;
+            case 1://Config.Strength = Config.Strength+score*(int)diffRewardFactor*20;
                     rewardSprite.sprite = strength;
                     rewardText.text = Config.Strength.ToString();
                      Debug.Log(Config.Strength+" Strength Reward");
                      break;
-            case 2:Config.Health = Config.Health+score*(int)diffRewardFactor*20;
+            case 2://Config.Health = Config.Health+score*(int)diffRewardFactor*20;
                     rewardSprite.sprite = health;
                     rewardText.text = Config.Health.ToString();
                      Debug.Log(Config.Health+" Health Reward");
                      break; 
-            case 3:Config.Gold = Config.Gold+score*(int)diffRewardFactor*20;
+            case 3://Config.Gold = Config.Gold+score*(int)diffRewardFactor*20;
                     rewardSprite.sprite = Gold;
                     rewardText.text = Config.Gold.ToString();
                      Debug.Log(Config.Gold+" Gold Reward");

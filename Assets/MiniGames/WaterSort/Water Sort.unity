@@ -7733,7 +7733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Difficulty: 2
-  isDebug: 0
+  isDebug: 1
   DifficultyBottlesHolder:
   - {fileID: 638945406}
   - {fileID: 402084962}
@@ -11866,7 +11866,6 @@ MonoBehaviour:
   btnContinue: {fileID: 776789570}
   btnClose: {fileID: 1824410387}
   lockGroup: {fileID: 22885462}
-  stateClosePopup: 0
 --- !u!1 &1735954874
 GameObject:
   m_ObjectHideFlags: 0
