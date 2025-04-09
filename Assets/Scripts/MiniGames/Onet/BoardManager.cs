@@ -46,7 +46,6 @@ public class BoardManager : MonoBehaviour
     {
         SetDifficulty();
         InitializeBoard();
-        Debug.Log(Config.Food+" Food At Start");
     }
 
     void Update()
@@ -54,7 +53,7 @@ public class BoardManager : MonoBehaviour
         if(gameState == GAME_STATE.PLAYING)
             GameTime();
 
-        if(pausePopUp.gameObject.active==false)
+        if(pausePopUp.gameObject.active==false&&WatchAdPopup.gameObject.active==false)
             gameState = GAME_STATE.PLAYING;
     }
     void SetDifficulty()
@@ -155,6 +154,7 @@ public class BoardManager : MonoBehaviour
     if (firstTile == null)
     {
         firstTile = tile;
+        firstTile.GetComponent<RectTransform>().localScale *=1.2f; 
     }
     else if (secondTile == null)
     {
@@ -167,19 +167,21 @@ public class BoardManager : MonoBehaviour
                
                 lineRender.enabled = true;
                 int idx=0;
-                firstTile.transform.DOShakePosition(0.3f,5f,10,90,false,true);
-                secondTile.transform.DOShakePosition(0.3f,5f,10,90,false,true);
+                firstTile.GetComponent<RectTransform>().DOShakePosition(0.5f,5f,10,90,false,true);
+                secondTile.GetComponent<RectTransform>().DOShakePosition(0.5f,5f,10,90,false,true);
                 score++;
-                RemoveTiles(firstTile, secondTile);
+                StartCoroutine(RemoveTiles(firstTile, secondTile));
+                
             }
             lineRender.enabled = false;
             points.Clear();
         }
-
+        firstTile.GetComponent<RectTransform>().localScale *=0.8f;
         firstTile = secondTile = null;
     }
     }
 
+    
 
     bool IsValidMatch(Vector2Int start, Vector2Int end)
     {
@@ -219,8 +221,9 @@ public class BoardManager : MonoBehaviour
         return pos.x >= 0 && pos.x < rows && pos.y >= 0 && pos.y < cols;
     }
 
-    void RemoveTiles(OnetTile t1, OnetTile t2)
-    {   
+    IEnumerator RemoveTiles(OnetTile t1, OnetTile t2)
+    {  
+        yield return new WaitForSeconds(0.4f); 
     grid[t1.gridPosition.y, t1.gridPosition.x] = null;
     grid[t2.gridPosition.y, t2.gridPosition.x] = null;
 
@@ -230,8 +233,12 @@ public class BoardManager : MonoBehaviour
 
     public void HintPressed()
     {
-        WatchAdPopup.SetActive(true);
         gameState = GAME_STATE.PAUSE;
+        if(gameover)
+        {
+            return;
+        }
+        WatchAdPopup.SetActive(true);
     }
 
    public void ShowHint()
@@ -247,6 +254,9 @@ public class BoardManager : MonoBehaviour
             {
                 tile1.GetComponent<Image>().color = Color.green;
                 tile2.GetComponent<Image>().color = Color.green;
+                tile1.GetComponent<RectTransform>().DOShakePosition(0.5f,5f,10,90,false,true);
+                tile2.GetComponent<RectTransform>().DOShakePosition(0.5f,5f,10,90,false,true);
+                
                 return;
             }
         }
@@ -261,10 +271,17 @@ public class BoardManager : MonoBehaviour
         }
            yield return new WaitForEndOfFrame();
     }
+
     bool gameover = false;
+    
     void GameTime()
     {
-       if(Time.time>nextTime&&time>0)
+        if(gameState==GAME_STATE.PAUSE)
+        {
+            return;
+        }
+        Debug.Log(gameState);
+       if(Time.time>nextTime&&time>0 && gameState==GAME_STATE.PLAYING)
        { nextTime = Time.time + 1;
        time--;
        }
@@ -320,6 +337,11 @@ public class BoardManager : MonoBehaviour
 
     public void Pause()
     {
+        if(gameover)
+        {
+            return;
+        }
+
         if(gameState==GAME_STATE.PLAYING){
         gameState = GAME_STATE.PAUSE;
         pausePopUp.OpenPausePopup(0);

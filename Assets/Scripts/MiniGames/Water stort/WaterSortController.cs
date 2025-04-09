@@ -125,6 +125,12 @@ public class WaterSortController : MonoBehaviour
                         }
                     }
                 }
+                else if(FirstBottle!=null)
+                    {
+                        FirstBottle.transform.localScale *=0.9f;
+                        FirstBottle = null;
+                    }
+                    
             }
         }
     }

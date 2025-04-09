@@ -60,11 +60,12 @@ public class BottleController : MonoBehaviour
     {
         
         ChoseRotationPointAndDirection();
-         numberOfColorToTransfer = Mathf.Min(numberOfTopColorLayers,4-bottleController.numberOfColorsInBottle);
+        numberOfColorToTransfer = Mathf.Min(numberOfTopColorLayers,4-bottleController.numberOfColorsInBottle);
         //numberOfColorToTransfer = 1;
-        Debug.Log(numberOfColorToTransfer);
+        Debug.Log(numberOfColorToTransfer+" "+gameObject.name);
         Color currentTopColor = topColor;
-        for (int i = 0; i < numberOfColorToTransfer; i++) {
+        for (int i = 0; i < numberOfColorToTransfer; i++) 
+        {
         if (!bottlesColor[numberOfColorsInBottle - 1 - i].Equals(currentTopColor)) {
         Debug.LogError("Attempted to transfer multiple layers of different colors!");
         return; // Prevent incorrect transfer
@@ -72,7 +73,7 @@ public class BottleController : MonoBehaviour
         }
         for(int i=0;i<numberOfColorToTransfer;i++){
            bottleController.bottlesColor[bottleController.numberOfColorsInBottle+i] = topColor;
-            Debug.Log(bottleController.numberOfColorsInBottle+i);
+           Debug.Log("Transfer"+i);
            }
         bottleController.UpdateColorsOnShader();
         CalculateRotationIndex(4 - bottleController.numberOfColorsInBottle);
@@ -245,6 +246,10 @@ public class BottleController : MonoBehaviour
     {
         if(numberOfColorsInBottle==0){
             return true;
+        }
+        else if(numberOfColorsInBottle==4)
+        {
+                return false;
         }
         else
         {
