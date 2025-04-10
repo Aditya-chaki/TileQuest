@@ -6,6 +6,7 @@ public class BottleController : MonoBehaviour
 {
     public Color[] bottlesColor;
     public SpriteRenderer bottleMask;
+    public SpriteRenderer bottleSprite;
     public AnimationCurve ScaleRotationMulti;
     public AnimationCurve FillAlount;
     public AnimationCurve RotationSpeedMulti;
@@ -94,6 +95,10 @@ public class BottleController : MonoBehaviour
 
 
     IEnumerator MoveBottle(){
+        if(directionMulti==1)
+            {
+               bottleSprite.flipX = true; 
+            }
         startPosition = originalPosition;
         if(choseRotationPoint==leftRotationPoint)
         {
@@ -126,7 +131,10 @@ public class BottleController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         transform.position = endPosition;
-
+        if(directionMulti==1)
+        {
+               bottleSprite.flipX = false; 
+        }
         transform.GetComponent<SpriteRenderer>().sortingOrder -=2;
         bottleMask.sortingOrder-=2;
     }
@@ -294,6 +302,7 @@ public class BottleController : MonoBehaviour
             directionMulti = 1.0f;
         }
     }
+
     bool isColorSorted = false;
     public bool IsSorted()
     {
