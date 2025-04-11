@@ -28,15 +28,15 @@ RectTransform:
   m_GameObject: {fileID: 161621483334549742}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.76134, y: 0.76134, z: 0.76134}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7001614341059361901}
   m_Father: {fileID: 4679220665155620720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 183.18, y: -357.25}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -495.82, y: 397}
   m_SizeDelta: {x: 366.3557, y: 237.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5732438141957914117
@@ -386,9 +386,9 @@ RectTransform:
   - {fileID: 5545798620179483327}
   m_Father: {fileID: 2542472851396650570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 537.5, y: -147.39}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 215, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1738208829970236207
@@ -1327,9 +1327,9 @@ RectTransform:
   - {fileID: 6235857456445896689}
   m_Father: {fileID: 2542472851396650570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 967.5, y: -147.39}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 215, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045226933613493292
@@ -1598,7 +1598,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.2399, y: -8}
+  m_AnchoredPosition: {x: -7.239929, y: -8}
   m_SizeDelta: {x: -101.807, y: -77.0949}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6545631485012073407
@@ -1629,7 +1629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Refuse and risk economic fallout.
+  m_text: Keep reserves for the capital
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65835b78f7028c43908b574cf075407, type: 2}
   m_sharedMaterial: {fileID: 2092455689183173837, guid: f65835b78f7028c43908b574cf075407,
@@ -2320,7 +2320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5193429055226021041
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2356,13 +2356,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958418e314aac0c4eb28a31440f4a44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionALoss: {fileID: 2158923097405553441}
-  optionBGain: {fileID: 667718353444212801}
-  card: {fileID: 0}
-  foodVariable: -200
-  strengthVariable: 200
-  healthVariable: -200
-  goldVariable: 200
+  optionAButton: {fileID: 2158923097405553441}
+  optionBButton: {fileID: 667718353444212801}
+  foodA: 0
+  goldA: 0
+  strengthA: 0
+  healthA: 0
+  energyA: 0
+  opinionA: 0
+  foodB: 0
+  goldB: 0
+  strengthB: 0
+  healthB: 0
+  energyB: 0
+  opinionB: 0
+  characterId: 
 --- !u!222 &5799246560916290442
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3121,7 +3129,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: How will you respond?
+  m_text: The farmers plead for food supplies.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65835b78f7028c43908b574cf075407, type: 2}
   m_sharedMaterial: {fileID: 2092455689183173837, guid: f65835b78f7028c43908b574cf075407,
@@ -3335,9 +3343,9 @@ RectTransform:
   - {fileID: 1525428154993811682}
   m_Father: {fileID: 2542472851396650570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 322.5, y: -147.39}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 215, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3852740405771932545
@@ -4187,9 +4195,9 @@ RectTransform:
   - {fileID: 7536354371955928872}
   m_Father: {fileID: 2542472851396650570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 107.5, y: -147.39}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 215, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8158113604256366069
@@ -4643,7 +4651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: -12}
+  m_AnchoredPosition: {x: 0, y: -12}
   m_SizeDelta: {x: -104.6661, y: -73.5491}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2597114432750011271
@@ -4674,7 +4682,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Accept the trade demands
+  m_text: Send food to help them
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65835b78f7028c43908b574cf075407, type: 2}
   m_sharedMaterial: {fileID: 2092455689183173837, guid: f65835b78f7028c43908b574cf075407,
@@ -5493,9 +5501,9 @@ RectTransform:
   - {fileID: 2406757199252725855}
   m_Father: {fileID: 2542472851396650570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 752.5, y: -147.39}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 215, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041165186027216519
@@ -5594,15 +5602,15 @@ RectTransform:
   m_GameObject: {fileID: 8929211936724858103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.72598, y: 0.72598, z: 0.72598}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7048218939889502612}
   m_Father: {fileID: 4679220665155620720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -144.89, y: -357.24573}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 514, y: 399}
   m_SizeDelta: {x: 363.03, y: 252.172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &103281866415567021
