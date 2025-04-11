@@ -1598,7 +1598,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6, y: -8}
+  m_AnchoredPosition: {x: -7.239929, y: -8}
   m_SizeDelta: {x: -101.807, y: -77.0949}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6545631485012073407
@@ -1629,7 +1629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Refuse and risk economic fallout.
+  m_text: Reject the proposal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65835b78f7028c43908b574cf075407, type: 2}
   m_sharedMaterial: {fileID: 2092455689183173837, guid: f65835b78f7028c43908b574cf075407,
@@ -1693,7 +1693,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -30.91153, y: 0, z: -22.192856, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2315,7 +2315,7 @@ GameObject:
   - component: {fileID: 6967553163891348212}
   - component: {fileID: 5799246560916290442}
   m_Layer: 17
-  m_Name: Decision Card 1
+  m_Name: Decision Card 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2358,18 +2358,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionAButton: {fileID: 2158923097405553441}
   optionBButton: {fileID: 667718353444212801}
-  foodA: -10
-  goldA: 50
-  strengthA: 0
+  foodA: 0
+  goldA: -20
+  strengthA: 25
   healthA: 0
-  energyA: 0
-  opinionA: 0
+  energyA: -10
+  opinionA: 5
   foodB: 0
-  goldB: -30
+  goldB: 10
   strengthB: -10
   healthB: 0
-  energyB: 0
-  opinionB: 0
+  energyB: 5
+  opinionB: -5
   characterId: King
 --- !u!222 &5799246560916290442
 CanvasRenderer:
@@ -3129,7 +3129,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: How will you respond?
+  m_text: The General recommends fortifying border regions.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65835b78f7028c43908b574cf075407, type: 2}
   m_sharedMaterial: {fileID: 2092455689183173837, guid: f65835b78f7028c43908b574cf075407,
@@ -3157,10 +3157,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 48.35
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -4682,7 +4682,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Accept the trade demands
+  m_text: Invest in defense
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65835b78f7028c43908b574cf075407, type: 2}
   m_sharedMaterial: {fileID: 2092455689183173837, guid: f65835b78f7028c43908b574cf075407,

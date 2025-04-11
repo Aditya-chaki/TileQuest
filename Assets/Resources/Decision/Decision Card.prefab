@@ -1629,7 +1629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Keep reserves for the capital
+  m_text: Stick to tradition
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65835b78f7028c43908b574cf075407, type: 2}
   m_sharedMaterial: {fileID: 2092455689183173837, guid: f65835b78f7028c43908b574cf075407,
@@ -1657,8 +1657,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2358,19 +2358,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionAButton: {fileID: 2158923097405553441}
   optionBButton: {fileID: 667718353444212801}
-  foodA: 0
-  goldA: 0
-  strengthA: 0
+  foodA: -20
+  goldA: -10
+  strengthA: -10
   healthA: 0
   energyA: 0
-  opinionA: 0
+  opinionA: 10
   foodB: 0
-  goldB: 0
-  strengthB: 0
+  goldB: 20
+  strengthB: 20
   healthB: 0
   energyB: 0
-  opinionB: 0
-  characterId: 
+  opinionB: -15
+  characterId: King
 --- !u!222 &5799246560916290442
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3129,7 +3129,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The farmers plead for food supplies.
+  m_text: A new farming method promises higher yields.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65835b78f7028c43908b574cf075407, type: 2}
   m_sharedMaterial: {fileID: 2092455689183173837, guid: f65835b78f7028c43908b574cf075407,
@@ -3157,10 +3157,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 48.35
   m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -4682,7 +4682,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Send food to help them
+  m_text: Fund the innovation
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65835b78f7028c43908b574cf075407, type: 2}
   m_sharedMaterial: {fileID: 2092455689183173837, guid: f65835b78f7028c43908b574cf075407,
@@ -4710,8 +4710,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
