@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TileMatch/Scenes/Play.unity
     guid: c5cabc288ed98704081f141ebe25edba
+  - enabled: 1
+    path: Assets/MiniGames/WaterSort/Water Sort.unity
+    guid: b138f394770beff3888154d9dfad10ba
   m_configObjects: {}

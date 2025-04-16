@@ -11,6 +11,8 @@ TagManager:
   - Building
   - StoreSlot
   - Cloud
+  - Screw
+  - DropArea
   layers:
   - Default
   - TransparentFX
@@ -30,7 +32,7 @@ TagManager:
   - Tile
   - UI2
   - Story
-  - 
+  - Screw
   - 
   - 
   - 

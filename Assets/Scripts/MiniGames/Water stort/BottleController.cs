@@ -98,6 +98,7 @@ public class BottleController : MonoBehaviour
         if(directionMulti==1)
             {
                bottleSprite.flipX = true; 
+               bottleMask.flipX = true;
             }
         startPosition = originalPosition;
         if(choseRotationPoint==leftRotationPoint)
@@ -134,6 +135,7 @@ public class BottleController : MonoBehaviour
         if(directionMulti==1)
         {
                bottleSprite.flipX = false; 
+               bottleMask.flipX  = false;
         }
         transform.GetComponent<SpriteRenderer>().sortingOrder -=2;
         bottleMask.sortingOrder-=2;
