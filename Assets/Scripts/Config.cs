@@ -779,6 +779,45 @@ public class Config
 
     #endregion
 
+    #region OPINIONS
+
+private const string KING_OPINION_KEY = "opinion_king";
+private const string QUEEN_OPINION_KEY = "opinion_queen";
+private const string ADVISOR_OPINION_KEY = "opinion_advisor";
+
+public static int KingOpinion
+{
+    get => PlayerPrefs.GetInt(KING_OPINION_KEY, 0);
+    set
+    {
+        PlayerPrefs.SetInt(KING_OPINION_KEY, value);
+        PlayerPrefs.Save();
+    }
+}
+
+public static int QueenOpinion
+{
+    get => PlayerPrefs.GetInt(QUEEN_OPINION_KEY, 0);
+    set
+    {
+        PlayerPrefs.SetInt(QUEEN_OPINION_KEY, value);
+        PlayerPrefs.Save();
+    }
+}
+
+public static int AdvisorOpinion
+{
+    get => PlayerPrefs.GetInt(ADVISOR_OPINION_KEY, 0);
+    set
+    {
+        PlayerPrefs.SetInt(ADVISOR_OPINION_KEY, value);
+        PlayerPrefs.Save();
+    }
+}
+
+#endregion
+
+
 #region METRICS
 
 private const string FOOD_KEY = "food";
