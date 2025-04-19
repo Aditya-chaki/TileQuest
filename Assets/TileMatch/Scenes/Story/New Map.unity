@@ -122,6 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &461975012
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +220,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 --- !u!1 &465941021
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +408,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &679439117
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,6 +909,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216151781}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 --- !u!1 &1373933543
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,6 +979,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1705055758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,6 +1152,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877916506}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 --- !u!1 &2004569135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1237,7 @@ MonoBehaviour:
   healthDecayRate: 0
   goldDecayRate: 0
   decayDuration: 0
+<<<<<<< HEAD
 --- !u!1 &2044743359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,6 +1526,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128698969}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 --- !u!224 &3901935122456407
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4002,7 +4014,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: -3.5671387, y: 0}
+=======
+  m_AnchoredPosition: {x: -3.5673828, y: 0}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_SizeDelta: {x: 6987.379, y: 4155.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2562307997734944099
@@ -5414,6 +5430,7 @@ RectTransform:
   - {fileID: 3901935122456407}
   - {fileID: 1972663190812635603}
   - {fileID: 6882075836880308409}
+<<<<<<< HEAD
   - {fileID: 932573524}
   - {fileID: 1705055759}
   - {fileID: 1165712493}
@@ -5424,6 +5441,8 @@ RectTransform:
   - {fileID: 2128698970}
   - {fileID: 679439118}
   - {fileID: 2044743360}
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

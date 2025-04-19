@@ -125,12 +125,15 @@ public class WaterSortController : MonoBehaviour
                         }
                     }
                 }
+<<<<<<< HEAD
                 else if(FirstBottle!=null)
                     {
                         FirstBottle.transform.localScale *=0.9f;
                         FirstBottle = null;
                     }
                     
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
             }
         }
     }

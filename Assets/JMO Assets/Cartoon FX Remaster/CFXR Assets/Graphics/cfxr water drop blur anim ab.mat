@@ -2,13 +2,18 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
+<<<<<<< HEAD
   serializedVersion: 8
+=======
+  serializedVersion: 6
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: cfxr water drop blur anim ab
   m_Shader: {fileID: 4800000, guid: e198026df304af84a85675be636192ea, type: 3}
+<<<<<<< HEAD
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -21,13 +26,20 @@ Material:
   - _CFXR_OVERLAYBLEND_RGBA
   - _CFXR_OVERLAYTEX_OFF
   - _OVERLAYTEX_OFF
+=======
+  m_ShaderKeywords: _FADING_ON _FLIPBOOK_BLENDING _CFXR_OVERLAYBLEND_RGBA _OVERLAYTEX_OFF
+    _CFXR_SINGLE_CHANNEL _CFXR_DITHERED_SHADOWS_ON
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+<<<<<<< HEAD
   m_LockedProperties: 
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -67,6 +79,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+<<<<<<< HEAD
     m_Ints: []
     m_Floats:
     - _BlendOp: 0
@@ -75,6 +88,11 @@ Material:
     - _CFXR_DITHERED_SHADOWS: 1
     - _CFXR_OVERLAYBLEND: 0
     - _CFXR_OVERLAYTEX: 0
+=======
+    m_Floats:
+    - _BlendOp: 0
+    - _BumpScale: 1
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
@@ -99,6 +117,10 @@ Material:
     - _Mode: 0
     - _OVERLAYBLEND: 0
     - _OVERLAYTEX: 0
+<<<<<<< HEAD
+=======
+    - _CFXR_DITHERED_SHADOWS: 1
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     - _SecondColorSmooth: 0.2
     - _ShadowStrength: 0.5
     - _SingleChannel: 1
@@ -113,7 +135,10 @@ Material:
     - _UseDissolve: 0
     - _UseEF: 0
     - _UseFB: 1
+<<<<<<< HEAD
     - _UseFontColor: 0
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     - _UseGradientMap: 0
     - _UseSP: 1
     - _UseSecondColor: 0
@@ -129,4 +154,7 @@ Material:
     - _OverlayTex_Scroll: {r: 0.1, g: 0.1, b: 1, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SoftParticlesFadeDistance: {r: 0, g: 1, b: 0, a: 0}
+<<<<<<< HEAD
   m_BuildTextureStacks: []
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)

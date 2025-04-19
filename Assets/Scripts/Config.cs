@@ -779,6 +779,7 @@ public class Config
 
     #endregion
 
+<<<<<<< HEAD
     #region OPINIONS
 
 private const string KING_OPINION_KEY = "opinion_king";
@@ -818,6 +819,8 @@ public static int AdvisorOpinion
 #endregion
 
 
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 #region METRICS
 
 private const string FOOD_KEY = "food";

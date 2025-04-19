@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TileMatch/Scenes/Play.unity
     guid: c5cabc288ed98704081f141ebe25edba
+<<<<<<< HEAD
   - enabled: 1
     path: Assets/MiniGames/WaterSort/Water Sort.unity
     guid: b138f394770beff3888154d9dfad10ba
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_configObjects: {}

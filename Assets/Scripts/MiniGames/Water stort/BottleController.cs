@@ -6,7 +6,10 @@ public class BottleController : MonoBehaviour
 {
     public Color[] bottlesColor;
     public SpriteRenderer bottleMask;
+<<<<<<< HEAD
     public SpriteRenderer bottleSprite;
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     public AnimationCurve ScaleRotationMulti;
     public AnimationCurve FillAlount;
     public AnimationCurve RotationSpeedMulti;
@@ -61,12 +64,20 @@ public class BottleController : MonoBehaviour
     {
         
         ChoseRotationPointAndDirection();
+<<<<<<< HEAD
         numberOfColorToTransfer = Mathf.Min(numberOfTopColorLayers,4-bottleController.numberOfColorsInBottle);
         //numberOfColorToTransfer = 1;
         Debug.Log(numberOfColorToTransfer+" "+gameObject.name);
         Color currentTopColor = topColor;
         for (int i = 0; i < numberOfColorToTransfer; i++) 
         {
+=======
+         numberOfColorToTransfer = Mathf.Min(numberOfTopColorLayers,4-bottleController.numberOfColorsInBottle);
+        //numberOfColorToTransfer = 1;
+        Debug.Log(numberOfColorToTransfer);
+        Color currentTopColor = topColor;
+        for (int i = 0; i < numberOfColorToTransfer; i++) {
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
         if (!bottlesColor[numberOfColorsInBottle - 1 - i].Equals(currentTopColor)) {
         Debug.LogError("Attempted to transfer multiple layers of different colors!");
         return; // Prevent incorrect transfer
@@ -74,7 +85,11 @@ public class BottleController : MonoBehaviour
         }
         for(int i=0;i<numberOfColorToTransfer;i++){
            bottleController.bottlesColor[bottleController.numberOfColorsInBottle+i] = topColor;
+<<<<<<< HEAD
            Debug.Log("Transfer"+i);
+=======
+            Debug.Log(bottleController.numberOfColorsInBottle+i);
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
            }
         bottleController.UpdateColorsOnShader();
         CalculateRotationIndex(4 - bottleController.numberOfColorsInBottle);
@@ -95,11 +110,14 @@ public class BottleController : MonoBehaviour
 
 
     IEnumerator MoveBottle(){
+<<<<<<< HEAD
         if(directionMulti==1)
             {
                bottleSprite.flipX = true; 
                bottleMask.flipX = true;
             }
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
         startPosition = originalPosition;
         if(choseRotationPoint==leftRotationPoint)
         {
@@ -132,11 +150,15 @@ public class BottleController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         transform.position = endPosition;
+<<<<<<< HEAD
         if(directionMulti==1)
         {
                bottleSprite.flipX = false; 
                bottleMask.flipX  = false;
         }
+=======
+
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
         transform.GetComponent<SpriteRenderer>().sortingOrder -=2;
         bottleMask.sortingOrder-=2;
     }
@@ -257,10 +279,13 @@ public class BottleController : MonoBehaviour
         if(numberOfColorsInBottle==0){
             return true;
         }
+<<<<<<< HEAD
         else if(numberOfColorsInBottle==4)
         {
                 return false;
         }
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
         else
         {
             if(numberOfColorsInBottle==4){
@@ -304,7 +329,10 @@ public class BottleController : MonoBehaviour
             directionMulti = 1.0f;
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     bool isColorSorted = false;
     public bool IsSorted()
     {

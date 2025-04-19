@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 56e0112c1eb156f46802af5892d97fcf
+=======
+guid: 6214a90e2808ba447bd82fdc3d61c519
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 PrefabImporter:
   externalObjects: {}
   userData: 

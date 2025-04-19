@@ -44,6 +44,11 @@ public class GameLevelManager : MonoBehaviour
     {
         instance = this;
 
+<<<<<<< HEAD
+=======
+        Debug.Log("Assigned by "+ this.name,this);
+
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
         //if (Config.CheckWideScreen()) {
         //    slotBG.transform.parent.localPosition = new Vector3(0f, -4.5f, 0f);
         //}

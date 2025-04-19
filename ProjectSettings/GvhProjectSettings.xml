@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <projectSettings>
+<<<<<<< HEAD
   <projectSetting name="com.google.external-dependency-managerAnalyticsEnabled" value="False" />
+=======
+  <projectSetting name="com.google.external-dependency-managerAnalyticsCookie" value="fcf424d1b862403b92a3f14d4ba791af" />
+  <projectSetting name="com.google.external-dependency-managerAnalyticsEnabled" value="True" />
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   <projectSetting name="Google.IOSResolver.VerboseLoggingEnabled" value="False" />
   <projectSetting name="Google.PackageManagerResolver.VerboseLoggingEnabled" value="False" />
   <projectSetting name="Google.VersionHandler.VerboseLoggingEnabled" value="False" />
