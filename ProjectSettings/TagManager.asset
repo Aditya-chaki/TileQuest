@@ -11,8 +11,11 @@ TagManager:
   - Building
   - StoreSlot
   - Cloud
+<<<<<<< HEAD
   - Screw
   - DropArea
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   layers:
   - Default
   - TransparentFX
@@ -32,7 +35,11 @@ TagManager:
   - Tile
   - UI2
   - Story
+<<<<<<< HEAD
   - Screw
+=======
+  - 
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   - 
   - 
   - 

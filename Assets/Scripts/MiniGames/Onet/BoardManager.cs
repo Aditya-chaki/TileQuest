@@ -46,6 +46,10 @@ public class BoardManager : MonoBehaviour
     {
         SetDifficulty();
         InitializeBoard();
+<<<<<<< HEAD
+=======
+        Debug.Log(Config.Food+" Food At Start");
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     }
 
     void Update()
@@ -53,7 +57,11 @@ public class BoardManager : MonoBehaviour
         if(gameState == GAME_STATE.PLAYING)
             GameTime();
 
+<<<<<<< HEAD
         if(pausePopUp.gameObject.active==false&&WatchAdPopup.gameObject.active==false)
+=======
+        if(pausePopUp.gameObject.active==false)
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
             gameState = GAME_STATE.PLAYING;
     }
     void SetDifficulty()
@@ -154,7 +162,10 @@ public class BoardManager : MonoBehaviour
     if (firstTile == null)
     {
         firstTile = tile;
+<<<<<<< HEAD
         firstTile.GetComponent<RectTransform>().localScale *=1.2f; 
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     }
     else if (secondTile == null)
     {
@@ -167,21 +178,35 @@ public class BoardManager : MonoBehaviour
                
                 lineRender.enabled = true;
                 int idx=0;
+<<<<<<< HEAD
                 firstTile.GetComponent<RectTransform>().DOShakePosition(0.5f,5f,10,90,false,true);
                 secondTile.GetComponent<RectTransform>().DOShakePosition(0.5f,5f,10,90,false,true);
                 score++;
                 StartCoroutine(RemoveTiles(firstTile, secondTile));
                 
+=======
+                firstTile.transform.DOShakePosition(0.3f,5f,10,90,false,true);
+                secondTile.transform.DOShakePosition(0.3f,5f,10,90,false,true);
+                score++;
+                RemoveTiles(firstTile, secondTile);
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
             }
             lineRender.enabled = false;
             points.Clear();
         }
+<<<<<<< HEAD
         firstTile.GetComponent<RectTransform>().localScale *=0.8f;
+=======
+
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
         firstTile = secondTile = null;
     }
     }
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 
     bool IsValidMatch(Vector2Int start, Vector2Int end)
     {
@@ -221,9 +246,14 @@ public class BoardManager : MonoBehaviour
         return pos.x >= 0 && pos.x < rows && pos.y >= 0 && pos.y < cols;
     }
 
+<<<<<<< HEAD
     IEnumerator RemoveTiles(OnetTile t1, OnetTile t2)
     {  
         yield return new WaitForSeconds(0.4f); 
+=======
+    void RemoveTiles(OnetTile t1, OnetTile t2)
+    {   
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     grid[t1.gridPosition.y, t1.gridPosition.x] = null;
     grid[t2.gridPosition.y, t2.gridPosition.x] = null;
 
@@ -233,12 +263,17 @@ public class BoardManager : MonoBehaviour
 
     public void HintPressed()
     {
+<<<<<<< HEAD
         gameState = GAME_STATE.PAUSE;
         if(gameover)
         {
             return;
         }
         WatchAdPopup.SetActive(true);
+=======
+        WatchAdPopup.SetActive(true);
+        gameState = GAME_STATE.PAUSE;
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     }
 
    public void ShowHint()
@@ -254,9 +289,12 @@ public class BoardManager : MonoBehaviour
             {
                 tile1.GetComponent<Image>().color = Color.green;
                 tile2.GetComponent<Image>().color = Color.green;
+<<<<<<< HEAD
                 tile1.GetComponent<RectTransform>().DOShakePosition(0.5f,5f,10,90,false,true);
                 tile2.GetComponent<RectTransform>().DOShakePosition(0.5f,5f,10,90,false,true);
                 
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
                 return;
             }
         }
@@ -271,6 +309,7 @@ public class BoardManager : MonoBehaviour
         }
            yield return new WaitForEndOfFrame();
     }
+<<<<<<< HEAD
 
     bool gameover = false;
     
@@ -282,6 +321,12 @@ public class BoardManager : MonoBehaviour
         }
         Debug.Log(gameState);
        if(Time.time>nextTime&&time>0 && gameState==GAME_STATE.PLAYING)
+=======
+    bool gameover = false;
+    void GameTime()
+    {
+       if(Time.time>nextTime&&time>0)
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
        { nextTime = Time.time + 1;
        time--;
        }
@@ -337,11 +382,14 @@ public class BoardManager : MonoBehaviour
 
     public void Pause()
     {
+<<<<<<< HEAD
         if(gameover)
         {
             return;
         }
 
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
         if(gameState==GAME_STATE.PLAYING){
         gameState = GAME_STATE.PAUSE;
         pausePopUp.OpenPausePopup(0);

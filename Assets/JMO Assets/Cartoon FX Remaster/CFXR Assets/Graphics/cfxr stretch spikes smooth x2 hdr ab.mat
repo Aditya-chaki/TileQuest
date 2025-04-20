@@ -2,13 +2,18 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
+<<<<<<< HEAD
   serializedVersion: 8
+=======
+  serializedVersion: 6
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: cfxr stretch spikes smooth x2 hdr ab
   m_Shader: {fileID: 4800000, guid: e198026df304af84a85675be636192ea, type: 3}
+<<<<<<< HEAD
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -21,13 +26,19 @@ Material:
   - _CFXR_DITHERED_SHADOWS_OFF
   - _CFXR_OVERLAYBLEND_RGBA
   - _CFXR_OVERLAYTEX_OFF
+=======
+  m_ShaderKeywords: _CFXR_DISSOLVE _FADING_ON _CFXR_HDR_BOOST _CFXR_SINGLE_CHANNEL
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+<<<<<<< HEAD
   m_LockedProperties: 
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -59,6 +70,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+<<<<<<< HEAD
     m_Ints: []
     m_Floats:
     - _BlendingType: 0
@@ -66,6 +78,9 @@ Material:
     - _CFXR_OVERLAYBLEND: 0
     - _CFXR_OVERLAYTEX: 0
     - _Cutoff: 0.1
+=======
+    m_Floats:
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     - _DissolveSmooth: 0.3
     - _Distort: 0.1
     - _DstBlend: 10
@@ -76,17 +91,25 @@ Material:
     - _InvertDissolveTex: 0
     - _OVERLAYBLEND: 0
     - _OVERLAYTEX: 0
+<<<<<<< HEAD
+=======
+    - _CFXR_DITHERED_SHADOWS: 0
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     - _SecondColorSmooth: 0.2
     - _ShadowStrength: 1
     - _SingleChannel: 1
     - _SoftParticlesFadeDistanceFar: 1
     - _SoftParticlesFadeDistanceNear: 0
     - _SrcBlend: 5
+<<<<<<< HEAD
     - _UVDistortionAdd: 0
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     - _UseAlphaClip: 0
     - _UseDissolve: 1
     - _UseEF: 0
     - _UseFB: 0
+<<<<<<< HEAD
     - _UseFontColor: 0
     - _UseGradientMap: 0
     - _UseSP: 1
@@ -94,8 +117,17 @@ Material:
     - _UseUV2Distortion: 0
     - _UseUVDistortion: 0
     - _ZWrite: 0
+=======
+    - _UseGradientMap: 0
+    - _UseSP: 1
+    - _UseSecondColor: 0
+    - _UseUVDistortion: 0
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     m_Colors:
     - _DistortScrolling: {r: 0, g: 0, b: 1, a: 1}
     - _OverlayTex_Scroll: {r: 0.1, g: 0.1, b: 1, a: 1}
     - _SoftParticlesFadeDistance: {r: 0, g: 1, b: 0, a: 0}
+<<<<<<< HEAD
   m_BuildTextureStacks: []
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)

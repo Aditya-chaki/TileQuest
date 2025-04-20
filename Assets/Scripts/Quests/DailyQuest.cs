@@ -43,10 +43,17 @@ public class DailyQuest : MonoBehaviour
     private void Update()
     {
         UpdateTimerUI();
+<<<<<<< HEAD
         if (DailyRewards.instance.isTimeToReset)
         {
             ResetAllQuests();
         }
+=======
+      /*  if (DailyRewards.instance.isTimeToReset)
+        {
+            ResetAllQuests();
+        }*/
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     }
 
     #endregion
@@ -93,6 +100,15 @@ public class DailyQuest : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+<<<<<<< HEAD
+=======
+    public void Reset_Quest_1_Call()
+    {
+        ResetQuest1();
+    }
+
+
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     // Reset quest 1
     private static void ResetQuest1()
     {
