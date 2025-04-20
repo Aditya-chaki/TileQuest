@@ -7,11 +7,22 @@ public class OpinionGem : MonoBehaviour
     public GameObject tooltipPanel;
     public TMP_Text tooltipText;
 
+    public TMP_Text tooltipTitle;
+
+    //testing purpose only
+    void Start()
+{
+    Config.KingOpinion = 80;
+    Config.QueenOpinion = 60;
+    Config.AdvisorOpinion = 40;
+}
+
+
     public void ShowOpinionTooltip()
     {
         tooltipPanel.SetActive(true);
         float avg = GetAverageOpinion();
-        tooltipText.text = $"Avg Opinion: {avg:F1}";
+        tooltipText.text = $"{avg:F1}";
     }
 
     public void HideOpinionTooltip()
