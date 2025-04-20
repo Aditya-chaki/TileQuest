@@ -4,11 +4,15 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+<<<<<<< HEAD
 using DG.Tweening;
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 public class PlayMiniGame : MonoBehaviour
 {
     public Button miniGameButton; 
     public string miniGameSceneName;
+<<<<<<< HEAD
     public bool isValueType;
     public bool isRandomTime;
     public float metricValue;
@@ -26,6 +30,21 @@ public class PlayMiniGame : MonoBehaviour
     public string Metric;
     int randtime;
     float nexttime;
+=======
+
+    
+    public enum METRIC_TYPE
+    {
+        NONE,
+        FOOD,
+        STRENGTH,
+        HEALTH,
+        GOLD,
+        ENERGY,
+    }
+
+    public METRIC_TYPE metricType;
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 
      void Start()
     {
@@ -33,6 +52,7 @@ public class PlayMiniGame : MonoBehaviour
         {
             miniGameButton.onClick.AddListener(LoadMiniGame);
         }
+<<<<<<< HEAD
         randtime = Random.Range(15,55);
     }
 
@@ -94,6 +114,14 @@ public class PlayMiniGame : MonoBehaviour
                 }   
             }
         }
+=======
+    }
+
+
+    public void LoadMiniGame()
+    {
+        SceneManager.LoadSceneAsync(miniGameSceneName);
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     }
 
 }

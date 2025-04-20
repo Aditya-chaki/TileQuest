@@ -1845,6 +1845,7 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -451
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 3233425419344260872, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1885,6 +1886,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     - target: {fileID: 3784818797067179133, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
         type: 3}
       propertyPath: m_fontSize
@@ -1925,6 +1928,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Decision Card
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 4167621658377620508, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
         type: 3}
       propertyPath: m_IsActive
@@ -1935,6 +1939,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     - target: {fileID: 4679220665155620720, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -2090,6 +2096,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 6332723248498822823, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2130,6 +2137,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     - target: {fileID: 6967553163891348212, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
         type: 3}
       propertyPath: card
@@ -2175,6 +2184,7 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -4.3407
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 7860707814504515606, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2195,6 +2205,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     - target: {fileID: 7927822437457332209, guid: 9b0662dbb6ac1174488d30f46f9e52b3,
         type: 3}
       propertyPath: m_SizeDelta.x

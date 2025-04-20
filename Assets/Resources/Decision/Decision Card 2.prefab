@@ -28,16 +28,27 @@ RectTransform:
   m_GameObject: {fileID: 161621483334549742}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
   m_LocalScale: {x: 0.76134, y: 0.76134, z: 0.76134}
+=======
+  m_LocalScale: {x: 1, y: 1, z: 1}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7001614341059361901}
   m_Father: {fileID: 4679220665155620720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -495.82, y: 397}
   m_SizeDelta: {x: 366.3557, y: 237.07}
+=======
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 250.12, y: -810}
+  m_SizeDelta: {x: 311.022, y: 511.94}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5732438141957914117
 CanvasRenderer:
@@ -60,15 +71,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
+<<<<<<< HEAD
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+=======
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 471821016f07480418968284b8662ae4, type: 3}
   m_Type: 0
+=======
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -120,6 +140,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5278483255838524016}
   m_OnClick:
     m_PersistentCalls:
+<<<<<<< HEAD
       m_Calls:
       - m_Target: {fileID: 2524396155354344764}
         m_TargetAssemblyTypeName: CoinAnimationController, Assembly-CSharp
@@ -1564,6 +1585,9 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+=======
+      m_Calls: []
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 --- !u!1 &2253590300116457502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,8 +1622,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: -7.239929, y: -8}
   m_SizeDelta: {x: -101.807, y: -77.0949}
+=======
+  m_AnchoredPosition: {x: -0.000015258789, y: -13}
+  m_SizeDelta: {x: -90.9133, y: -51.6356}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6545631485012073407
 CanvasRenderer:
@@ -1629,10 +1658,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_text: Cancel the event
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65835b78f7028c43908b574cf075407, type: 2}
   m_sharedMaterial: {fileID: 2092455689183173837, guid: f65835b78f7028c43908b574cf075407,
+=======
+  m_text: Decline
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 1b2a739cb8ab8d4438a147b1441e5fb5, type: 2}
+  m_sharedMaterial: {fileID: -964437813602171090, guid: 1b2a739cb8ab8d4438a147b1441e5fb5,
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1657,8 +1693,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
+<<<<<<< HEAD
   m_fontSize: 40
   m_fontSizeBase: 40
+=======
+  m_fontSize: 60
+  m_fontSizeBase: 60
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1699,7 +1740,11 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+<<<<<<< HEAD
 --- !u!1 &2372887173522643107
+=======
+--- !u!1 &4151223610825654221
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1707,22 +1752,35 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 4066622399220676408}
   - component: {fileID: 7245383164262033771}
   - component: {fileID: 7140657027611236055}
   m_Layer: 5
   m_Name: Text (TMP)
+=======
+  - component: {fileID: 7451763785353948173}
+  - component: {fileID: 6430626775724319814}
+  - component: {fileID: 7076793451237510761}
+  m_Layer: 5
+  m_Name: Image (1)
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!224 &4066622399220676408
+=======
+--- !u!224 &7451763785353948173
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 2372887173522643107}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -2041,11 +2099,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2814532878703617271}
+=======
+  m_GameObject: {fileID: 4151223610825654221}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+<<<<<<< HEAD
   m_Father: {fileID: 5193429055226021041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2131,20 +2193,40 @@ RectTransform:
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &284864391487240743
+=======
+  m_Father: {fileID: 4679220665155620720}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2.6156, y: 199.67}
+  m_SizeDelta: {x: 981.4067, y: 404.43}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6430626775724319814
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 3318063378767196663}
   m_CullTransparentMesh: 1
 --- !u!114 &1678936861641703416
+=======
+  m_GameObject: {fileID: 4151223610825654221}
+  m_CullTransparentMesh: 1
+--- !u!114 &7076793451237510761
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 3318063378767196663}
+=======
+  m_GameObject: {fileID: 4151223610825654221}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -2158,7 +2240,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 92fdd3bf761aa674e8ebd873402c927e, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: f96f82f52cf7303449694a7bdf2c70a4, type: 3}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2168,6 +2254,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+<<<<<<< HEAD
 --- !u!1 &4076702240755067153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,6 +2390,8 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 --- !u!1 &4167621658377620508
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,7 +2403,10 @@ GameObject:
   - component: {fileID: 5193429055226021041}
   - component: {fileID: 6967553163891348212}
   - component: {fileID: 5799246560916290442}
+<<<<<<< HEAD
   - component: {fileID: -5396129773874246663}
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Layer: 17
   m_Name: Decision Card 2
   m_TagString: Untagged
@@ -2335,9 +2427,14 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8102652547897713730}
+<<<<<<< HEAD
   - {fileID: 4679220665155620720}
   - {fileID: 5440852371727319031}
   - {fileID: 6559141560692375086}
+=======
+  - {fileID: 8975912682231393227}
+  - {fileID: 4679220665155620720}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2357,6 +2454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958418e314aac0c4eb28a31440f4a44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   optionAButton: {fileID: 2158923097405553441}
   optionBButton: {fileID: 667718353444212801}
   foodA: -10
@@ -2372,6 +2470,15 @@ MonoBehaviour:
   energyB: 5
   opinionB: -10
   characterId: Queen
+=======
+  optionALoss: {fileID: 2158923097405553441}
+  optionBGain: {fileID: 667718353444212801}
+  card: {fileID: 4167621658377620508}
+  foodVariable: 0
+  strengthVariable: 0
+  healthVariable: -100
+  goldVariable: 0
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 --- !u!222 &5799246560916290442
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2380,6 +2487,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4167621658377620508}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!114 &-5396129773874246663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2395,6 +2503,9 @@ MonoBehaviour:
   opinionRingImage: {fileID: 1390431239472560602}
   characterId: Queen
 --- !u!1 &4205095223717695267
+=======
+--- !u!1 &4414568516121778509
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2402,28 +2513,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 6235857456445896689}
   - component: {fileID: 3506615159805605193}
   - component: {fileID: 3675478399803922319}
   m_Layer: 5
   m_Name: Down (4)
+=======
+  - component: {fileID: 8975912682231393227}
+  - component: {fileID: 1127415404861200222}
+  - component: {fileID: 1958118718958837508}
+  - component: {fileID: 794585659777199531}
+  m_Layer: 17
+  m_Name: BackButton
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< HEAD
   m_IsActive: 0
 --- !u!224 &6235857456445896689
+=======
+  m_IsActive: 1
+--- !u!224 &8975912682231393227
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 4205095223717695267}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+=======
+  m_GameObject: {fileID: 4414568516121778509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+<<<<<<< HEAD
   m_Father: {fileID: 3233425419344260872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2432,20 +2563,40 @@ RectTransform:
   m_SizeDelta: {x: 61.2413, y: 59.9912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3506615159805605193
+=======
+  m_Father: {fileID: 5193429055226021041}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -768.8176, y: 1504.6373}
+  m_SizeDelta: {x: 233.3598, y: 221.7018}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1127415404861200222
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 4205095223717695267}
   m_CullTransparentMesh: 1
 --- !u!114 &3675478399803922319
+=======
+  m_GameObject: {fileID: 4414568516121778509}
+  m_CullTransparentMesh: 1
+--- !u!114 &1958118718958837508
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 4205095223717695267}
+=======
+  m_GameObject: {fileID: 4414568516121778509}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -2459,7 +2610,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 2b0fab04878045c49b676852ab337246, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: d084038e3eb69c74eb97879836fa09aa, type: 3}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2469,6 +2624,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+<<<<<<< HEAD
 --- !u!1 &4247067175255713997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2508,15 +2664,25 @@ RectTransform:
   m_SizeDelta: {x: 196.008, y: 191.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6290262481954687618
+=======
+--- !u!114 &794585659777199531
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 4247067175255713997}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+=======
+  m_GameObject: {fileID: 4414568516121778509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -2547,6 +2713,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
+<<<<<<< HEAD
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 4744010579161579463}
   m_HandleRect: {fileID: 0}
@@ -2633,6 +2800,12 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+=======
+  m_TargetGraphic: {fileID: 1958118718958837508}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 --- !u!1 &4500494576823489491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2662,6 +2835,7 @@ RectTransform:
   m_GameObject: {fileID: 4500494576823489491}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2671,12 +2845,26 @@ RectTransform:
   - {fileID: 1820589805087376242}
   - {fileID: 4083381500939022751}
   - {fileID: 2542472851396650570}
+=======
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 7451763785353948173}
+  - {fileID: 4969591012247310091}
+  - {fileID: 8145518795266327141}
+  - {fileID: 3134378383271404370}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Father: {fileID: 5193429055226021041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: -87.20804, y: -163}
   m_SizeDelta: {x: 1358.0912, y: 1442.553}
+=======
+  m_AnchoredPosition: {x: -87.20804, y: -228.97}
+  m_SizeDelta: {x: 1183.305, y: 2370.9248}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1141490413240650029
 CanvasRenderer:
@@ -2706,7 +2894,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 4f0398a054bb20246aff95bf567541e3, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: 3754fe1e3974f304a82e85e64c3c3890, type: 3}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2744,6 +2936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupDuration: 0.5
   popupScale: 1.2
+<<<<<<< HEAD
 --- !u!1 &4781352904212012409
 GameObject:
   m_ObjectHideFlags: 0
@@ -3079,6 +3272,8 @@ MonoBehaviour:
   fadeSpeed: 0.5
   popScaleFactor: 1.2
   popDuration: 0.3
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 --- !u!1 &5055799261545865708
 GameObject:
   m_ObjectHideFlags: 0
@@ -3106,6 +3301,7 @@ RectTransform:
   m_GameObject: {fileID: 5055799261545865708}
   m_LocalRotation: {x: -0, y: -0, z: 0.007062487, w: -0.99997514}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
   m_LocalScale: {x: 1.2000002, y: 1.2000002, z: 1.2000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3115,6 +3311,17 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.9812007, y: -0.41336823}
   m_SizeDelta: {x: 658.8181, y: 145.7276}
+=======
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4679220665155620720}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.809}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2.6156, y: 199.67}
+  m_SizeDelta: {x: 869.0905, y: 325.7452}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5290655871256263503
 CanvasRenderer:
@@ -3144,10 +3351,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_text: A grand banquet to celebrate the harvest.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65835b78f7028c43908b574cf075407, type: 2}
   m_sharedMaterial: {fileID: 2092455689183173837, guid: f65835b78f7028c43908b574cf075407,
+=======
+  m_text: 'Let the people fend for themselves. '
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 1b2a739cb8ab8d4438a147b1441e5fb5, type: 2}
+  m_sharedMaterial: {fileID: -964437813602171090, guid: 1b2a739cb8ab8d4438a147b1441e5fb5,
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3172,8 +3386,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
+<<<<<<< HEAD
   m_fontSize: 50
   m_fontSizeBase: 50
+=======
+  m_fontSize: 100
+  m_fontSizeBase: 100
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3214,6 +3433,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+<<<<<<< HEAD
 --- !u!1 &5101340578453648137
 GameObject:
   m_ObjectHideFlags: 0
@@ -3506,6 +3726,8 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 --- !u!1 &5204269094982084567
 GameObject:
   m_ObjectHideFlags: 0
@@ -3581,6 +3803,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+<<<<<<< HEAD
 --- !u!1 &5409942748934452817
 GameObject:
   m_ObjectHideFlags: 0
@@ -4708,6 +4931,8 @@ MonoBehaviour:
   fadeSpeed: 0.5
   popScaleFactor: 1.2
   popDuration: 0.3
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 --- !u!1 &7277303955900733866
 GameObject:
   m_ObjectHideFlags: 0
@@ -4742,8 +4967,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 0, y: 2}
   m_SizeDelta: {x: -104.6661, y: -73.5491}
+=======
+  m_AnchoredPosition: {x: 0.000015258789, y: 0}
+  m_SizeDelta: {x: 0.000030518, y: 0}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2597114432750011271
 CanvasRenderer:
@@ -4773,18 +5003,30 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_text: Host the banquet
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65835b78f7028c43908b574cf075407, type: 2}
   m_sharedMaterial: {fileID: 2092455689183173837, guid: f65835b78f7028c43908b574cf075407,
+=======
+  m_text: Approve
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 1b2a739cb8ab8d4438a147b1441e5fb5, type: 2}
+  m_sharedMaterial: {fileID: -964437813602171090, guid: 1b2a739cb8ab8d4438a147b1441e5fb5,
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
+<<<<<<< HEAD
     rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+=======
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4801,8 +5043,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
+<<<<<<< HEAD
   m_fontSize: 40
   m_fontSizeBase: 40
+=======
+  m_fontSize: 60
+  m_fontSizeBase: 60
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4843,6 +5090,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+<<<<<<< HEAD
 --- !u!1 &7358893505578361734
 GameObject:
   m_ObjectHideFlags: 0
@@ -5665,6 +5913,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatDistance: 10
   duration: 2
+=======
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
 --- !u!1 &8929211936724858103
 GameObject:
   m_ObjectHideFlags: 0
@@ -5693,16 +5943,27 @@ RectTransform:
   m_GameObject: {fileID: 8929211936724858103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
   m_LocalScale: {x: 0.72598, y: 0.72598, z: 0.72598}
+=======
+  m_LocalScale: {x: 1, y: 1, z: 1}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7048218939889502612}
   m_Father: {fileID: 4679220665155620720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 514, y: 399}
   m_SizeDelta: {x: 363.03, y: 252.172}
+=======
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -236, y: -810}
+  m_SizeDelta: {x: 298.063, y: 511.94}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &103281866415567021
 CanvasRenderer:
@@ -5725,15 +5986,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
+<<<<<<< HEAD
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+=======
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 471821016f07480418968284b8662ae4, type: 3}
   m_Type: 0
+=======
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5785,6 +6055,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1841476246406268073}
   m_OnClick:
     m_PersistentCalls:
+<<<<<<< HEAD
       m_Calls:
       - m_Target: {fileID: 2874400183308255712}
         m_TargetAssemblyTypeName: CoinAnimationController, Assembly-CSharp
@@ -5903,3 +6174,6 @@ MonoBehaviour:
   fadeSpeed: 0.5
   popScaleFactor: 1.2
   popDuration: 0.3
+=======
+      m_Calls: []
+>>>>>>> b97c403d (Daily Quest reset update & Managed scenes)
