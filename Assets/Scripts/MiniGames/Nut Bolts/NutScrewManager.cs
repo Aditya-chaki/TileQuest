@@ -13,6 +13,7 @@ public class NutScrewManager : MonoBehaviour
     public Camera cam;
     public LayerMask screwLayer;
     public GameObject ball;
+    public HingeJoint2D joint;
     GameObject screw;
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,7 @@ public class NutScrewManager : MonoBehaviour
                     if(screw && hit.collider.tag=="DropArea")
                     {
                         screw.transform.position = hit.collider.transform.position;
+                        screw.SetActive(false);
                         screw =null;
                     }
                 }                  

@@ -173,8 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   miniGameButton: {fileID: 843934176}
   miniGameSceneName: Water Sort
-  isValueType: 1
-  isRandomTime: 0
+  isValueType: 0
+  isRandomTime: 1
   metricValue: 200
   metricType: 0
   Metric: Food
