@@ -50,7 +50,7 @@ public class NutScrewManager : MonoBehaviour
                     if(screw && hit.collider.tag=="DropArea")
                     {
                         screw.transform.position = hit.collider.transform.position;
-                        screw.SetActive(false);
+                        joint.enabled = false;
                         screw =null;
                     }
                 }                  

@@ -11,6 +11,8 @@ public class PlayMiniGame : MonoBehaviour
     public string miniGameSceneName;
     public bool isValueType;
     public bool isRandomTime;
+    public int minTime = 20;
+    public int maxTime = 150;
     public float metricValue;
     public enum METRIC_TYPE
     {
@@ -22,7 +24,6 @@ public class PlayMiniGame : MonoBehaviour
         HEALTH,
     }
 
-    public METRIC_TYPE metricType;
     public string Metric;
     int randtime;
     float nexttime;
@@ -53,7 +54,7 @@ public class PlayMiniGame : MonoBehaviour
         {
             requiredValue = Config.Energy + metricValue;   
         }
-        randtime = Random.Range(15,55);
+        randtime = Random.Range(minTime,maxTime);
     }
 
     void Update()
@@ -63,7 +64,7 @@ public class PlayMiniGame : MonoBehaviour
             if(Time.time>nexttime)
             {
                 randtime--;
-                nexttime = Time.time;
+                nexttime = Time.time+1;
                 ActiveButton();
             }
         }
@@ -94,14 +95,14 @@ public class PlayMiniGame : MonoBehaviour
     void ActiveButton()
     {
         miniGameButton.gameObject.SetActive(true);
-        miniGameButton.GetComponent<RectTransform>().DOShakePosition(0.25f,25f,5,45,false,true);
+        miniGameButton.GetComponent<RectTransform>().DOShakePosition(0.5f,5f,10,90,false,true);
            
     }
 
     public void LoadMiniGame()
     {
         if(isRandomTime){
-            randtime =  Random.Range(15,55);
+            randtime =  Random.Range(minTime,maxTime);
             SceneManager.LoadSceneAsync(miniGameSceneName);
         }
         if(isValueType)
