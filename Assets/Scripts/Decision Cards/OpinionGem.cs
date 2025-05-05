@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
+
 
 public class OpinionGem : MonoBehaviour
 {
@@ -19,11 +21,17 @@ public class OpinionGem : MonoBehaviour
         tooltipPanel.SetActive(false);
     }
 
-    private float GetAverageOpinion()
+private float GetAverageOpinion()
+{
+    List<string> factions = Config.InitialFactions;
+    float total = 0f;
+
+    foreach (var faction in factions)
     {
-        int king = Config.KingOpinion;
-        int queen = Config.QueenOpinion;
-        int advisor = Config.AdvisorOpinion;
-        return (king + queen + advisor) / 3f;
+        total += Config.GetFactionOpinion(faction);
     }
+
+    return total / factions.Count;
+}
+
 }

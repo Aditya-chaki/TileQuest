@@ -781,37 +781,60 @@ public class Config
 
     #region OPINIONS
 
-private const string KING_OPINION_KEY = "opinion_king";
-private const string QUEEN_OPINION_KEY = "opinion_queen";
-private const string ADVISOR_OPINION_KEY = "opinion_advisor";
+// private const string KING_OPINION_KEY = "opinion_king";
+// private const string QUEEN_OPINION_KEY = "opinion_queen";
+// private const string ADVISOR_OPINION_KEY = "opinion_advisor";
 
-public static int KingOpinion
+// public static int KingOpinion
+// {
+//     get => PlayerPrefs.GetInt(KING_OPINION_KEY, 0);
+//     set
+//     {
+//         PlayerPrefs.SetInt(KING_OPINION_KEY, value);
+//         PlayerPrefs.Save();
+//     }
+// }
+
+// public static int QueenOpinion
+// {
+//     get => PlayerPrefs.GetInt(QUEEN_OPINION_KEY, 0);
+//     set
+//     {
+//         PlayerPrefs.SetInt(QUEEN_OPINION_KEY, value);
+//         PlayerPrefs.Save();
+//     }
+// }
+
+// public static int AdvisorOpinion
+// {
+//     get => PlayerPrefs.GetInt(ADVISOR_OPINION_KEY, 0);
+//     set
+//     {
+//         PlayerPrefs.SetInt(ADVISOR_OPINION_KEY, value);
+//         PlayerPrefs.Save();
+//     }
+// }
+
+public static int GetFactionOpinion(string factionId)
 {
-    get => PlayerPrefs.GetInt(KING_OPINION_KEY, 0);
-    set
-    {
-        PlayerPrefs.SetInt(KING_OPINION_KEY, value);
-        PlayerPrefs.Save();
-    }
+    return GetOpinionMeter(factionId);
 }
 
-public static int QueenOpinion
+public static void SetFactionOpinion(string factionId, int value)
 {
-    get => PlayerPrefs.GetInt(QUEEN_OPINION_KEY, 0);
-    set
-    {
-        PlayerPrefs.SetInt(QUEEN_OPINION_KEY, value);
-        PlayerPrefs.Save();
-    }
+    SetOpinionMeter(factionId, value);
 }
 
-public static int AdvisorOpinion
+public static List<string> InitialFactions = new List<string> { "nobles", "peasants", "army", "clergy" };
+
+public static void InitializeFactions()
 {
-    get => PlayerPrefs.GetInt(ADVISOR_OPINION_KEY, 0);
-    set
+    foreach (string faction in InitialFactions)
     {
-        PlayerPrefs.SetInt(ADVISOR_OPINION_KEY, value);
-        PlayerPrefs.Save();
+        if (!LoadCharacterIdList().Contains(faction))
+        {
+            SetOpinionMeter(faction, 50); // Default neutral
+        }
     }
 }
 

@@ -2663,17 +2663,20 @@ MonoBehaviour:
   optionBButton: {fileID: 667718353444212801}
   foodA: -20
   goldA: -10
-  strengthA: -10
   healthA: 0
   energyA: 0
   opinionA: 10
   foodB: 0
   goldB: 20
-  strengthB: 20
   healthB: 0
   energyB: 0
   opinionB: -15
-  characterId: King
+  factionOpinionEffectsA:
+  - factionId: 
+    opinionChange: 0
+  factionOpinionEffectsB:
+  - factionId: 
+    opinionChange: 0
 --- !u!114 &8364125369362710935
 MonoBehaviour:
   m_ObjectHideFlags: 0
