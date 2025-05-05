@@ -62,7 +62,6 @@ public class DecisionCard : MonoBehaviour
     [Header("Option A Effects")]
     [SerializeField] private int foodA;
     [SerializeField] private int goldA;
-    [SerializeField] private int strengthA;
     [SerializeField] private int healthA;
     [SerializeField] private int energyA;
     [SerializeField] private int opinionA;
@@ -71,13 +70,16 @@ public class DecisionCard : MonoBehaviour
     [Header("Option B Effects")]
     [SerializeField] private int foodB;
     [SerializeField] private int goldB;
-    [SerializeField] private int strengthB;
     [SerializeField] private int healthB;
     [SerializeField] private int energyB;
     [SerializeField] private int opinionB;
 
-    [Header("Character ID")]
-    [SerializeField] private string characterId = "queen"; // default, can change per card
+    // [Header("Character ID")]
+    // [SerializeField] private string characterId = "queen"; // default, can change per card
+    [Header("Faction Opinion Effects")]
+    [SerializeField] private List<FactionOpinionEffect> factionOpinionEffectsA;
+    [SerializeField] private List<FactionOpinionEffect> factionOpinionEffectsB;
+
 
     void Start()
     {
@@ -85,29 +87,44 @@ public class DecisionCard : MonoBehaviour
         optionBButton?.onClick.AddListener(ApplyOptionB);
     }
 
-    private void ApplyOptionA()
+    [System.Serializable]
+    public class FactionOpinionEffect
     {
-        ApplyChanges(foodA, goldA, strengthA, healthA, energyA, opinionA);
+        public string factionId; // "nobles", "peasants", etc.
+        public int opinionChange;
     }
 
-    private void ApplyOptionB()
+
+private void ApplyOptionA()
+{
+    ApplyChanges(foodA, goldA, healthA, energyA, factionOpinionEffectsA);
+}
+
+private void ApplyOptionB()
+{
+    ApplyChanges(foodB, goldB, healthB, energyB, factionOpinionEffectsB);
+}
+
+
+private void ApplyChanges(
+    int food, int gold, int health, int energy,
+    List<FactionOpinionEffect> opinionEffects
+)
+{
+    Config.Food += food;
+    Config.Gold += gold;
+    Config.Health += health;
+    Config.Energy += energy;
+
+    foreach (var effect in opinionEffects)
     {
-        ApplyChanges(foodB, goldB, strengthB, healthB, energyB, opinionB);
+        int current = Config.GetFactionOpinion(effect.factionId);
+        Config.SetFactionOpinion(effect.factionId, current + effect.opinionChange);
     }
 
-    private void ApplyChanges(int food, int gold, int strength, int health, int energy, int opinionChange)
-    {
-        Config.Food += food;
-        Config.Gold += gold;
-        Config.Strength += strength;
-        Config.Health += health;
-        Config.Energy += energy;
+    Destroy(gameObject, 2f);
+}
 
-        int currentOpinion = Config.GetOpinionMeter(characterId);
-        Config.SetOpinionMeter(characterId, currentOpinion + opinionChange);
-
-        Destroy(gameObject, 2f);
-    }
 }
 
 
