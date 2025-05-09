@@ -40,7 +40,9 @@ public class WinPopup2 : MonoBehaviour
     public BBUIButton btnHome;
 
     public GameObject lockGroup;
-
+    public Text rewardTxt;
+    public Image rewardImg;
+    public Sprite food,health,Gold,energy;
     private void Awake()
     {
         instance = this;
@@ -144,6 +146,39 @@ public class WinPopup2 : MonoBehaviour
 
         txtClaimCoin.text = $"+{coinValue}";
         txtClaimxRewardCoin.text = $"+{coinValue * xReward}";
+        //Reward
+        int randReward;
+        if(_level<50)
+        {
+            randReward = UnityEngine.Random.Range(0,3);
+        }
+        else
+        {
+            randReward = UnityEngine.Random.Range(0,4);
+        }
+        switch(randReward)
+        {
+          case 0://Config.Food = Config.Food+score*(int)diffRewardFactor*20;
+                 rewardImg.sprite = food;
+                 rewardTxt.text = (Config.Food+_level*20).ToString();
+                 Debug.Log(Config.Food+" Food Reward");
+                 break;
+          case 1://Config.Health = Config.Health+score*(int)diffRewardFactor*20;
+                 rewardImg.sprite = energy;
+                 rewardTxt.text = (Config.Energy+200).ToString();
+                 Debug.Log(Config.Energy+" Energy Reward");
+                 break; 
+          case 2://Config.Gold = Config.Gold+score*(int)diffRewardFactor*20;
+                 rewardImg.sprite = Gold;
+                 rewardTxt.text = (Config.Gold+_level*20).ToString();
+                 Debug.Log(Config.Gold+" Gold Reward");
+                 break;   
+          case 3://Config.Health = Config.Health+score*(int)diffRewardFactor*20;
+                 rewardImg.sprite = health;
+                 rewardTxt.text = (Config.Health+_level*20).ToString();
+                 Debug.Log(Config.Health+" Health Reward");
+                 break;     
+        }
 
         ShowViews();
     }

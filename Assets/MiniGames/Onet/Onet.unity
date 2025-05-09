@@ -2952,7 +2952,6 @@ MonoBehaviour:
   btnContinue: {fileID: 1088183415}
   btnClose: {fileID: 553018241}
   lockGroup: {fileID: 1273428810}
-  stateClosePopup: 0
 --- !u!1 &676357737
 GameObject:
   m_ObjectHideFlags: 0
@@ -5746,7 +5745,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 10dcdb9b99ffe1f4ca3d4a206c6fdedc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62e7e0b01bda3924ead9c1e5756a738e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
