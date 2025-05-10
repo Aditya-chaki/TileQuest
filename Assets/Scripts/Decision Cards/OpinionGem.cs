@@ -21,17 +21,17 @@ public class OpinionGem : MonoBehaviour
         tooltipPanel.SetActive(false);
     }
 
-private float GetAverageOpinion()
-{
-    List<string> factions = Config.InitialFactions;
-    float total = 0f;
-
-    foreach (var faction in factions)
+    private float GetAverageOpinion()
     {
-        total += Config.GetFactionOpinion(faction);
-    }
+        List<string> factions = Config.InitialFactions;
+        float total = 0f;
 
-    return total / factions.Count;
-}
+        foreach (var faction in factions)
+        {
+            total += Config.GetFactionOpinion(faction);
+        }
+
+        return total / factions.Count;
+    }
 
 }

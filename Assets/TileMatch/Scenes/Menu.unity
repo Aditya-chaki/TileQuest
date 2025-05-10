@@ -64408,8 +64408,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3133158889004794718}
   m_HandleRect: {fileID: 0}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.9999999
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -65101,7 +65101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3cccc7566a79e6f4db1cf7c71ad04409, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea7a9fdbeef626c47baf79ec0082e581, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -65325,8 +65325,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7693792124051919429}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_Value: 0.51588744
-  m_Size: 0.27696264
+  m_Value: 0.5158875
+  m_Size: 0.27696267
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -75072,7 +75072,7 @@ GameObject:
   - component: {fileID: 778287747136106430}
   - component: {fileID: 6670911329808511523}
   m_Layer: 5
-  m_Name: Strength
+  m_Name: Opinion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
