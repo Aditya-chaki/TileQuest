@@ -148,6 +148,7 @@ public class WinPopup2 : MonoBehaviour
         txtClaimxRewardCoin.text = $"+{coinValue * xReward}";
         //Reward
         int randReward;
+        int rewardValue = _level*UnityEngine.Random.Range(12,20);
         if(_level<50)
         {
             randReward = UnityEngine.Random.Range(0,3);
@@ -160,22 +161,22 @@ public class WinPopup2 : MonoBehaviour
         {
           case 0://Config.Food = Config.Food+score*(int)diffRewardFactor*20;
                  rewardImg.sprite = food;
-                 rewardTxt.text = (Config.Food+_level*20).ToString();
+                 rewardTxt.text = "x"+(rewardValue).ToString();
                  Debug.Log(Config.Food+" Food Reward");
                  break;
           case 1://Config.Health = Config.Health+score*(int)diffRewardFactor*20;
                  rewardImg.sprite = energy;
-                 rewardTxt.text = (Config.Energy+200).ToString();
+                 rewardTxt.text = "x"+(200).ToString();
                  Debug.Log(Config.Energy+" Energy Reward");
                  break; 
           case 2://Config.Gold = Config.Gold+score*(int)diffRewardFactor*20;
                  rewardImg.sprite = Gold;
-                 rewardTxt.text = (Config.Gold+_level*20).ToString();
+                 rewardTxt.text = "x"+(rewardValue).ToString();
                  Debug.Log(Config.Gold+" Gold Reward");
                  break;   
           case 3://Config.Health = Config.Health+score*(int)diffRewardFactor*20;
                  rewardImg.sprite = health;
-                 rewardTxt.text = (Config.Health+_level*20).ToString();
+                 rewardTxt.text = "x"+(rewardValue).ToString();
                  Debug.Log(Config.Health+" Health Reward");
                  break;     
         }
