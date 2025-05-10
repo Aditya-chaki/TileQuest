@@ -32529,7 +32529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodText: {fileID: 3770990638342852660}
-  strengthText: {fileID: 166157892}
+  opinionText: {fileID: 0}
   healthText: {fileID: 1013258256}
   goldText: {fileID: 1495412611}
   energyText: {fileID: 0}
@@ -65325,7 +65325,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7693792124051919429}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_Value: 0.5158875
+  m_Value: 0.51588744
   m_Size: 0.27696267
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -73244,7 +73244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodText: {fileID: 1472993277432234095}
-  strengthText: {fileID: 3032884080763287096}
+  opinionText: {fileID: 3032884080763287096}
   healthText: {fileID: 1475306709843550389}
   goldText: {fileID: 987171789250817177}
   energyText: {fileID: 8401769184906013286}
