@@ -292,21 +292,22 @@ public class BoardManager : MonoBehaviour
         boardParent.gameObject.SetActive(false);
         Debug.Log("Game Over");
         int randReward = Random.Range(0,4);
+        int rewardValue = score*(int)diffRewardFactor*20;
         switch(randReward)
         {
             case 0://Config.Food = Config.Food+score*(int)diffRewardFactor*20;
                     rewardSprite.sprite = food;
-                    rewardText.text = Config.Food.ToString();
+                    rewardText.text = "x"+rewardValue.ToString();
                      Debug.Log(Config.Food+" Food Reward");
                      break;
             case 1://Config.Health = Config.Health+score*(int)diffRewardFactor*20;
                     rewardSprite.sprite = health;
-                    rewardText.text = Config.Health.ToString();
+                    rewardText.text = "x"+rewardValue.ToString();
                      Debug.Log(Config.Health+" Health Reward");
                      break; 
             case 2://Config.Gold = Config.Gold+score*(int)diffRewardFactor*20;
                     rewardSprite.sprite = Gold;
-                    rewardText.text = Config.Gold.ToString();
+                    rewardText.text = "x"+rewardValue.ToString();
                      Debug.Log(Config.Gold+" Gold Reward");
                      break;                 
         }
