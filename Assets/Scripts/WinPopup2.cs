@@ -11,7 +11,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 public class WinPopup2 : MonoBehaviour
 {
     public static WinPopup2 instance;
@@ -40,7 +40,7 @@ public class WinPopup2 : MonoBehaviour
     public BBUIButton btnHome;
 
     public GameObject lockGroup;
-    public Text rewardTxt;
+    public TMP_Text rewardTxt;
     public Image rewardImg;
     public Sprite food,health,Gold,energy;
     private void Awake()
