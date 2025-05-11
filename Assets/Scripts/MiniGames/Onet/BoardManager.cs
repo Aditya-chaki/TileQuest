@@ -295,17 +295,17 @@ public class BoardManager : MonoBehaviour
         int rewardValue = score*(int)diffRewardFactor*20;
         switch(randReward)
         {
-            case 0://Config.Food = Config.Food+score*(int)diffRewardFactor*20;
+            case 0:Config.Food = Config.Food+rewardValue;
                     rewardSprite.sprite = food;
                     rewardText.text = "x"+rewardValue.ToString();
                      Debug.Log(Config.Food+" Food Reward");
                      break;
-            case 1://Config.Health = Config.Health+score*(int)diffRewardFactor*20;
+            case 1:Config.Health = Config.Health+rewardValue;
                     rewardSprite.sprite = health;
                     rewardText.text = "x"+rewardValue.ToString();
                      Debug.Log(Config.Health+" Health Reward");
                      break; 
-            case 2://Config.Gold = Config.Gold+score*(int)diffRewardFactor*20;
+            case 2:Config.Gold = Config.Gold+rewardValue;
                     rewardSprite.sprite = Gold;
                     rewardText.text = "x"+rewardValue.ToString();
                      Debug.Log(Config.Gold+" Gold Reward");

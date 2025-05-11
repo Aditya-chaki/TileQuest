@@ -159,22 +159,22 @@ public class WinPopup2 : MonoBehaviour
         }
         switch(randReward)
         {
-          case 0://Config.Food = Config.Food+score*(int)diffRewardFactor*20;
+          case 0:Config.Food = Config.Food+rewardValue;
                  rewardImg.sprite = food;
                  rewardTxt.text = "x"+(rewardValue).ToString();
                  Debug.Log(Config.Food+" Food Reward");
                  break;
-          case 1://Config.Health = Config.Health+score*(int)diffRewardFactor*20;
+          case 1:Config.Energy = Config.Energy+200;
                  rewardImg.sprite = energy;
                  rewardTxt.text = "x"+(200).ToString();
                  Debug.Log(Config.Energy+" Energy Reward");
                  break; 
-          case 2://Config.Gold = Config.Gold+score*(int)diffRewardFactor*20;
+          case 2:Config.Gold = Config.Gold+rewardValue;
                  rewardImg.sprite = Gold;
                  rewardTxt.text = "x"+(rewardValue).ToString();
                  Debug.Log(Config.Gold+" Gold Reward");
                  break;   
-          case 3://Config.Health = Config.Health+score*(int)diffRewardFactor*20;
+          case 3:Config.Health = Config.Health+rewardValue;
                  rewardImg.sprite = health;
                  rewardTxt.text = "x"+(rewardValue).ToString();
                  Debug.Log(Config.Health+" Health Reward");
