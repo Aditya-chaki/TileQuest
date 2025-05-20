@@ -52,7 +52,7 @@ public class DailyQuestUI : MonoBehaviour
            // UpdateQuestVisibility();
             return;
         }
-
+        SetQuestTitle();
         int currentValue = PlayerPrefs.GetInt($"{questKey}", 0);
         bool isCompleted = false;
         isCompleted = IsQuestCompleted();
