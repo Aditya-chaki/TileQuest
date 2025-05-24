@@ -5,6 +5,7 @@ using System;
 
 public class WeeklyRewards : MonoBehaviour
 {
+    public static WeeklyRewards instance;
     [Header("UI Elements")]
     [SerializeField] private Slider progressSlider;  // Slider to represent progress
     [SerializeField] private TextMeshProUGUI progressText;  // Text to show progress
@@ -21,6 +22,11 @@ public class WeeklyRewards : MonoBehaviour
     private int[] rewardThresholds = { 10, 30, 60, 100 };
     private int[] coinRewards = { 100, 200, 400, 600 };  // Corresponding coin rewards
 
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+    }
+    
     private void Start()
     {
         // Load progress and reset time from PlayerPrefs
