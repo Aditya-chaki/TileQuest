@@ -50814,6 +50814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ea185ef210d600da92969a8360467a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questProgressSlider: {fileID: 1466655503}
 --- !u!1 &1735593481
 GameObject:
   m_ObjectHideFlags: 0
