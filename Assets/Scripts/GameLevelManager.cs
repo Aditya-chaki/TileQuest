@@ -512,7 +512,7 @@ public class GameLevelManager : MonoBehaviour
 
                 }
                 Debug.Log("Match 3 tiles");
-                DailyQuest.UpdateTilesMatched();
+                DailyQuest.UpdateTilesMatched(1);
                 listCheckMatch3Slots[i].SetItemSlot_Match3();
             }
             StartCoroutine(SetListItemSlot_ResetPosition());
