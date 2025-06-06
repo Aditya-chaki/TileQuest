@@ -115,6 +115,8 @@ public class WinPopup2 : MonoBehaviour
     {
 
         level = _level;
+        WeeklyQuest.UpdateLevelsCompleted();
+        DailyQuest.UpdateLevelsCompleted();
         countStar = _countStar;
         if (countStar == 3)
         {
@@ -173,6 +175,7 @@ public class WinPopup2 : MonoBehaviour
                  rewardImg.sprite = Gold;
                  rewardTxt.text = "x"+(rewardValue).ToString();
                  Debug.Log(Config.Gold+" Gold Reward");
+                 WeeklyQuest.UpdateGoldEarned(rewardValue);
                  break;   
           case 3:Config.Health = Config.Health+rewardValue;
                  rewardImg.sprite = health;

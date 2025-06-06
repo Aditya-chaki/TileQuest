@@ -128,5 +128,6 @@ public class CollectingItems : MonoBehaviour
         // Update the player's gold in Config
         Config.Gold += goldToCollect;
         Debug.Log($"Collected {goldToCollect} gold. Total Gold: {Config.Gold}");
+        WeeklyQuest.UpdateGoldEarned(goldToCollect);
     }
 }

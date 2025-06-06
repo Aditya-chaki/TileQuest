@@ -121,7 +121,7 @@ private void ApplyChanges(
         int current = Config.GetFactionOpinion(effect.factionId);
         Config.SetFactionOpinion(effect.factionId, current + effect.opinionChange);
     }
-
+    DailyQuest.UpdateDecisionsMade();
     Destroy(gameObject, 2f);
 }
 

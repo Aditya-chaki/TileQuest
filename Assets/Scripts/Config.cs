@@ -823,6 +823,8 @@ public static int GetFactionOpinion(string factionId)
 public static void SetFactionOpinion(string factionId, int value)
 {
     SetOpinionMeter(factionId, value);
+    WeeklyQuest.UpdateOpinionIncreased(value);
+    DailyQuest.UpdateOpinionPoints(value);
 }
 
 public static List<string> InitialFactions = new List<string> { "nobles", "peasants", "army", "clergy" };

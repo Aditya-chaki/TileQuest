@@ -44,6 +44,8 @@ public class BoardManager : MonoBehaviour
 
     void Start()
     {
+        WeeklyQuest.UpdateMiniGamesPlayed();
+        DailyQuest.UpdateMinigamesPlayed();
         SetDifficulty();
         InitializeBoard();
     }
@@ -307,6 +309,7 @@ public class BoardManager : MonoBehaviour
                      break; 
             case 2:Config.Gold = Config.Gold+rewardValue;
                     rewardSprite.sprite = Gold;
+                    WeeklyQuest.UpdateGoldEarned(rewardValue);
                     rewardText.text = "x"+rewardValue.ToString();
                      Debug.Log(Config.Gold+" Gold Reward");
                      break;                 

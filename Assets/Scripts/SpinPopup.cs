@@ -122,6 +122,7 @@ public class SpinPopup : MonoBehaviour
         {
             lockGroup.gameObject.SetActive(false);
         }
+        DailyQuest.UpdateWheelSpins();
     }
 
     int indexResult;

@@ -21,6 +21,11 @@ public class WeeklyQuestUIManager : MonoBehaviour
     void Start()
     {
         Debug.Log("Weekly quest UI");
+        string activeQuest = PlayerPrefs.GetString("WeeklyActiveQuests");
+        int n = 5;
+        int[] activeQuestArray = activeQuest.Split(',').Select(s => int.TryParse(s, out n) ? n : 0).ToArray(); 
+        Debug.Log(activeQuestArray.Length+" "+activeQuestArray[0]+" "+activeQuest);
+        questIndex = activeQuestArray[questNumber-1];
         questKey = WeeklyQuest.GetQuestKey(questIndex);
         requiredValue = WeeklyQuest.GetRequiredAmount(questNumber);
         discriptionTxt.text = WeeklyQuest.GetQuestName(questNumber);
@@ -50,6 +55,13 @@ public class WeeklyQuestUIManager : MonoBehaviour
             case 1: return WeeklyQuest.IsQuest1Completed();
             case 2: return WeeklyQuest.IsQuest2Completed();
             case 3: return WeeklyQuest.IsQuest3Completed();
+            case 4: return WeeklyQuest.IsQuest4Completed();
+            case 5: return WeeklyQuest.IsQuest5Completed();
+            case 6: return WeeklyQuest.IsQuest6Completed();
+            case 7: return WeeklyQuest.IsQuest7Completed();
+            case 8: return WeeklyQuest.IsQuest8Completed();
+            case 9: return WeeklyQuest.IsQuest9Completed();
+            case 10:return WeeklyQuest.IsQuest10Completed();
             default:
                 Debug.LogWarning($"Invalid quest number: {questIndex}");
                 return false;
@@ -81,7 +93,5 @@ public class WeeklyQuestUIManager : MonoBehaviour
             progressText.text = $"{currentValue}/{requiredValue}";
             completedIndicator.enabled = false;
         }
-
-        //UpdateQuestVisibility();
     }
 }

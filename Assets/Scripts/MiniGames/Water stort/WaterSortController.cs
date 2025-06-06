@@ -45,6 +45,8 @@ public class WaterSortController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        WeeklyQuest.UpdateMiniGamesPlayed();
+        DailyQuest.UpdateMinigamesPlayed();
         if(isDebug==false)
              Difficulty = Random.Range(1,4);
         width = (float)Screen.width;
@@ -225,6 +227,7 @@ public class WaterSortController : MonoBehaviour
                     rewardSprite.sprite = Gold;
                     rewardText.text = "x"+rewardValue.ToString();
                      Debug.Log(Config.Gold+" Gold Reward");
+                     WeeklyQuest.UpdateGoldEarned(rewardValue);
                      break;                 
         }
        
