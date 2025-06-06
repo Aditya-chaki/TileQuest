@@ -2649,7 +2649,7 @@ GameObject:
   - component: {fileID: 8364125369362710935}
   - component: {fileID: 5799246560916290442}
   m_Layer: 17
-  m_Name: Decision Card
+  m_Name: Scene1Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
