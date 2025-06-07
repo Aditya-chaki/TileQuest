@@ -115,13 +115,29 @@ namespace VNGame
         private List<Dialogue> currentDialogues;
         private bool isTyping = false;
 
+        // 🟩 Store already-used decision cards
+        private HashSet<string> shownCards = new HashSet<string>();
+
         void Start()
         {
+            if (characterNameText == null) Debug.LogError("Missing: characterNameText");
+            if (dialogueText == null) Debug.LogError("Missing: dialogueText");
+            if (nameInputField == null) Debug.LogError("Missing: nameInputField");
+            if (dialoguePanel == null) Debug.LogError("Missing: dialoguePanel");
+            if (decisionCardParent == null) Debug.LogError("Missing: decisionCardParent");
+            if (dialogueManager == null) Debug.LogError("Missing: dialogueManager");
+
             DisplayDialogueByInvariant(initialInvariant);
         }
 
         public void DisplayDialogueByInvariant(string invariant)
         {
+            if (dialogueManager == null || dialogueManager.dialogues == null)
+            {
+                Debug.LogError("DialogueManager or dialogues is null.");
+                return;
+            }
+
             if (dialogueManager.dialogues.ContainsKey(invariant))
             {
                 currentDialogues = dialogueManager.dialogues[invariant];
@@ -129,6 +145,10 @@ namespace VNGame
                 currentInvariant = invariant;
                 dialoguePanel.SetActive(true);
                 ShowDialogueLine();
+            }
+            else
+            {
+                Debug.LogError($"Dialogue block '{invariant}' not found in DialogueManager.");
             }
         }
 
@@ -155,12 +175,17 @@ namespace VNGame
             if (speaker == "System")
             {
                 nameInputField.gameObject.SetActive(true);
+                nameInputField.onEndEdit.RemoveAllListeners();
                 nameInputField.onEndEdit.AddListener(HandleNameInput);
+                nameInputField.Select();
+                nameInputField.ActivateInputField();
             }
             else if (speaker == "DecisionCard")
             {
                 dialoguePanel.SetActive(false);
-                SpawnDecisionCard("Scene1Card");
+                // 🔄 Automatically use invariant to match card (e.g., Scene1Card for Tut1)
+                string cardName = currentInvariant.Replace("Tut", "Scene") + "Card";
+                SpawnDecisionCardFromHierarchy(cardName);
             }
             else
             {
@@ -195,27 +220,46 @@ namespace VNGame
             OnNextDialogue();
         }
 
-        void SpawnDecisionCard(string prefabName)
+        void SpawnDecisionCardFromHierarchy(string cardName)
         {
-            GameObject cardPrefab = Resources.Load<GameObject>("DecisionCard/" + prefabName);
-            if (cardPrefab != null)
+            if (shownCards.Contains(cardName))
             {
-                GameObject cardInstance = Instantiate(cardPrefab, decisionCardParent.transform);
-                var decisionCard = cardInstance.GetComponent<DecisionCard>();
-                decisionCard.OnDecisionMade += HandleDecisionMade;
+                Debug.Log("Decision card already shown: " + cardName);
+                return;
+            }
+
+            GameObject cardObject = GameObject.Find(cardName);
+            if (cardObject != null)
+            {
+                shownCards.Add(cardName);
+                cardObject.SetActive(true);
+                var decisionCard = cardObject.GetComponent<DecisionCard>();
+                if (decisionCard != null)
+                {
+                    decisionCard.OnDecisionMade += HandleDecisionMade;
+                }
+                else
+                {
+                    Debug.LogWarning("No DecisionCard script found on: " + cardName);
+                }
             }
             else
             {
-                Debug.LogError("Decision card not found: " + prefabName);
+                Debug.LogError("Decision card not found in hierarchy: " + cardName);
             }
         }
 
         void HandleDecisionMade(string nextInvariant)
         {
+            // 🔥 Destroy active cards under parent
             foreach (Transform child in decisionCardParent.transform)
-                Destroy(child.gameObject);
+            {
+                if (child != null)
+                    Destroy(child.gameObject);
+            }
 
             DisplayDialogueByInvariant(nextInvariant);
         }
     }
 }
+

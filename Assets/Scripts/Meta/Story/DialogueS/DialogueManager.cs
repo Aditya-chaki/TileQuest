@@ -68,7 +68,10 @@ namespace VNGame
 
             for (int i = 1; i < data.Length; i++)
             {
-                string[] row = data[i].Split(new char[] { ',' });
+                if (string.IsNullOrWhiteSpace(data[i])) continue;
+
+                string[] row = ParseCSVRow(data[i]);
+
                 if (row.Length >= 3)
                 {
                     Dialogue dialogue = new Dialogue
@@ -83,7 +86,52 @@ namespace VNGame
 
                     dialogues[dialogue.Invariant].Add(dialogue);
                 }
+                else
+                {
+                    Debug.LogWarning($"Skipping malformed CSV line at {i}: {data[i]}");
+                }
             }
+        }
+
+        /// <summary>
+        /// Safely parses CSV lines handling quoted commas and escaped quotes.
+        /// </summary>
+        private string[] ParseCSVRow(string line)
+        {
+            var fields = new List<string>();
+            bool inQuotes = false;
+            string field = "";
+
+            for (int i = 0; i < line.Length; i++)
+            {
+                char c = line[i];
+
+                if (c == '"')
+                {
+                    // Escaped quote
+                    if (inQuotes && i + 1 < line.Length && line[i + 1] == '"')
+                    {
+                        field += '"';
+                        i++; // Skip next quote
+                    }
+                    else
+                    {
+                        inQuotes = !inQuotes;
+                    }
+                }
+                else if (c == ',' && !inQuotes)
+                {
+                    fields.Add(field);
+                    field = "";
+                }
+                else
+                {
+                    field += c;
+                }
+            }
+
+            fields.Add(field); // last field
+            return fields.ToArray();
         }
     }
 
@@ -95,3 +143,4 @@ namespace VNGame
         public string Character;
     }
 }
+
