@@ -183,10 +183,11 @@ namespace VNGame
             else if (speaker == "DecisionCard")
             {
                 dialoguePanel.SetActive(false);
-                // 🔄 Automatically use invariant to match card (e.g., Scene1Card for Tut1)
-                string cardName = currentInvariant.Replace("Tut", "Scene") + "Card";
-                SpawnDecisionCardFromHierarchy(cardName);
+                string cardName = currentInvariant + "Card";  // e.g. tut1Card
+                SpawnDecisionCardFromResources(cardName);
             }
+
+
             else
             {
                 StartCoroutine(TypeText(dialogue.EN));
@@ -220,34 +221,67 @@ namespace VNGame
             OnNextDialogue();
         }
 
-        void SpawnDecisionCardFromHierarchy(string cardName)
+        // void SpawnDecisionCardFromHierarchy(string cardName)
+        // {
+        //     if (shownCards.Contains(cardName))
+        //     {
+        //         Debug.Log("Decision card already shown: " + cardName);
+        //         return;
+        //     }
+
+        //     GameObject cardObject = GameObject.Find(cardName);
+        //     if (cardObject != null)
+        //     {
+        //         shownCards.Add(cardName);
+        //         cardObject.SetActive(true);
+        //         var decisionCard = cardObject.GetComponent<DecisionCard>();
+        //         if (decisionCard != null)
+        //         {
+        //             decisionCard.OnDecisionMade += HandleDecisionMade;
+        //         }
+        //         else
+        //         {
+        //             Debug.LogWarning("No DecisionCard script found on: " + cardName);
+        //         }
+        //     }
+        //     else
+        //     {
+        //         Debug.LogError("Decision card not found in hierarchy: " + cardName);
+        //     }
+        // }
+
+        void SpawnDecisionCardFromResources(string cardName)
         {
             if (shownCards.Contains(cardName))
             {
-                Debug.Log("Decision card already shown: " + cardName);
+                Debug.Log("Card already shown: " + cardName);
                 return;
             }
 
-            GameObject cardObject = GameObject.Find(cardName);
-            if (cardObject != null)
+            GameObject prefab = Resources.Load<GameObject>("Decision/" + cardName);
+            if (prefab != null)
             {
+                Debug.Log("Spawning card from Resources/Decision/" + cardName);
+                GameObject cardInstance = Instantiate(prefab, decisionCardParent.transform);
                 shownCards.Add(cardName);
-                cardObject.SetActive(true);
-                var decisionCard = cardObject.GetComponent<DecisionCard>();
+
+                var decisionCard = cardInstance.GetComponent<DecisionCard>();
                 if (decisionCard != null)
                 {
                     decisionCard.OnDecisionMade += HandleDecisionMade;
                 }
                 else
                 {
-                    Debug.LogWarning("No DecisionCard script found on: " + cardName);
+                    Debug.LogWarning("No DecisionCard component on prefab: " + cardName);
                 }
             }
             else
             {
-                Debug.LogError("Decision card not found in hierarchy: " + cardName);
+                Debug.LogError("Card not found in Resources/Decision/: " + cardName);
             }
         }
+
+
 
         void HandleDecisionMade(string nextInvariant)
         {

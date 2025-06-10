@@ -2316,7 +2316,7 @@ GameObject:
   - component: {fileID: 5799246560916290442}
   - component: {fileID: -4544633604247039806}
   m_Layer: 17
-  m_Name: Decision Card 1
+  m_Name: tut1Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
