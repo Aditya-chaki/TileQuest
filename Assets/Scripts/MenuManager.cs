@@ -24,7 +24,10 @@ public class MenuManager : MonoBehaviour
     public BBUIButton btnRemoveAd;
     public Image logo;
     public GameObject lockGroup;
-   
+    public Image map;
+    public Sprite dayMap;
+    public Sprite nightMap;
+    public GameObject starEffect;
     private void Awake()
     {
         instance = this;
@@ -43,8 +46,16 @@ public class MenuManager : MonoBehaviour
         Debug.Log($"Gold: {Config.Gold}");
         Debug.Log($"Current Energy: {Config.Energy}");
         Debug.Log("Menu opened");
-
-
+        if(Random.Range(-1, 2) == 0)
+        {   Debug.Log("map set to night");  
+            map.sprite = nightMap;
+            starEffect.SetActive(true);
+        }
+        else
+        {   Debug.Log("map set to day");
+            starEffect.SetActive(false); 
+            map.sprite = dayMap;     
+        }
         btnSetting.OnPointerClickCallBack_Completed.AddListener(TouchSetting);
         //btnGift.OnPointerClickCallBack_Completed.AddListener(TouchGift);
         btnShop.OnPointerClickCallBack_Completed.AddListener(TouchShop);

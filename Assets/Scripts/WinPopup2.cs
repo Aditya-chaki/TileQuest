@@ -266,7 +266,7 @@ public class WinPopup2 : MonoBehaviour
         Config.Energy = Config.Energy + 5;
         btnBonusEnergy.GetComponent<BBUIView>().ShowView();
         btnBonusEnergy.GetComponent<BBUIView>().HideView();
-
+        DailyQuest.UpdateAdsWatched();
     }
 
 
