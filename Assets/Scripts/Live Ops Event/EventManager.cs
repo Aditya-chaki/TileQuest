@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class EventManager : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class EventManager : MonoBehaviour
         
     }
 
-     public void UpdateAllEvents()
+    public void UpdateAllEvents()
     {
         foreach (var e in activeEvents)
         {
@@ -42,4 +43,19 @@ public class EventManager : MonoBehaviour
             e.ClaimReward();
         }
     }
+
+    void StartMileStoneEvent()
+    {
+        var milestone = new MilestoneEvent() {
+            eventName = "Level Up Challenge",
+            startTime = DateTime.Now,
+            endTime = DateTime.Now.AddDays(3),
+            requiredFood = 1000,
+            requiredGold = 1000,
+            requiredMagic = 1000,
+        };
+        milestone.Initialize();
+        activeEvents.Add(milestone);
+    }
+
 }
