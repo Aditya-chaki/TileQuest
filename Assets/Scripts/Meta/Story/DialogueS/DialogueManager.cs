@@ -57,81 +57,50 @@ namespace VNGame
         public TextAsset csvFile;
         public Dictionary<string, List<Dialogue>> dialogues = new Dictionary<string, List<Dialogue>>();
 
-        void Start()
-        {
-            LoadCSV();
-        }
+        void Start() => LoadCSV();
 
         void LoadCSV()
         {
-            string[] data = csvFile.text.Split(new char[] { '\n' });
+            string[] data = csvFile.text.Split('\n');
 
             for (int i = 1; i < data.Length; i++)
             {
                 if (string.IsNullOrWhiteSpace(data[i])) continue;
 
-                string[] row = ParseCSVRow(data[i]);
+                string[] row = data[i].Split(',');
 
-                if (row.Length >= 3)
+                Dialogue d = new Dialogue
                 {
-                    Dialogue dialogue = new Dialogue
-                    {
-                        Invariant = row[0].Trim(),
-                        EN = row[1].Trim().Trim('"'),
-                        Character = row[2].Trim()
-                    };
+                    Invariant = row[0].Trim(),
+                    EN = row[1].Trim().Trim('"'),
+                    Character = row[2].Trim()
+                };
 
-                    if (!dialogues.ContainsKey(dialogue.Invariant))
-                        dialogues[dialogue.Invariant] = new List<Dialogue>();
-
-                    dialogues[dialogue.Invariant].Add(dialogue);
-                }
-                else
+                if (d.Character == "DecisionCard" && row.Length >= 8)
                 {
-                    Debug.LogWarning($"Skipping malformed CSV line at {i}: {data[i]}");
+                    d.OptionA = row[3].Trim();
+                    d.OptionB = row[4].Trim();
+                    d.NextA = row[5].Trim();
+                    d.NextB = row[6].Trim();
+
+                    int.TryParse(row[7], out d.InfluenceA);
+                    int.TryParse(row[8], out d.InfluenceB);
+                    int.TryParse(row[9], out d.FoodA);
+                    int.TryParse(row[10], out d.FoodB);
+                    int.TryParse(row[9], out d.GoldA);
+                    int.TryParse(row[10], out d.GoldB);
+                    int.TryParse(row[11], out d.MagicA);
+                    int.TryParse(row[12], out d.MagicB);
+                    int.TryParse(row[13], out d.OpinionA);
+                    int.TryParse(row[14], out d.OpinionB);
+                    // Add more if you use HealthA, EnergyB, etc.
                 }
+
+                if (!dialogues.ContainsKey(d.Invariant))
+                    dialogues[d.Invariant] = new List<Dialogue>();
+
+                dialogues[d.Invariant].Add(d);
             }
-        }
-
-        /// <summary>
-        /// Safely parses CSV lines handling quoted commas and escaped quotes.
-        /// </summary>
-        private string[] ParseCSVRow(string line)
-        {
-            var fields = new List<string>();
-            bool inQuotes = false;
-            string field = "";
-
-            for (int i = 0; i < line.Length; i++)
-            {
-                char c = line[i];
-
-                if (c == '"')
-                {
-                    // Escaped quote
-                    if (inQuotes && i + 1 < line.Length && line[i + 1] == '"')
-                    {
-                        field += '"';
-                        i++; // Skip next quote
-                    }
-                    else
-                    {
-                        inQuotes = !inQuotes;
-                    }
-                }
-                else if (c == ',' && !inQuotes)
-                {
-                    fields.Add(field);
-                    field = "";
-                }
-                else
-                {
-                    field += c;
-                }
-            }
-
-            fields.Add(field); // last field
-            return fields.ToArray();
         }
     }
 
@@ -141,6 +110,20 @@ namespace VNGame
         public string Invariant;
         public string EN;
         public string Character;
+
+        // Optional for decision cards
+        public string OptionA, OptionB;
+        public string NextA, NextB;
+        public int InfluenceA, InfluenceB;
+        public int GoldA, GoldB;
+
+        public int FoodA, FoodB; // gonna get delete in future as it should not exist but here for testing purposes
+
+        public int MagicA, MagicB;
+
+        public int OpinionA, OpinionB;
+        // Add more fields like HealthA, EnergyA, etc., if needed
     }
 }
+
 
