@@ -97,6 +97,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace VNGame
 {
@@ -106,50 +107,39 @@ namespace VNGame
         public TextMeshProUGUI dialogueText;
         public TMP_InputField nameInputField;
         public GameObject dialoguePanel;
-        public GameObject decisionCardParent;
+        public GameObject decisionCardTemplate; // assign the disabled prefab in scene
+        public TMP_Text questionText;
+        public TMP_Text optionAButtonText;
+        public TMP_Text optionBButtonText;
+        public Button optionAButton;
+        public Button optionBButton;
         public DialogueManager dialogueManager;
         public string initialInvariant = "Tut1";
 
         private string currentInvariant;
         private int currentDialogueIndex;
         private List<Dialogue> currentDialogues;
+        private Dialogue currentDecision;
         private bool isTyping = false;
-
-        // 🟩 Store already-used decision cards
-        private HashSet<string> shownCards = new HashSet<string>();
 
         void Start()
         {
-            if (characterNameText == null) Debug.LogError("Missing: characterNameText");
-            if (dialogueText == null) Debug.LogError("Missing: dialogueText");
-            if (nameInputField == null) Debug.LogError("Missing: nameInputField");
-            if (dialoguePanel == null) Debug.LogError("Missing: dialoguePanel");
-            if (decisionCardParent == null) Debug.LogError("Missing: decisionCardParent");
-            if (dialogueManager == null) Debug.LogError("Missing: dialogueManager");
-
             DisplayDialogueByInvariant(initialInvariant);
         }
 
         public void DisplayDialogueByInvariant(string invariant)
         {
-            if (dialogueManager == null || dialogueManager.dialogues == null)
+            if (!dialogueManager.dialogues.ContainsKey(invariant))
             {
-                Debug.LogError("DialogueManager or dialogues is null.");
+                Debug.LogError($"Dialogue block '{invariant}' not found.");
                 return;
             }
 
-            if (dialogueManager.dialogues.ContainsKey(invariant))
-            {
-                currentDialogues = dialogueManager.dialogues[invariant];
-                currentDialogueIndex = 0;
-                currentInvariant = invariant;
-                dialoguePanel.SetActive(true);
-                ShowDialogueLine();
-            }
-            else
-            {
-                Debug.LogError($"Dialogue block '{invariant}' not found in DialogueManager.");
-            }
+            currentInvariant = invariant;
+            currentDialogues = dialogueManager.dialogues[invariant];
+            currentDialogueIndex = 0;
+            dialoguePanel.SetActive(true);
+            ShowDialogueLine();
         }
 
         void Update()
@@ -169,10 +159,9 @@ namespace VNGame
             }
 
             Dialogue dialogue = currentDialogues[currentDialogueIndex];
-            string speaker = dialogue.Character;
-            characterNameText.text = speaker;
+            characterNameText.text = dialogue.Character;
 
-            if (speaker == "System")
+            if (dialogue.Character == "System")
             {
                 nameInputField.gameObject.SetActive(true);
                 nameInputField.onEndEdit.RemoveAllListeners();
@@ -180,14 +169,10 @@ namespace VNGame
                 nameInputField.Select();
                 nameInputField.ActivateInputField();
             }
-            else if (speaker == "DecisionCard")
+            else if (dialogue.Character == "DecisionCard")
             {
-                dialoguePanel.SetActive(false);
-                string cardName = currentInvariant + "Card";  // e.g. tut1Card
-                SpawnDecisionCardFromResources(cardName);
+                ShowDecisionCard(dialogue);
             }
-
-
             else
             {
                 StartCoroutine(TypeText(dialogue.EN));
@@ -221,79 +206,36 @@ namespace VNGame
             OnNextDialogue();
         }
 
-        // void SpawnDecisionCardFromHierarchy(string cardName)
-        // {
-        //     if (shownCards.Contains(cardName))
-        //     {
-        //         Debug.Log("Decision card already shown: " + cardName);
-        //         return;
-        //     }
-
-        //     GameObject cardObject = GameObject.Find(cardName);
-        //     if (cardObject != null)
-        //     {
-        //         shownCards.Add(cardName);
-        //         cardObject.SetActive(true);
-        //         var decisionCard = cardObject.GetComponent<DecisionCard>();
-        //         if (decisionCard != null)
-        //         {
-        //             decisionCard.OnDecisionMade += HandleDecisionMade;
-        //         }
-        //         else
-        //         {
-        //             Debug.LogWarning("No DecisionCard script found on: " + cardName);
-        //         }
-        //     }
-        //     else
-        //     {
-        //         Debug.LogError("Decision card not found in hierarchy: " + cardName);
-        //     }
-        // }
-
-        void SpawnDecisionCardFromResources(string cardName)
+        void ShowDecisionCard(Dialogue decision)
         {
-            if (shownCards.Contains(cardName))
-            {
-                Debug.Log("Card already shown: " + cardName);
-                return;
-            }
+            dialoguePanel.SetActive(false);
+            decisionCardTemplate.SetActive(true);
+            currentDecision = decision;
 
-            GameObject prefab = Resources.Load<GameObject>("Decision/" + cardName);
-            if (prefab != null)
-            {
-                Debug.Log("Spawning card from Resources/Decision/" + cardName);
-                GameObject cardInstance = Instantiate(prefab, decisionCardParent.transform);
-                shownCards.Add(cardName);
+            questionText.text = decision.EN;
+            optionAButtonText.text = decision.OptionA;
+            optionBButtonText.text = decision.OptionB;
 
-                var decisionCard = cardInstance.GetComponent<DecisionCard>();
-                if (decisionCard != null)
-                {
-                    decisionCard.OnDecisionMade += HandleDecisionMade;
-                }
-                else
-                {
-                    Debug.LogWarning("No DecisionCard component on prefab: " + cardName);
-                }
-            }
-            else
-            {
-                Debug.LogError("Card not found in Resources/Decision/: " + cardName);
-            }
+            optionAButton.onClick.RemoveAllListeners();
+            optionBButton.onClick.RemoveAllListeners();
+
+            optionAButton.onClick.AddListener(() => ApplyDecision(true));
+            optionBButton.onClick.AddListener(() => ApplyDecision(false));
         }
 
-
-
-        void HandleDecisionMade(string nextInvariant)
+        void ApplyDecision(bool choseA)
         {
-            // 🔥 Destroy active cards under parent
-            foreach (Transform child in decisionCardParent.transform)
-            {
-                if (child != null)
-                    Destroy(child.gameObject);
-            }
+            int foodChange = choseA ? currentDecision.FoodA : currentDecision.FoodB;
+            int goldChange = choseA ? currentDecision.GoldA : currentDecision.GoldB;
 
+            Config.Food += foodChange;
+            Config.Gold += goldChange;
+            // Add health/energy etc. here
+
+            string nextInvariant = choseA ? currentDecision.NextA : currentDecision.NextB;
+
+            decisionCardTemplate.SetActive(false);
             DisplayDialogueByInvariant(nextInvariant);
         }
     }
 }
-
