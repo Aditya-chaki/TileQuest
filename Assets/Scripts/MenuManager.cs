@@ -27,7 +27,14 @@ public class MenuManager : MonoBehaviour
     public Image map;
     public Sprite dayMap;
     public Sprite nightMap;
+    public GameObject dayFlags;
+    public GameObject nightFlags;
     public GameObject starEffect;
+    public GameObject birdPrefab;
+    public float spawnBirdInterval = 100f;
+
+    private float timer;
+
     private void Awake()
     {
         instance = this;
@@ -50,10 +57,14 @@ public class MenuManager : MonoBehaviour
         {   Debug.Log("map set to night");  
             map.sprite = nightMap;
             starEffect.SetActive(true);
+            nightFlags.SetActive(true);
+            dayFlags.SetActive(false);
         }
         else
         {   Debug.Log("map set to day");
-            starEffect.SetActive(false); 
+            starEffect.SetActive(false);
+            dayFlags.SetActive(true);
+            nightFlags.SetActive(false); 
             map.sprite = dayMap;     
         }
         btnSetting.OnPointerClickCallBack_Completed.AddListener(TouchSetting);
@@ -80,11 +91,31 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if (timer >= spawnBirdInterval)
+        {
+            SpawnBird();
+            timer = 0f;
+            spawnBirdInterval = Random.Range(spawnBirdInterval/2,spawnBirdInterval*5);
+        }
 
     }
 
-
+    void SpawnBird()
+    {
+        int direction = Random.Range(0,2)==0? 1 : -1;
+        Vector3 spawnPos;
+        if(direction==1)
+        {
+         spawnPos = Camera.main.ScreenToWorldPoint(new Vector3(-100, Random.Range(Screen.height/3, Screen.height), 10));
+        }
+        else
+        {
+         spawnPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width+100, Random.Range(Screen.height/3, Screen.height), 10));
+        }
+        GameObject bird = Instantiate(birdPrefab, spawnPos, Quaternion.identity);
+        bird.GetComponent<BirdMovement>().SetDirection(direction);
+    }
 
     public void TouchSetting()
     {
