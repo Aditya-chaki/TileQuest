@@ -107,7 +107,7 @@ namespace VNGame
         public TextMeshProUGUI dialogueText;
         public TMP_InputField nameInputField;
         public GameObject dialoguePanel;
-        public GameObject decisionCardTemplate; // assign the disabled prefab in scene
+        public GameObject decisionCardTemplate;
         public TMP_Text questionText;
         public TMP_Text optionAButtonText;
         public TMP_Text optionBButtonText;
@@ -139,6 +139,7 @@ namespace VNGame
             currentDialogues = dialogueManager.dialogues[invariant];
             currentDialogueIndex = 0;
             dialoguePanel.SetActive(true);
+            decisionCardTemplate.SetActive(false);
             ShowDialogueLine();
         }
 
@@ -227,10 +228,11 @@ namespace VNGame
         {
             int foodChange = choseA ? currentDecision.FoodA : currentDecision.FoodB;
             int goldChange = choseA ? currentDecision.GoldA : currentDecision.GoldB;
+            int opinionChange = choseA ? currentDecision.OpinionA : currentDecision.OpinionB;
 
             Config.Food += foodChange;
             Config.Gold += goldChange;
-            // Add health/energy etc. here
+            // Add opinion, influence, etc. updates as needed
 
             string nextInvariant = choseA ? currentDecision.NextA : currentDecision.NextB;
 

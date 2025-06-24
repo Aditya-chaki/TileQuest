@@ -67,7 +67,8 @@ namespace VNGame
             {
                 if (string.IsNullOrWhiteSpace(data[i])) continue;
 
-                string[] row = data[i].Split(',');
+                string[] row = ParseCSVRow(data[i]);
+                if (row.Length < 3) continue;
 
                 Dialogue d = new Dialogue
                 {
@@ -101,6 +102,33 @@ namespace VNGame
 
                 dialogues[d.Invariant].Add(d);
             }
+        }
+
+        string[] ParseCSVRow(string line)
+        {
+            var result = new List<string>();
+            bool inQuotes = false;
+            string current = "";
+
+            foreach (char c in line)
+            {
+                if (c == '"')
+                {
+                    inQuotes = !inQuotes;
+                }
+                else if (c == ',' && !inQuotes)
+                {
+                    result.Add(current);
+                    current = "";
+                }
+                else
+                {
+                    current += c;
+                }
+            }
+
+            result.Add(current);
+            return result.ToArray();
         }
     }
 
