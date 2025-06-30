@@ -701,12 +701,15 @@ MonoBehaviour:
   dialogueText: {fileID: 4468398309594744652}
   nameInputField: {fileID: 2218107719069501516}
   dialoguePanel: {fileID: 5896770063041143651}
+  leftCharacterSlot: {fileID: 2616100172594555012}
+  currentLeftCharacter: {fileID: 5510654556433104692}
   decisionCardTemplate: {fileID: 8467350165280058103}
   questionText: {fileID: 4417913647877748962}
   optionAButtonText: {fileID: 8706073156032885398}
   optionBButtonText: {fileID: 7823874436456277482}
   optionAButton: {fileID: 5882341932695297482}
   optionBButton: {fileID: 4976611188512356010}
+  middlePortrait: {fileID: 728847653313980401}
   dialogueManager: {fileID: 9024894503413147620}
   initialInvariant: tut1
 --- !u!1 &3644490830330856695
@@ -3266,6 +3269,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5500108783584437995}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &728847653313980401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5064628562190287130, guid: 56e0112c1eb156f46802af5892d97fcf,
+    type: 3}
+  m_PrefabInstance: {fileID: 5500108783584437995}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4417913647877748962 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8150348477442039305, guid: 56e0112c1eb156f46802af5892d97fcf,
