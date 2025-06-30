@@ -128,7 +128,11 @@ public class GamePlayManager : MonoBehaviour
         Config.gameState = Config.GAME_STATE.START;
         LoadLevelGame();
         InitViews();
-
+        
+        if(level>3)
+        {
+            PlayerPrefs.SetInt("StartEvent",1);
+        }
         //FirebaseManager.instance.LogLevelStart(Config.currLevel);
     }
 
@@ -572,6 +576,13 @@ public class GamePlayManager : MonoBehaviour
             {
                 OpenRatePopup();
             }
+
+            if(level==3)
+            {
+                PlayerPrefs.SetInt("StartEvent",1);
+            }
+
+            DailyQuest.UpdateLevelsCompleted();
         }
     }
 

@@ -12937,7 +12937,7 @@ MonoBehaviour:
   lockGroup: {fileID: 857273656}
   map: {fileID: 1246730949}
   dayMap: {fileID: 21300000, guid: acbd9e62300bffd46b1967ba41e97b2a, type: 3}
-  nightMap: {fileID: 21300000, guid: a7a55ef37a3d088448ff2ad589c2eadf, type: 3}
+  nightMap: {fileID: 21300000, guid: e6df5282b15d9e44ebf2c2b7ba8d57f7, type: 3}
   dayFlags: {fileID: 1994242001}
   nightFlags: {fileID: 1035978135}
   starEffect: {fileID: 1790208071}
