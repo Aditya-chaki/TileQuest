@@ -103,5 +103,7 @@ namespace VNGame
 
         public int OpinionA, OpinionB;
         // Add more fields like HealthA, EnergyA, etc., if needed
+
+        public string PortraitName;
     }
 }
