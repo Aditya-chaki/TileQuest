@@ -11,16 +11,19 @@ public class MilestoneEvent : BaseEvent
 
     public override void Initialize()
     {
-        currentFood = PlayerPrefs.GetInt("Event_requiredFood");
+        currentFood = PlayerPrefs.GetInt("Event_currentFood");
         currentGold = PlayerPrefs.GetInt("Event_currentGold");
-        currentMagic = PlayerPrefs.GetInt("Event_requiredMagic");
+        currentMagic = PlayerPrefs.GetInt("Event_currentMagic");
+        PlayerPrefs.SetInt("Event_requiredFood",requiredFood);
+        PlayerPrefs.SetInt("Event_requiredGold",requiredGold);
+        PlayerPrefs.SetInt("Event_requiredMagic",requiredMagic);
     }
 
     public override void UpdateProgress()
     {
-        currentFood = PlayerPrefs.GetInt("Event_requiredFood");
+        currentFood = PlayerPrefs.GetInt("Event_currentFood");
         currentGold = PlayerPrefs.GetInt("Event_currentGold");
-        currentMagic = PlayerPrefs.GetInt("Event_requiredMagic");
+        currentMagic = PlayerPrefs.GetInt("Event_currentMagic");
     }
 
     public override bool IsCompleted()

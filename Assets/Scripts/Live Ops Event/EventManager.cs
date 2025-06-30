@@ -7,6 +7,7 @@ using System;
 public class EventManager : MonoBehaviour
 {
     public static EventManager Instance;
+    public GameObject eventButton;
     public List<BaseEvent> activeEvents = new List<BaseEvent>();
 
     private void Awake()
@@ -17,12 +18,26 @@ public class EventManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+      int startEvent = PlayerPrefs.GetInt("StartEvent",0);
+      
+      int isEventStart = PlayerPrefs.GetInt(Config.CURR_LEVEL);
+      
+      if(startEvent==1 && activeEvents.Count == 0)
+      {
+        Debug.Log("Mile stone event start");
+        StartMileStoneEvent();
+      }
+      if(isEventStart>3)
+      {
+        eventButton.SetActive(true);
+      }
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         
     }
 
@@ -46,6 +61,7 @@ public class EventManager : MonoBehaviour
 
     void StartMileStoneEvent()
     {
+        PlayerPrefs.SetString("ActiveEvent","MileStone");
         var milestone = new MilestoneEvent() {
             eventName = "Level Up Challenge",
             startTime = DateTime.Now,
