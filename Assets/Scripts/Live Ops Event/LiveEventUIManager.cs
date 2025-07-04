@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LiveEventUIManager : MonoBehaviour
 {
     public GameObject mileStoneUI;
+    public GameObject customLevelEventUI;
     public Button liveEventButton;
 
     private string activeEvents;
@@ -29,6 +30,11 @@ public class LiveEventUIManager : MonoBehaviour
         {
             currentEventUI = mileStoneUI;
             mileStoneUI.SetActive(true);
+        }
+        else if(activeEvents=="CustomLevel")
+        {
+            currentEventUI = customLevelEventUI;
+            customLevelEventUI.SetActive(true);
         }
 
     }
