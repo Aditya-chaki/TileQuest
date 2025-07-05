@@ -701,8 +701,11 @@ MonoBehaviour:
   dialogueText: {fileID: 4468398309594744652}
   nameInputField: {fileID: 2218107719069501516}
   dialoguePanel: {fileID: 5896770063041143651}
-  leftCharacterSlot: {fileID: 2616100172594555012}
-  currentLeftCharacter: {fileID: 5510654556433104692}
+  leftCharacterSlot: {fileID: 7263781815658447836}
+  rightCharacterSlot: {fileID: 2616100172594555012}
+  fixedPlayerCharacter: {fileID: 3413369667211730551}
+  characterImageComponent: {fileID: 2672259249609558927}
+  defaultSprite: {fileID: 21300000, guid: 39242248945a040419e0615ca7066018, type: 3}
   decisionCardTemplate: {fileID: 8467350165280058103}
   questionText: {fileID: 4417913647877748962}
   optionAButtonText: {fileID: 8706073156032885398}
@@ -1265,7 +1268,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 27769977c91ca0b4dbde2a8c5ea406c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bdec71be0fb30134e833f54bb96a03a1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3068,6 +3071,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5064628562190287130, guid: 56e0112c1eb156f46802af5892d97fcf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a24db42256b0dc847a8e9eb8ca69e0b1,
+        type: 3}
     - target: {fileID: 5193429055226021041, guid: 56e0112c1eb156f46802af5892d97fcf,
         type: 3}
       propertyPath: m_Pivot.x
