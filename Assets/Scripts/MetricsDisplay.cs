@@ -64,10 +64,13 @@ using System.Collections.Generic;
 public class MetricsDisplay : MonoBehaviour
 {
     public TextMeshProUGUI foodText;
-    public TextMeshProUGUI opinionText;  // Replacing Strength with Opinion
+    public TextMeshProUGUI opinionText;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI energyText;
+    
+    [Header("Decay Timer (Optional)")]
+    public TextMeshProUGUI decayTimerText; // NEW: Show remaining decay time
 
     private int lastFood, lastHealth, lastGold, lastEnergy;
     private float lastOpinion;
@@ -88,6 +91,12 @@ public class MetricsDisplay : MonoBehaviour
     {
         // Continuously update texts
         UpdateMetrics();
+        
+        // Update decay timer if available
+        if (decayTimerText != null && MetricsDecay.Instance != null)
+        {
+            decayTimerText.text = $"Decay ends in: {MetricsDecay.Instance.GetFormattedRemainingTime()}";
+        }
     }
 
     void UpdateMetrics()

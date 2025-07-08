@@ -18323,6 +18323,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857273656}
   m_CullTransparentMesh: 0
+--- !u!1 &859764783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 859764785}
+  - component: {fileID: 859764784}
+  m_Layer: 0
+  m_Name: MetricDecaySystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &859764784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859764783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91a4d6ae5962e4f44ac06441840b4863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodDecayRate: 1
+  strengthDecayRate: 1
+  healthDecayRate: 1
+  goldDecayRate: 1
+  decayDuration: 600
+  minFood: 0
+  minStrength: 0
+  minHealth: 10
+  minGold: 0
+  pauseDecayDuringDialogue: 1
+  pauseDecayWhenGamePaused: 1
+  enableDebugLogs: 0
+--- !u!4 &859764785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859764783}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.05011982, y: 0.49844694, z: 89.344635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &860363517
 GameObject:
   m_ObjectHideFlags: 0
@@ -36367,6 +36423,7 @@ MonoBehaviour:
   healthText: {fileID: 1013258256}
   goldText: {fileID: 1495412611}
   energyText: {fileID: 0}
+  decayTimerText: {fileID: 0}
 --- !u!114 &1211538556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86926,6 +86983,7 @@ MonoBehaviour:
   healthText: {fileID: 1475306709843550389}
   goldText: {fileID: 987171789250817177}
   energyText: {fileID: 8401769184906013286}
+  decayTimerText: {fileID: 0}
 --- !u!114 &6257551688666998634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90893,3 +90951,4 @@ SceneRoots:
   - {fileID: 2118979887}
   - {fileID: 471983153}
   - {fileID: 1787485863}
+  - {fileID: 859764785}
