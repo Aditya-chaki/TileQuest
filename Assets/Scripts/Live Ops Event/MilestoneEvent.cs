@@ -11,12 +11,13 @@ public class MilestoneEvent : BaseEvent
 
     public override void Initialize()
     {
-        currentFood = PlayerPrefs.GetInt("Event_currentFood");
-        currentGold = PlayerPrefs.GetInt("Event_currentGold");
-        currentMagic = PlayerPrefs.GetInt("Event_currentMagic");
+        currentFood = PlayerPrefs.GetInt("Event_currentFood",0);
+        currentGold = PlayerPrefs.GetInt("Event_currentGold",0);
+        currentMagic = PlayerPrefs.GetInt("Event_currentMagic",0);
         PlayerPrefs.SetInt("Event_requiredFood",requiredFood);
         PlayerPrefs.SetInt("Event_requiredGold",requiredGold);
         PlayerPrefs.SetInt("Event_requiredMagic",requiredMagic);
+        PlayerPrefs.Save();
     }
 
     public override void UpdateProgress()
@@ -24,6 +25,7 @@ public class MilestoneEvent : BaseEvent
         currentFood = PlayerPrefs.GetInt("Event_currentFood");
         currentGold = PlayerPrefs.GetInt("Event_currentGold");
         currentMagic = PlayerPrefs.GetInt("Event_currentMagic");
+        PlayerPrefs.Save();
     }
 
     public override bool IsCompleted()
@@ -45,6 +47,10 @@ public class MilestoneEvent : BaseEvent
         {
             // Give rewards
             Debug.Log("Milestone Reward Claimed!");
+
+            PlayerPrefs.SetInt("Event_currentFood",0);
+            PlayerPrefs.SetInt("Event_currentGold",0);
+            PlayerPrefs.SetInt("Event_currentMagic",0);
         }
     }
 }
