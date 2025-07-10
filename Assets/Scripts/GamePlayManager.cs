@@ -22,7 +22,7 @@ public class GamePlayManager : MonoBehaviour
     public int level = 1;
     public bool isTest = false;
     //public int maxlevel = 10;
-
+    public bool isCustomEventLevel = false;
 
 
     [Header("Button PAUSE")]
@@ -559,15 +559,17 @@ public class GamePlayManager : MonoBehaviour
     public WinPopup2 winPopup;
     public void SetGameWin()
     {
-        if (Config.gameState != Config.GAME_STATE.WIN)
+        if (Config.gameState != Config.GAME_STATE.WIN && isCustomEventLevel==false)
         {
             //FirebaseManager.instance.LogLevelWin(level);
             SetFinishedGame();
             Config.gameState = Config.GAME_STATE.WIN;
 
             winPopup.ShowWinPopup(level, starGroup.GetCurrStar(), GameLevelManager.instance.configLevelGame.listRewards_CoinValue[starGroup.GetCurrStar()]);
-
-            Config.SetCurrLevel(level + 1);
+            
+            if(isCustomEventLevel==false)
+                Config.SetCurrLevel(level + 1);
+            
             btnReverse3Tiles.gameObject.SetActive(true);
             btnSlotInc.gameObject.SetActive(true);
             Config.currSelectLevel = Config.currLevel;
@@ -584,6 +586,12 @@ public class GamePlayManager : MonoBehaviour
 
             DailyQuest.UpdateLevelsCompleted();
         }
+
+        else if(isCustomEventLevel==true)
+        {
+            CustomLevel.instance.LevelWin();
+        }
+
     }
 
 

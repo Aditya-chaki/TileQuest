@@ -7,6 +7,7 @@ public class LiveEventUIManager : MonoBehaviour
 {
     public GameObject mileStoneUI;
     public GameObject customLevelEventUI;
+    public GameObject minigameEventUI;
     public Button liveEventButton;
 
     private string activeEvents;
@@ -35,6 +36,11 @@ public class LiveEventUIManager : MonoBehaviour
         {
             currentEventUI = customLevelEventUI;
             customLevelEventUI.SetActive(true);
+        }
+        else if(activeEvents=="MinigamesEvent")
+        {
+            currentEventUI = minigameEventUI;
+            minigameEventUI.SetActive(true);
         }
 
     }

@@ -12,13 +12,15 @@ public class CustomLevelEvent : BaseEvent
     public override void Initialize()
     {
         PlayerPrefs.SetInt("Event_LevelRequired",requiredLevelToComplete);
-        PlayerPrefs.SetInt("Event_CurrentLevel",currentLevelCompleted);
+        currentLevelCompleted=PlayerPrefs.GetInt("Event_CurrentLevel",0);
+        PlayerPrefs.Save();
     }
     
    
     public override void UpdateProgress() 
     { 
         currentLevelCompleted = PlayerPrefs.GetInt("Event_CurrentLevel");
+        PlayerPrefs.Save();
     }
 
     public override bool IsCompleted()
@@ -31,6 +33,7 @@ public class CustomLevelEvent : BaseEvent
         if (IsCompleted())
         {
             Debug.Log("Custom Level Event Completed!");
+            PlayerPrefs.SetInt("Event_CurrentLevel",0);
         }
     }
 }
