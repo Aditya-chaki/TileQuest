@@ -199,6 +199,12 @@ public class WaterSortController : MonoBehaviour
                 return;    
         }
         Debug.Log("Game Win");
+        string currentEvent = PlayerPrefs.GetString("ActiveEvent","none");
+        if(currentEvent=="MinigamesEvent")
+        {
+           int current = PlayerPrefs.GetInt("Event_WaterSortCurrentLevel")+1;
+            PlayerPrefs.SetInt("Event_WaterSortCurrentLevel",current);
+        }
         StartCoroutine(ShowWinPanel());
         gameState  = GAME_STATE.WIN;
     }
