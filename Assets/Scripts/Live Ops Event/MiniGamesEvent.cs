@@ -22,7 +22,7 @@ public class MiniGamesEvent : BaseEvent
    
     public override void UpdateProgress() 
     { 
-        currentLevelCompletedWaterSort = PlayerPrefs.GetInt("Event_WaterSortLevelRequired");
+        currentLevelCompletedWaterSort = PlayerPrefs.GetInt("Event_WaterSortCurrentLevel");
         currentLevelCompletedOnet=PlayerPrefs.GetInt("Event_OnetCurrentLevel",0);
         PlayerPrefs.Save();
     }

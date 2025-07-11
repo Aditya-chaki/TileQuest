@@ -289,6 +289,14 @@ public class BoardManager : MonoBehaviour
        }
        if(time<=0 && gameover==false)
        {
+
+        string currentEvent = PlayerPrefs.GetString("ActiveEvent","none");
+        if(currentEvent=="MinigamesEvent")
+        {
+           int current = PlayerPrefs.GetInt("Event_OnetCurrentLevel")+1;
+            PlayerPrefs.SetInt("Event_OnetCurrentLevel",current);
+        }
+        
         gameover = true;
         gameOverPanel.SetActive(true);
         boardParent.gameObject.SetActive(false);

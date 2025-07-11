@@ -182,8 +182,15 @@ public class EventManager : MonoBehaviour
         else
         {
             timerText.text = "Resetting...";
+            ResetTimer();
             
         }
+    }
+
+    private void ResetTimer()
+    {
+        nextResetTime = daysForEvent;
+        SaveResetTime(nextResetTime);
     }
 
 
