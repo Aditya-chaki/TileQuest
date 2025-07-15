@@ -47,25 +47,26 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log($"Food: {Config.Food}");
-        Debug.Log($"Strength: {Config.Strength}");
-        Debug.Log($"Health: {Config.Health}");
+        Debug.Log($"Opinion: {GetAverageOpinion()}");  // Opinion is now average of factions
+        Debug.Log($"Influence: {Config.Influence}");
+        Debug.Log($"Magic: {Config.Magic}");
         Debug.Log($"Gold: {Config.Gold}");
-        Debug.Log($"Current Energy: {Config.Energy}");
         Debug.Log("Menu opened");
-        if(Random.Range(-1, 2) == 0)
-        {   Debug.Log("map set to night");  
+        if (Random.Range(-1, 2) == 0)
+        {
+            Debug.Log("map set to night");
             map.sprite = nightMap;
             starEffect.SetActive(true);
             nightFlags.SetActive(true);
             dayFlags.SetActive(false);
         }
         else
-        {   Debug.Log("map set to day");
+        {
+            Debug.Log("map set to day");
             starEffect.SetActive(false);
             dayFlags.SetActive(true);
-            nightFlags.SetActive(false); 
-            map.sprite = dayMap;     
+            nightFlags.SetActive(false);
+            map.sprite = dayMap;
         }
         btnSetting.OnPointerClickCallBack_Completed.AddListener(TouchSetting);
         //btnGift.OnPointerClickCallBack_Completed.AddListener(TouchGift);
@@ -96,22 +97,22 @@ public class MenuManager : MonoBehaviour
         {
             SpawnBird();
             timer = 0f;
-            spawnBirdInterval = Random.Range(spawnBirdInterval/2,spawnBirdInterval*5);
+            spawnBirdInterval = Random.Range(spawnBirdInterval / 2, spawnBirdInterval * 5);
         }
 
     }
 
     void SpawnBird()
     {
-        int direction = Random.Range(0,2)==0? 1 : -1;
+        int direction = Random.Range(0, 2) == 0 ? 1 : -1;
         Vector3 spawnPos;
-        if(direction==1)
+        if (direction == 1)
         {
-         spawnPos = Camera.main.ScreenToWorldPoint(new Vector3(-100, Random.Range(Screen.height/3, Screen.height), 10));
+            spawnPos = Camera.main.ScreenToWorldPoint(new Vector3(-100, Random.Range(Screen.height / 3, Screen.height), 10));
         }
         else
         {
-         spawnPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width+100, Random.Range(Screen.height/3, Screen.height), 10));
+            spawnPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width + 100, Random.Range(Screen.height / 3, Screen.height), 10));
         }
         GameObject bird = Instantiate(birdPrefab, spawnPos, Quaternion.identity);
         bird.GetComponent<BirdMovement>().SetDirection(direction);
@@ -120,7 +121,7 @@ public class MenuManager : MonoBehaviour
     public void TouchSetting()
     {
         OpenSettingPopup();
-        
+
     }
 
     public void TouchGift()
@@ -138,7 +139,7 @@ public class MenuManager : MonoBehaviour
     public void TouchShop()
     {
         shopPopup.OpenPopup();
-        
+
     }
 
 
@@ -149,13 +150,13 @@ public class MenuManager : MonoBehaviour
             shopPopup.TouchClose(); // Close the shop popup using the TouchClose method
         }
         spinPopup.OpenSpinPopup();
-        
+
     }
 
     public void OpenShopCoin()
     {
         shopPopup.OpenPopup();
-        
+
 
     }
 
@@ -417,6 +418,18 @@ public class MenuManager : MonoBehaviour
     public void TouchResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
+
+    private float GetAverageOpinion()
+    {
+        List<string> factions = Config.InitialFactions;
+        float total = 0f;
+        foreach (var faction in factions)
+        {
+            total += Config.GetFactionOpinion(faction);
+        }
+        return factions.Count > 0 ? total / factions.Count : 0f;
     }
 
 }

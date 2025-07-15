@@ -13,10 +13,10 @@ public class StoryManager : MonoBehaviour
         public Sprite setImage; // Image to display with this set
 
         // Decay properties specific to this button set
-        public int foodDecayRate = 1;
-        public int strengthDecayRate = 1;
-        public int healthDecayRate = 1;
+        public int influenceDecayRate = 1;
+        public int magicDecayRate = 1;
         public int goldDecayRate = 1;
+        // Opinion is managed by faction (Config) -- not a simple global decay
         public int decayDuration = 600; // Decay duration in seconds
     }
 
@@ -135,13 +135,12 @@ public class StoryManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             elapsedDecayTime++;
 
-            // Apply decay logic
-            Config.Food = Mathf.Max(0, Config.Food - currentSet.foodDecayRate);
-            Config.Strength = Mathf.Max(0, Config.Strength - currentSet.strengthDecayRate);
-            Config.Health = Mathf.Max(0, Config.Health - currentSet.healthDecayRate);
+            // Apply decay logic for NEW metrics
+            Config.Influence = Mathf.Max(0, Config.Influence - currentSet.influenceDecayRate);
+            Config.Magic = Mathf.Max(0, Config.Magic - currentSet.magicDecayRate);
             Config.Gold = Mathf.Max(0, Config.Gold - currentSet.goldDecayRate);
 
-            Debug.Log($"Decay applied for Set {currentSetIndex + 1}: Food={Config.Food}, Strength={Config.Strength}, Health={Config.Health}, Gold={Config.Gold}");
+            Debug.Log($"Decay applied for Set {currentSetIndex + 1}: Influence={Config.Influence}, Magic={Config.Magic}, Gold={Config.Gold}");
         }
     }
 }
