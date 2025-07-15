@@ -8,11 +8,7 @@ public class MetricLoader : MonoBehaviour
 
     void Start()
     {
-        
-        
-            LoadMetricsFromCsv();
-        
-
+        LoadMetricsFromCsv();
     }
 
     private void LoadMetricsFromCsv()
@@ -58,21 +54,21 @@ public class MetricLoader : MonoBehaviour
     {
         switch (metricName.ToLower())
         {
-            case "Food":
-                Config.Food = metricValue;
-                break;
-            case "strength":
-                Config.Strength = metricValue;
-                break;
-            case "health":
-                Config.Health = metricValue;
+            case "influence":
+                Config.Influence = metricValue;
                 break;
             case "gold":
                 Config.Gold = metricValue;
                 break;
-            case "energy":
-                Config.Energy = metricValue;
+            case "magic":
+                Config.Magic = metricValue;
                 break;
+            // If you want to set opinion, you need to specify the faction name,
+            // e.g., "opinion_nobles", "opinion_peasants", etc.
+            // case "opinion_nobles":
+            //     Config.SetFactionOpinion("nobles", metricValue);
+            //     break;
+            // Add more cases for specific faction opinions if needed.
             default:
                 Debug.LogWarning($"Unknown metric: {metricName}");
                 break;

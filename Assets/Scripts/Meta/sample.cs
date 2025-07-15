@@ -12,12 +12,12 @@ public class sample : MonoBehaviour
     public void KingStoryEnabler()
     {
          SceneManager.LoadScene("King");
-         Config.Energy = Config.Energy -3;
+         Config.Gold = Config.Gold -3;
     }
     public void ManagerStoryEnabler()
     {
          SceneManager.LoadScene("Manager");
-         Config.Energy = Config.Energy - 2;
+         Config.Gold = Config.Gold - 2;
     }
 
 }

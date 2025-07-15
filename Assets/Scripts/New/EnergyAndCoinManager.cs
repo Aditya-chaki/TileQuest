@@ -19,7 +19,7 @@ public class EnergyAndCoinManager : MonoBehaviour
     }
     void Update()
     {
-        if (Config.Energy <= 0)
+        if (Config.Gold <= 0)
         {
             EnergyShop.SetActive(true);
         }
@@ -33,27 +33,27 @@ public class EnergyAndCoinManager : MonoBehaviour
     void OnGainEnergyClick()
     {
         int currentCoins = Config.GetCoin();
-        int currentEnergy = Config.Energy;
+        int currentEnergy = Config.Gold;
 
         // Check if the player has enough coins
         if (currentCoins >= coinDeduction)
         {
             // Deduct coins and add energy
             Config.SetCoin(currentCoins - coinDeduction);
-            Config.Energy = currentEnergy + energyGain;
+            Config.Gold = currentEnergy + energyGain;
 
-            Debug.Log("Energy gained: " + energyGain + ", Coins deducted: " + coinDeduction);
+            Debug.Log("Gold gained: " + energyGain + ", Coins deducted: " + coinDeduction);
         }
         else
         {
-            Debug.Log("Not enough coins to gain energy.");
+            Debug.Log("Not enough coins to gain Gold.");
         }
     }
     void OnAdsGainEnergyClick()
     {
 
-        int currentEnergy = Config.Energy;
-        Config.Energy = currentEnergy + energyGain;
+        int currentEnergy = Config.Gold;
+        Config.Gold = currentEnergy + energyGain;
 
 
     }

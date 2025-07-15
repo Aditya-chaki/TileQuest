@@ -56,43 +56,38 @@
 //         lastValue = currentValue;
 //     }
 // }
-
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 
 public class MetricsDisplay : MonoBehaviour
 {
-    public TextMeshProUGUI foodText;
-    public TextMeshProUGUI opinionText;
-    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI influenceText;
+    public TextMeshProUGUI magicText;
     public TextMeshProUGUI goldText;
-    public TextMeshProUGUI energyText;
-    
-    [Header("Decay Timer (Optional)")]
-    public TextMeshProUGUI decayTimerText; // NEW: Show remaining decay time
+    public TextMeshProUGUI opinionText;
 
-    private int lastFood, lastHealth, lastGold, lastEnergy;
+    [Header("Decay Timer (Optional)")]
+    public TextMeshProUGUI decayTimerText; // Show remaining decay time
+
+    private int lastInfluence, lastMagic, lastGold;
     private float lastOpinion;
 
     void Start()
     {
         // Initialize texts and previous values
-        lastFood = Config.Food;
-        lastOpinion = GetAverageOpinion();
-        lastHealth = Config.Health;
+        lastInfluence = Config.Influence;
+        lastMagic = Config.Magic;
         lastGold = Config.Gold;
-        lastEnergy = Config.Energy;
+        lastOpinion = GetAverageOpinion();
 
         UpdateMetrics();
     }
 
     void Update()
     {
-        // Continuously update texts
         UpdateMetrics();
-        
-        // Update decay timer if available
+
         if (decayTimerText != null && MetricsDecay.Instance != null)
         {
             decayTimerText.text = $"Decay ends in: {MetricsDecay.Instance.GetFormattedRemainingTime()}";
@@ -101,33 +96,29 @@ public class MetricsDisplay : MonoBehaviour
 
     void UpdateMetrics()
     {
-        // Update Food
-        UpdateMetric(foodText, Config.Food, ref lastFood);
-
-        // Update Opinion
-        UpdateOpinionMetric(opinionText);
-
-        // Update Health
-        UpdateMetric(healthText, Config.Health, ref lastHealth);
-
-        // Update Gold
+        UpdateMetric(influenceText, Config.Influence, ref lastInfluence);
+        UpdateMetric(magicText, Config.Magic, ref lastMagic);
         UpdateMetric(goldText, Config.Gold, ref lastGold);
-
-        // Update Energy
-        UpdateMetric(energyText, Config.Energy, ref lastEnergy);
+        UpdateOpinionMetric(opinionText);
     }
 
     void UpdateMetric(TextMeshProUGUI textElement, int currentValue, ref int lastValue)
     {
-        textElement.text = $"{currentValue}";
-        lastValue = currentValue;
+        if (textElement != null)
+        {
+            textElement.text = $"{currentValue}";
+            lastValue = currentValue;
+        }
     }
 
     void UpdateOpinionMetric(TextMeshProUGUI textElement)
     {
-        float avgOpinion = GetAverageOpinion();
-        textElement.text = $"{avgOpinion:F1}";
-        lastOpinion = avgOpinion;
+        if (textElement != null)
+        {
+            float avgOpinion = GetAverageOpinion();
+            textElement.text = $"{avgOpinion:F1}";
+            lastOpinion = avgOpinion;
+        }
     }
 
     float GetAverageOpinion()

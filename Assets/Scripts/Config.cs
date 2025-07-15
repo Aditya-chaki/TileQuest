@@ -265,10 +265,10 @@ public class Config
     // Method to reward the player for completing the talk daily quest
     private static void RewardPlayerForTalking()
     {
-        int currentEnergy = Energy;
+        int currentEnergy = Gold;
         int currentCoins = GetCoin();
 
-        Energy = currentEnergy + REWARD_ENERGY;
+        Gold = currentEnergy + REWARD_ENERGY;
         SetCoin(currentCoins + REWARD_GEMS);
 
         Debug.Log($"Player rewarded with {REWARD_ENERGY} energy and {REWARD_GEMS} gems.");
@@ -717,7 +717,7 @@ public class Config
 
     #endregion
     #region OPINION METER
-    public const string OPINION_METER_KEY_PREFIX = "opinionMeter_";
+    public const string OPINION_METER_KEY_PREFIX = "Opinion";
     private static Dictionary<string, int> characterOpinions = new Dictionary<string, int>();
 
     // Save and Load Character IDs
@@ -781,40 +781,6 @@ public class Config
 
     #region OPINIONS
 
-// private const string KING_OPINION_KEY = "opinion_king";
-// private const string QUEEN_OPINION_KEY = "opinion_queen";
-// private const string ADVISOR_OPINION_KEY = "opinion_advisor";
-
-// public static int KingOpinion
-// {
-//     get => PlayerPrefs.GetInt(KING_OPINION_KEY, 0);
-//     set
-//     {
-//         PlayerPrefs.SetInt(KING_OPINION_KEY, value);
-//         PlayerPrefs.Save();
-//     }
-// }
-
-// public static int QueenOpinion
-// {
-//     get => PlayerPrefs.GetInt(QUEEN_OPINION_KEY, 0);
-//     set
-//     {
-//         PlayerPrefs.SetInt(QUEEN_OPINION_KEY, value);
-//         PlayerPrefs.Save();
-//     }
-// }
-
-// public static int AdvisorOpinion
-// {
-//     get => PlayerPrefs.GetInt(ADVISOR_OPINION_KEY, 0);
-//     set
-//     {
-//         PlayerPrefs.SetInt(ADVISOR_OPINION_KEY, value);
-//         PlayerPrefs.Save();
-//     }
-// }
-
 public static int GetFactionOpinion(string factionId)
 {
     return GetOpinionMeter(factionId);
@@ -845,45 +811,23 @@ public static void InitializeFactions()
 
 #region METRICS
 
-private const string FOOD_KEY = "food";
-private const string STRENGTH_KEY = "strength";
-private const string HEALTH_KEY = "health";
+private const string INFLUENCE_KEY = "influence";
 private const string GOLD_KEY = "gold";
-private const string ENERGY_KEY = "energy";
+private const string MAGIC_KEY = "magic";
 
-public static int Food
-{
-    get => PlayerPrefs.GetInt(FOOD_KEY, 0);
-    set
+    public static int Influence
     {
-        PlayerPrefs.SetInt(FOOD_KEY, value);
-        PlayerPrefs.Save();
+        get => PlayerPrefs.GetInt(INFLUENCE_KEY, 0);
+        set
+        {
+            PlayerPrefs.SetInt(INFLUENCE_KEY, value);
+            PlayerPrefs.Save();
+        }
     }
-}
-
-public static int Strength
-{
-    get => PlayerPrefs.GetInt(STRENGTH_KEY, 0);
-    set
-    {
-        PlayerPrefs.SetInt(STRENGTH_KEY, value);
-        PlayerPrefs.Save();
-    }
-}
-
-public static int Health
-{
-    get => PlayerPrefs.GetInt(HEALTH_KEY, 0);
-    set
-    {
-        PlayerPrefs.SetInt(HEALTH_KEY, value);
-        PlayerPrefs.Save();
-    }
-}
 
 public static int Gold
 {
-    get => PlayerPrefs.GetInt(GOLD_KEY, 0);
+    get => PlayerPrefs.GetInt(GOLD_KEY, 30);
     set
     {
         PlayerPrefs.SetInt(GOLD_KEY, value);
@@ -891,15 +835,16 @@ public static int Gold
     }
 }
 
-public static int Energy
+public static int Magic
 {
-    get => PlayerPrefs.GetInt(ENERGY_KEY, 30);
+    get => PlayerPrefs.GetInt(MAGIC_KEY, 0);
     set
     {
-        PlayerPrefs.SetInt(ENERGY_KEY, value);
+        PlayerPrefs.SetInt(MAGIC_KEY, value);
         PlayerPrefs.Save();
     }
 }
+
 
 #endregion
 
