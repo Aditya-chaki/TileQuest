@@ -25,12 +25,12 @@ public class MainEvents : MonoBehaviour
     void PayButton()
     {
         // Update Config metrics safely with clamped values
-        Config.Food += foodToAdd;
-        Config.Strength += strengthToAdd;
+        Config.Influence += foodToAdd;
+        //Config.Strength += strengthToAdd;
         Config.Gold += goldToAdd;
-        Config.Health += healthToAdd;
+        //Config.Health += healthToAdd;
 
-        Debug.Log($"Updated Values - Food: {Config.Food}, Strength: {Config.Strength}, Gold: {Config.Gold}, Health: {Config.Health}");
+        Debug.Log($"Updated Values -  Gold: {Config.Gold},");
         Destroy(this.gameObject);
     }
 }

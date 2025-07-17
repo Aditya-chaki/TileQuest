@@ -36840,6 +36840,7 @@ MonoBehaviour:
   strength: {fileID: 21300000, guid: 429e9ea647034d84dae39ec57307405d, type: 3}
   health: {fileID: 21300000, guid: cb892b656b14274448d9504a8d166d56, type: 3}
   Gold: {fileID: 21300000, guid: ea4aa57a79571e64f99d0377db717da2, type: 3}
+  isEventLevel: 1
 --- !u!1 &2030953359
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,25 +34,17 @@ public class PlayMiniGame : MonoBehaviour
         {
             miniGameButton.onClick.AddListener(LoadMiniGame);
         }
-        if(Metric == "Food")
+        if(Metric == "Magic")
         {
-          requiredValue = Config.Food + metricValue;
+          requiredValue = Config.Magic + metricValue;
         }
-        if(Metric == "Health")
+        if(Metric == "Influence")
         {
-            requiredValue = Config.Health + metricValue;   
-        }
-        if(Metric == "Strength")
-        {
-            requiredValue = Config.Strength + metricValue;
+            requiredValue = Config.Influence + metricValue;   
         }
         if(Metric == "Gold")
         {
             requiredValue = Config.Gold + metricValue;
-        }
-        if(Metric == "Energy")
-        {
-            requiredValue = Config.Energy + metricValue;   
         }
         randtime = Random.Range(minTime,maxTime);
     }
@@ -68,23 +60,15 @@ public class PlayMiniGame : MonoBehaviour
                 ActiveButton();
             }
         }
-        if(Metric == "Food"&&Config.Food>=requiredValue)
+        if(Metric == "Magic"&&Config.Magic>=requiredValue)
         {
           ActiveButton();
-        }
-        if(Metric == "Health"&&Config.Health>=requiredValue)
-        {
-            ActiveButton();   
-        }
-        if(Metric == "Strength"&&Config.Strength>=requiredValue)
-        {
-            ActiveButton();
         }
         if(Metric == "Gold"&&Config.Gold>=requiredValue)
         {
            ActiveButton();
         }
-        if(Metric == "Energy"&&Config.Energy>=requiredValue)
+        if(Metric == "Influence"&&Config.Influence>=requiredValue)
         {
             ActiveButton();   
         }
@@ -107,23 +91,16 @@ public class PlayMiniGame : MonoBehaviour
         }
         if(isValueType)
         {
-            if(Metric == "Food")
+            if(Metric == "Influence")
             {
-                if(Config.Food>=requiredValue)
+                if(Config.Influence>=requiredValue)
                 {
                     SceneManager.LoadSceneAsync(miniGameSceneName);
                 }
             }
-            if(Metric == "Health")
+            if(Metric == "Magic")
             {
-             if(Config.Health>=requiredValue)
-                {
-                   SceneManager.LoadSceneAsync(miniGameSceneName); 
-                }   
-            }
-            if(Metric == "Strength")
-            {
-                if(Config.Strength>=requiredValue)
+                if(Config.Magic>=requiredValue)
                 {
                   SceneManager.LoadSceneAsync(miniGameSceneName);  
                 }
@@ -134,13 +111,6 @@ public class PlayMiniGame : MonoBehaviour
                 {
                     SceneManager.LoadSceneAsync(miniGameSceneName);
                 }
-            }
-            if(Metric == "Energy")
-            {
-             if(Config.Energy>=requiredValue)
-                {
-                    SceneManager.LoadSceneAsync(miniGameSceneName);
-                }   
             }
         }
     }

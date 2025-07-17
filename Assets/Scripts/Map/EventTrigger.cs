@@ -8,7 +8,7 @@ public class EventTrigger : MonoBehaviour
     private GameObject[] prefabs; // Array to store loaded prefabs
     private int currentIndex = 0; // Index of the current prefab
     private GameObject instantiatedPrefab; // Currently instantiated prefab
-    [SerializeField] private int energyCostPerClick = 5; // Energy cost for each click
+    [SerializeField] private int MagicCostPerClick = 5; // Magic cost for each click
     [SerializeField] private float instantiateDelay = 0f; // Delay in seconds before instantiating the prefab
 
     private Coroutine instantiateCoroutine; // To manage ongoing coroutines
@@ -36,10 +36,10 @@ public class EventTrigger : MonoBehaviour
 
     public void ShowNextPrefab()
     {
-        // Check if there's enough energy
-        if (Config.Energy < energyCostPerClick)
+        // Check if there's enough Magic
+        if (Config.Magic < MagicCostPerClick)
         {
-            Debug.LogWarning("Not enough energy to perform this action.");
+            Debug.LogWarning("Not enough Magic to perform this action.");
             return;
         }
 
@@ -49,9 +49,9 @@ public class EventTrigger : MonoBehaviour
             return;
         }
 
-        // Deduct energy
-        Config.Energy -= energyCostPerClick;
-        Debug.Log($"Energy deducted: {energyCostPerClick}. Remaining energy: {Config.Energy}");
+        // Deduct Magic
+        Config.Magic -= MagicCostPerClick;
+        Debug.Log($"Magic deducted: {MagicCostPerClick}. Remaining Magic: {Config.Magic}");
 
         // Stop any ongoing instantiation coroutine
         if (instantiateCoroutine != null)

@@ -10,7 +10,7 @@ public class ButtonActivator : MonoBehaviour
 
     private void Start()
     {
-        Config.Energy = 30;
+        Config.Magic = 30;
         if (buttonObjects.Count == 0)
         {
             Debug.LogError("No buttons assigned!");

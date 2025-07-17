@@ -9,7 +9,7 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager Instance;
     public GameObject eventButton;
-    public List<BaseEvent> activeEvents = new List<BaseEvent>();
+    public BaseEvent activeEvents;
     [SerializeField] private TextMeshProUGUI timerText;
     public GameObject customLevelButton;
     
@@ -33,11 +33,48 @@ public class EventManager : MonoBehaviour
         int startEvent = PlayerPrefs.GetInt("StartEvent",0);
       
         int isEventStart = PlayerPrefs.GetInt(Config.CURR_LEVEL);
-      
-        if(startEvent==1 && activeEvents.Count == 0)
+
+        Debug.Log(currentEvent);
+
+        if(startEvent==1 && currentEvent=="none")
         {
             SelectEventAtRandom();
         }
+        else if(currentEvent=="MileStone")
+        {
+            activeEvents = new MilestoneEvent() {
+            eventName = "Resource Collection",
+            startTime = DateTime.Now,
+            endTime = nextResetTime,
+            requiredFood = 1000,
+            requiredGold = 1000,
+            requiredMagic = 1000,
+                };
+            activeEvents.Initialize(); 
+        }
+        else if(currentEvent=="CustomLevel")
+        {
+            activeEvents = new CustomLevelEvent()
+            {
+            eventName = "Custom Level Challange",
+            startTime = DateTime.Now,
+            endTime = nextResetTime,
+            requiredLevelToComplete = 5,
+            };
+            activeEvents.Initialize();
+        }
+        else if(currentEvent=="MinigamesEvent")
+        {
+            activeEvents = new OnetMiniGamesEvent()
+            {
+            eventName = "MinigamesEvent Challange",
+            startTime = DateTime.Now,
+            endTime = nextResetTime,
+            requiredLevelToCompleteOnet=5,
+            };
+            activeEvents.Initialize(); 
+        }
+        Debug.Log(activeEvents.eventName);
         
 
       if(isEventStart>3)
@@ -51,9 +88,10 @@ public class EventManager : MonoBehaviour
     void Update()
     {
         UpdateTimer();
-        if(nextTime<Time.time)
+        if(nextTime<Time.time && activeEvents!=null)
         {
             UpdateAllEvents();
+            ClaimReward();
             nextTime  = Time.time+1f;
         }
 
@@ -61,11 +99,9 @@ public class EventManager : MonoBehaviour
 
     public void UpdateAllEvents()
     {
-        foreach (var e in activeEvents)
-        {
-            if (e.IsActive)
-                e.UpdateProgress();
-        }
+        
+     activeEvents.UpdateProgress();
+        
     }
 
     void SelectEventAtRandom()
@@ -85,14 +121,15 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void ClaimReward(string eventName)
+    public void ClaimReward()
     {
-        var e = activeEvents.Find(evt => evt.eventName == eventName);
-        if (e != null && e.IsCompleted())
+
+        if (activeEvents != null && activeEvents.IsCompleted())
         {
-            e.ClaimReward();
-            activeEvents.Remove(e);
+            activeEvents.ClaimReward();
+            activeEvents = null;
             customLevelButton.SetActive(false);
+            SelectEventAtRandom();
         }
     }
 
@@ -109,7 +146,7 @@ public class EventManager : MonoBehaviour
         };
         daysForEvent = milestone.endTime;
         milestone.Initialize();
-        activeEvents.Add(milestone);
+        activeEvents = milestone;
         PlayerPrefs.SetInt("StartEvent",1);
     }
 
@@ -124,7 +161,7 @@ public class EventManager : MonoBehaviour
             requiredLevelToComplete = 5,
         };
         customLevel.Initialize();
-        activeEvents.Add(customLevel);
+        activeEvents = customLevel;
         customLevelButton.SetActive(true);
         PlayerPrefs.SetInt("StartEvent",2);
         daysForEvent = customLevel.endTime;
@@ -133,16 +170,15 @@ public class EventManager : MonoBehaviour
     void StartMinigameEvent()
     {
         PlayerPrefs.SetString("ActiveEvent","MinigamesEvent");
-        var minigameEvent = new MiniGamesEvent()
+        var minigameEvent = new OnetMiniGamesEvent()
         {
             eventName = "MinigamesEvent Challange",
             startTime = DateTime.Now,
             endTime = DateTime.Now.AddDays(2),
-            requiredLevelToCompleteWaterSort = 5,
             requiredLevelToCompleteOnet=5,
         };
         minigameEvent.Initialize();
-        activeEvents.Add(minigameEvent);
+        activeEvents = minigameEvent;
         PlayerPrefs.SetInt("StartEvent",3);
         daysForEvent = minigameEvent.endTime;
     }
@@ -191,6 +227,7 @@ public class EventManager : MonoBehaviour
     {
         nextResetTime = daysForEvent;
         SaveResetTime(nextResetTime);
+        SelectEventAtRandom();
     }
 
 

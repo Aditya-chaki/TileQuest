@@ -38,8 +38,8 @@ public class StoryPlay : MonoBehaviour
 
             pair.button.onClick.AddListener(() => InstantiatePrefab(pair));
 
-            // Disable the button if Config.Energy is 0
-            if (Config.Energy == 0)
+            // Disable the button if Config.Magic is 0
+            if (Config.Magic == 0)
             {
                 pair.button.interactable = false;
             }
@@ -53,8 +53,8 @@ public class StoryPlay : MonoBehaviour
 
     void InstantiatePrefab(ButtonPrefabPair pair)
     {
-        // Check if there is enough energy before instantiating the prefab
-        if (Config.Energy > 0)
+        // Check if there is enough Magic before instantiating the prefab
+        if (Config.Magic > 0)
         {
             if (pair.prefab != null)
             {
@@ -88,7 +88,7 @@ public class StoryPlay : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Not enough energy to instantiate prefab.");
+            Debug.LogWarning("Not enough Magic to instantiate prefab.");
         }
     }
 
@@ -97,10 +97,10 @@ public class StoryPlay : MonoBehaviour
         if (index < instance.transform.childCount)
         {
             instance.transform.GetChild(index).gameObject.SetActive(true);
-            Config.Energy = Config.Energy - 4;
+            Config.Magic = Config.Magic - 4;
 
-            // Disable all buttons if energy reaches 0
-            if (Config.Energy <= 0)
+            // Disable all buttons if Magic reaches 0
+            if (Config.Magic <= 0)
             {
                 foreach (var pair in buttonPrefabPairs)
                 {
