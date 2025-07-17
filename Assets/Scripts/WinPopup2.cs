@@ -65,7 +65,7 @@ public class WinPopup2 : MonoBehaviour
         btnHome.OnPointerClickCallBack_Completed.AddListener(TouchHome);
 
 
-        if(Config.Energy <= 0){
+        if(Config.Magic <= 0){
             btnBonusEnergy.gameObject.SetActive(true);
         }
         else{
@@ -100,7 +100,7 @@ public class WinPopup2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Config.Energy <= 0)
+        if (Config.Influence <= 0)
         {
             btnBonusEnergy.OnPointerClickCallBack_Completed.AddListener(BonusEnergy);
         }
@@ -161,27 +161,22 @@ public class WinPopup2 : MonoBehaviour
         }
         switch(randReward)
         {
-          case 0:Config.Food = Config.Food+rewardValue;
+          case 0:Config.Influence = Config.Influence+rewardValue;
                  rewardImg.sprite = food;
                  rewardTxt.text = "x"+(rewardValue).ToString();
-                 Debug.Log(Config.Food+" Food Reward");
+                 Debug.Log(Config.Influence+" Food Reward");
                  break;
-          case 1:Config.Energy = Config.Energy+200;
+          case 1:Config.Magic = Config.Magic+200;
                  rewardImg.sprite = energy;
                  rewardTxt.text = "x"+(200).ToString();
-                 Debug.Log(Config.Energy+" Energy Reward");
+                 Debug.Log(Config.Magic+" Energy Reward");
                  break; 
           case 2:Config.Gold = Config.Gold+rewardValue;
                  rewardImg.sprite = Gold;
                  rewardTxt.text = "x"+(rewardValue).ToString();
                  Debug.Log(Config.Gold+" Gold Reward");
                  WeeklyQuest.UpdateGoldEarned(rewardValue);
-                 break;   
-          case 3:Config.Health = Config.Health+rewardValue;
-                 rewardImg.sprite = health;
-                 rewardTxt.text = "x"+(rewardValue).ToString();
-                 Debug.Log(Config.Health+" Health Reward");
-                 break;     
+                 break;      
         }
 
         ShowViews();
@@ -263,7 +258,7 @@ public class WinPopup2 : MonoBehaviour
 
     private void BonusEnergy()
     {
-        Config.Energy = Config.Energy + 5;
+        Config.Magic = Config.Magic + 5;
         btnBonusEnergy.GetComponent<BBUIView>().ShowView();
         btnBonusEnergy.GetComponent<BBUIView>().HideView();
         DailyQuest.UpdateAdsWatched();

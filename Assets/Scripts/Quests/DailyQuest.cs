@@ -190,9 +190,9 @@ public class DailyQuest : MonoBehaviour
     private static void RewardQuest1()
     {
         PlayerPrefs.SetInt(QUEST1_COMPLETED_KEY, 1); // Mark quest 1 as completed
-        int currentCoins = Config.Food;
-        Config.Food = Config.Food+REWARD_COINS_QUEST1;
-        Debug.Log($"Quest 1 completed! Player rewarded with {REWARD_COINS_QUEST1} food.");
+        int currentCoins = Config.Influence;
+        Config.Influence = Config.Influence+REWARD_COINS_QUEST1;
+        Debug.Log($"Quest 1 completed! Player rewarded with {REWARD_COINS_QUEST1} Influence.");
         PlayerPrefs.Save();
     }
 
@@ -238,8 +238,8 @@ public class DailyQuest : MonoBehaviour
     private static void RewardQuest2()
     {
         PlayerPrefs.SetInt(QUEST2_COMPLETED_KEY, 1); // Mark quest 2 as completed
-        int currentCoins = Config.Food;
-        Config.Food = Config.Food+REWARD_COINS_QUEST2;
+        int currentCoins = Config.Influence;
+        Config.Influence = Config.Influence+REWARD_COINS_QUEST2;
         Debug.Log($"Quest 2 completed! Player rewarded with {REWARD_COINS_QUEST2} coins.");
         PlayerPrefs.Save();
     }
@@ -368,8 +368,8 @@ public class DailyQuest : MonoBehaviour
     private static void RewardQuest5()
     {
         PlayerPrefs.SetInt(QUEST5_COMPLETED_KEY, 1);
-        int currentCoins = Config.Food;
-        Config.Food = Config.Food+REWARD_COINS_QUEST5;
+        int currentCoins = Config.Magic;
+        Config.Magic = Config.Magic+REWARD_COINS_QUEST5;
         Debug.Log($"Quest 5 completed! Player rewarded with {REWARD_COINS_QUEST5} coins for watching an ad.");
         PlayerPrefs.Save();
     }
@@ -454,8 +454,8 @@ public class DailyQuest : MonoBehaviour
     private static void RewardQuest7()
     {
         PlayerPrefs.SetInt(QUEST7_COMPLETED_KEY, 1);
-        int currentCoins = Config.Food;
-        Config.Food = Config.Food+REWARD_COINS_QUEST7;
+        int currentCoins = Config.Influence;
+        Config.Influence = Config.Influence+REWARD_COINS_QUEST7;
         Debug.Log($"Quest 7 completed! Player rewarded with {REWARD_COINS_QUEST7} coins for trading resources.");
         PlayerPrefs.Save();
     }
@@ -583,8 +583,8 @@ public class DailyQuest : MonoBehaviour
     private static void RewardQuest10()
     {
         PlayerPrefs.SetInt(QUEST10_COMPLETED_KEY, 1);
-        int currentCoins = Config.Food;
-        Config.Food = Config.Food+REWARD_COINS_QUEST10;
+        int currentCoins = Config.Influence;
+        Config.Influence = Config.Influence+REWARD_COINS_QUEST10;
         Debug.Log($"Quest 10 completed! Player rewarded with {REWARD_COINS_QUEST10} coins for earning opinion points.");
         PlayerPrefs.Save();
     }

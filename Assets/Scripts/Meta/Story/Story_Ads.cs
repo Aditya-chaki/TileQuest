@@ -11,7 +11,7 @@ public class Story_Ads : MonoBehaviour
     void Start()
     {
 
-        if (Config.Energy <= 0)
+        if (Config.Magic <= 0)
         {
             Notification.SetActive(true);
         }
@@ -32,11 +32,11 @@ public class Story_Ads : MonoBehaviour
         }
         
         Config.SetCoin(Config.currCoin - 10 );
-        Config.Energy = Config.Energy + 10;
+        Config.Magic = Config.Magic + 10;
     }
     void Ads(){
         Notification.SetActive(false);
-        Config.Energy = Config.Energy + 5;
+        Config.Magic = Config.Magic + 5;
     }
 
 

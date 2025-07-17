@@ -126,7 +126,7 @@ public class CollectingFood : MonoBehaviour
     void CollectFood()
     {
         // Update the player's food in Config
-        Config.Food += foodToCollect;
-        Debug.Log($"Collected {foodToCollect} food. Total Food: {Config.Food}");
+        Config.Influence += foodToCollect;
+        Debug.Log($"Collected {foodToCollect} food. Total Food: {Config.Influence}");
     }
 }

@@ -56,13 +56,13 @@ public class LevelManager : MonoBehaviour
     private void ApplyResourceBoosts()
     {
         int castleLevel = Config.GetCastleLevel();
-        int foodBoost = baseFoodIncrease * castleLevel;
+        int magicBoost = baseFoodIncrease * castleLevel;
         int goldBoost = baseGoldIncrease * castleLevel;
 
-        Config.Food += foodBoost;
+        Config.Magic += magicBoost;
         Config.Gold += goldBoost;
 
-        Debug.Log($"Resources updated: +{foodBoost} Food, +{goldBoost} Gold.");
+        Debug.Log($"Resources updated: +{magicBoost} Food, +{goldBoost} Gold.");
     }
 
     private void UpdateCollectionAmounts()

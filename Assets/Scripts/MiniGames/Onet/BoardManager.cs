@@ -32,6 +32,8 @@ public class BoardManager : MonoBehaviour
     public TMP_Text rewardText;
     public Image rewardSprite;
     public Sprite food,strength,health,Gold;
+    public bool isEventLevel = false;
+    public GameObject eventGameOverPanel;
 
     private OnetTile[,] grid;
     private List<Vector2Int> availablePositions = new List<Vector2Int>();
@@ -44,9 +46,12 @@ public class BoardManager : MonoBehaviour
 
     void Start()
     {
+        if(isEventLevel==false)
+        {
         WeeklyQuest.UpdateMiniGamesPlayed();
         DailyQuest.UpdateMinigamesPlayed();
         SetDifficulty();
+        }
         InitializeBoard();
     }
 
@@ -173,7 +178,10 @@ public class BoardManager : MonoBehaviour
                 secondTile.GetComponent<RectTransform>().DOShakePosition(0.5f,5f,10,90,false,true);
                 score++;
                 StartCoroutine(RemoveTiles(firstTile, secondTile));
-                
+                if(isEventLevel==true)
+                {
+                    time+=2f;
+                }
             }
             lineRender.enabled = false;
             points.Clear();
@@ -226,11 +234,30 @@ public class BoardManager : MonoBehaviour
     IEnumerator RemoveTiles(OnetTile t1, OnetTile t2)
     {  
         yield return new WaitForSeconds(0.4f); 
-    grid[t1.gridPosition.y, t1.gridPosition.x] = null;
-    grid[t2.gridPosition.y, t2.gridPosition.x] = null;
+        grid[t1.gridPosition.y, t1.gridPosition.x] = null;
+        grid[t2.gridPosition.y, t2.gridPosition.x] = null;
 
-    Destroy(t1.gameObject);
-    Destroy(t2.gameObject);
+        Destroy(t1.gameObject);
+        Destroy(t2.gameObject);
+        bool flagEmpty = true;
+        for(int i=0;i<rows;i++)
+        {
+            for(int j=0;j<cols;j++)
+            {
+                if(grid[i,j]!=null)
+                {
+                    flagEmpty = false;
+                    break;
+                }
+            }
+        }
+
+        if(flagEmpty==true)
+        {
+            Debug.Log("Game Won");    
+            gameState = GAME_STATE.WIN;
+            GameWon();
+        }
     }
 
     public void HintPressed()
@@ -282,11 +309,19 @@ public class BoardManager : MonoBehaviour
         {
             return;
         }
-        Debug.Log(gameState);
+                
+        if(gameState==GAME_STATE.WIN)
+        {
+            return;
+        }
+
        if(Time.time>nextTime&&time>0 && gameState==GAME_STATE.PLAYING)
        { nextTime = Time.time + 1;
        time--;
        }
+
+        timeText.text = time.ToString();
+
        if(time<=0 && gameover==false)
        {
 
@@ -296,7 +331,11 @@ public class BoardManager : MonoBehaviour
            int current = PlayerPrefs.GetInt("Event_OnetCurrentLevel")+1;
             PlayerPrefs.SetInt("Event_OnetCurrentLevel",current);
         }
-        
+        if(isEventLevel==true)
+        {
+            eventGameOverPanel.SetActive(true);
+        }
+
         gameover = true;
         gameOverPanel.SetActive(true);
         boardParent.gameObject.SetActive(false);
@@ -305,15 +344,15 @@ public class BoardManager : MonoBehaviour
         int rewardValue = score*(int)diffRewardFactor*20;
         switch(randReward)
         {
-            case 0:Config.Food = Config.Food+rewardValue;
+            case 0:Config.Magic = Config.Magic+rewardValue;
                     rewardSprite.sprite = food;
                     rewardText.text = "x"+rewardValue.ToString();
-                     Debug.Log(Config.Food+" Food Reward");
+                     Debug.Log(Config.Magic+" Food Reward");
                      break;
-            case 1:Config.Health = Config.Health+rewardValue;
+            case 1:Config.Influence = Config.Influence+rewardValue;
                     rewardSprite.sprite = health;
                     rewardText.text = "x"+rewardValue.ToString();
-                     Debug.Log(Config.Health+" Health Reward");
+                     Debug.Log(Config.Influence+" Health Reward");
                      break; 
             case 2:Config.Gold = Config.Gold+rewardValue;
                     rewardSprite.sprite = Gold;
@@ -323,8 +362,37 @@ public class BoardManager : MonoBehaviour
                      break;                 
         }
        }
-        timeText.text = time.ToString();
+        
 
+    }
+
+    private void GameWon()
+    {
+        gameover = true;
+        gameOverPanel.SetActive(true);
+        boardParent.gameObject.SetActive(false);
+        Debug.Log("Game Over");
+        int randReward = Random.Range(0,4);
+        int rewardValue = score*(int)diffRewardFactor*20+(int)time*(int)diffRewardFactor;
+        switch(randReward)
+        {
+           case 0:Config.Magic = Config.Magic+rewardValue;
+                    rewardSprite.sprite = food;
+                    rewardText.text = "x"+rewardValue.ToString();
+                     Debug.Log(Config.Magic+" Food Reward");
+                     break;
+            case 1:Config.Influence = Config.Influence+rewardValue/2;
+                    rewardSprite.sprite = health;
+                    rewardText.text = "x"+rewardValue.ToString();
+                     Debug.Log(Config.Influence+" Health Reward");
+                     break; 
+            case 2:Config.Gold = Config.Gold+rewardValue;
+                    rewardSprite.sprite = Gold;
+                    WeeklyQuest.UpdateGoldEarned(rewardValue);
+                    rewardText.text = "x"+rewardValue.ToString();
+                     Debug.Log(Config.Gold+" Gold Reward");
+                     break;                   
+        }
     }
 
     public void CloseWatchAdPopUp()

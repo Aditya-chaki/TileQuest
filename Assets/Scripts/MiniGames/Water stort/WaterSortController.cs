@@ -219,22 +219,22 @@ public class WaterSortController : MonoBehaviour
         int rewardValue = (int)diffRewardFactor*20;
         switch(randReward)
         {
-            case 0:Config.Food = Config.Food+rewardValue;
+            case 0:Config.Magic = Config.Magic+rewardValue;
                     rewardSprite.sprite = food;
                     rewardText.text = "x"+rewardValue.ToString();
-                     Debug.Log(Config.Food+" Food Reward");
+                     Debug.Log(Config.Magic+" Food Reward");
                      break;
-            case 1:Config.Health = Config.Health+rewardValue;
+            case 1:Config.Influence = Config.Influence+rewardValue;
                     rewardSprite.sprite = health;
                     rewardText.text = "x"+rewardValue.ToString();
-                     Debug.Log(Config.Health+" Health Reward");
+                     Debug.Log(Config.Influence+" Health Reward");
                      break; 
             case 2:Config.Gold = Config.Gold+rewardValue;
                     rewardSprite.sprite = Gold;
+                    WeeklyQuest.UpdateGoldEarned(rewardValue);
                     rewardText.text = "x"+rewardValue.ToString();
                      Debug.Log(Config.Gold+" Gold Reward");
-                     WeeklyQuest.UpdateGoldEarned(rewardValue);
-                     break;                 
+                     break;                  
         }
        
         
