@@ -1470,6 +1470,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98832339}
   m_CullTransparentMesh: 1
+--- !u!1 &100297434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 100297436}
+  - component: {fileID: 100297435}
+  m_Layer: 0
+  m_Name: decaydebugger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &100297435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100297434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c030b9f7f075a494996b507e2215ed94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &100297436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100297434}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.14263242, y: 3.6567934, z: 89.43336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &104069598
 GameObject:
   m_ObjectHideFlags: 0
@@ -18361,8 +18405,8 @@ MonoBehaviour:
   minMagic: 0
   minGold: 0
   pauseDecayDuringDialogue: 1
-  pauseDecayWhenGamePaused: 1
-  enableDebugLogs: 0
+  pauseDecayWhenGamePaused: 0
+  enableDebugLogs: 1
 --- !u!4 &859764785
 Transform:
   m_ObjectHideFlags: 0
@@ -36420,7 +36464,7 @@ MonoBehaviour:
   magicText: {fileID: 0}
   goldText: {fileID: 1495412611}
   opinionText: {fileID: 0}
-  decayTimerText: {fileID: 0}
+  updateInterval: 0.5
 --- !u!114 &1211538556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75354,7 +75398,7 @@ GameObject:
   - component: {fileID: 1902973196975926635}
   - component: {fileID: 5955577294806327653}
   m_Layer: 5
-  m_Name: Food
+  m_Name: Influence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78137,8 +78181,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3133158889004794718}
   m_HandleRect: {fileID: 0}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9998793
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -78851,7 +78895,7 @@ GameObject:
   - component: {fileID: 5291447542055214314}
   - component: {fileID: 3211587568521912583}
   m_Layer: 5
-  m_Name: Health
+  m_Name: Magic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86330,9 +86374,9 @@ RectTransform:
   - {fileID: 7236535147570263631}
   m_Father: {fileID: 9147332633746182728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 967.5, y: -147.39}
   m_SizeDelta: {x: 215, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5426707183155502818
@@ -86975,11 +87019,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467097afe3435484ca97dc521163b091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  influenceText: {fileID: 0}
-  magicText: {fileID: 0}
+  influenceText: {fileID: 1472993277432234095}
+  magicText: {fileID: 1475306709843550389}
   goldText: {fileID: 987171789250817177}
   opinionText: {fileID: 3032884080763287096}
-  decayTimerText: {fileID: 0}
+  updateInterval: 0.5
 --- !u!114 &6257551688666998634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90679,7 +90723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &9055839356383542498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90948,3 +90992,4 @@ SceneRoots:
   - {fileID: 471983153}
   - {fileID: 1787485863}
   - {fileID: 859764785}
+  - {fileID: 100297436}
