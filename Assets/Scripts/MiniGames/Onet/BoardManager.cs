@@ -240,9 +240,9 @@ public class BoardManager : MonoBehaviour
         Destroy(t1.gameObject);
         Destroy(t2.gameObject);
         bool flagEmpty = true;
-        for(int i=0;i<rows;i++)
+        for(int i=0;i<cols;i++)
         {
-            for(int j=0;j<cols;j++)
+            for(int j=0;j<rows;j++)
             {
                 if(grid[i,j]!=null)
                 {
@@ -251,7 +251,7 @@ public class BoardManager : MonoBehaviour
                 }
             }
         }
-
+        Debug.Log(flagEmpty);
         if(flagEmpty==true)
         {
             Debug.Log("Game Won");    
@@ -334,6 +334,7 @@ public class BoardManager : MonoBehaviour
         if(isEventLevel==true)
         {
             eventGameOverPanel.SetActive(true);
+            return;
         }
 
         gameover = true;

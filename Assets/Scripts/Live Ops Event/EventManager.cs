@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class EventManager : MonoBehaviour
 {
@@ -11,8 +12,9 @@ public class EventManager : MonoBehaviour
     public GameObject eventButton;
     public BaseEvent activeEvents;
     [SerializeField] private TextMeshProUGUI timerText;
-    public GameObject customLevelButton;
-    
+    public Button customLevelButton;
+    public Button onetMinigameLevelButton;
+    [SerializeField] private TextMeshProUGUI eventText;
     private const string RESET_TIME_PREF_KEY = "EventRestTime";
     private string currentEvent;
     private DateTime nextResetTime; 
@@ -28,7 +30,10 @@ public class EventManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        customLevelButton.onClick.AddListener(PlayCustomLevel);
+        onetMinigameLevelButton.onClick.AddListener(PlayCustomOnet);
         nextResetTime = LoadResetTime();
+      
         currentEvent = PlayerPrefs.GetString("ActiveEvent","none");
         int startEvent = PlayerPrefs.GetInt("StartEvent",0);
       
@@ -51,6 +56,7 @@ public class EventManager : MonoBehaviour
             requiredMagic = 1000,
                 };
             activeEvents.Initialize(); 
+            customLevelButton.gameObject.SetActive(true);
         }
         else if(currentEvent=="CustomLevel")
         {
@@ -73,9 +79,10 @@ public class EventManager : MonoBehaviour
             requiredLevelToCompleteOnet=5,
             };
             activeEvents.Initialize(); 
+            onetMinigameLevelButton.gameObject.SetActive(true);
         }
         Debug.Log(activeEvents.eventName);
-        
+        eventText.text = activeEvents.eventName;
 
       if(isEventStart>3)
       {
@@ -119,6 +126,7 @@ public class EventManager : MonoBehaviour
         {
             StartMinigameEvent();
         }
+
     }
 
     public void ClaimReward()
@@ -128,7 +136,8 @@ public class EventManager : MonoBehaviour
         {
             activeEvents.ClaimReward();
             activeEvents = null;
-            customLevelButton.SetActive(false);
+            customLevelButton.gameObject.SetActive(false);
+            onetMinigameLevelButton.gameObject.SetActive(false);
             SelectEventAtRandom();
         }
     }
@@ -148,6 +157,7 @@ public class EventManager : MonoBehaviour
         milestone.Initialize();
         activeEvents = milestone;
         PlayerPrefs.SetInt("StartEvent",1);
+        eventText.text = activeEvents.eventName;
     }
 
     void StartCustomLevelEvent()
@@ -162,9 +172,10 @@ public class EventManager : MonoBehaviour
         };
         customLevel.Initialize();
         activeEvents = customLevel;
-        customLevelButton.SetActive(true);
+        customLevelButton.gameObject.SetActive(true);
         PlayerPrefs.SetInt("StartEvent",2);
         daysForEvent = customLevel.endTime;
+        eventText.text = activeEvents.eventName;
     }
 
     void StartMinigameEvent()
@@ -181,6 +192,8 @@ public class EventManager : MonoBehaviour
         activeEvents = minigameEvent;
         PlayerPrefs.SetInt("StartEvent",3);
         daysForEvent = minigameEvent.endTime;
+        onetMinigameLevelButton.gameObject.SetActive(true);
+        eventText.text = activeEvents.eventName;
     }
 
 
@@ -230,5 +243,14 @@ public class EventManager : MonoBehaviour
         SelectEventAtRandom();
     }
 
+    public void PlayCustomLevel()
+    {
+        SceneManager.LoadScene("CustomEventTilematch");
+    }
+
+    public void PlayCustomOnet()
+    {
+        SceneManager.LoadScene("CustomLiveEventOnet");
+    }
 
 }
