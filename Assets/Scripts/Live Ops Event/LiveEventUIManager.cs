@@ -8,6 +8,7 @@ public class LiveEventUIManager : MonoBehaviour
     public GameObject mileStoneUI;
     public GameObject customLevelEventUI;
     public GameObject minigameEventUI;
+    public GameObject eventPanel;
     public Button liveEventButton;
 
     private string activeEvents;
@@ -27,6 +28,7 @@ public class LiveEventUIManager : MonoBehaviour
 
     public void ShowActiveEvent()
     {
+        eventPanel.SetActive(true);
         if(activeEvents=="MileStone")
         {
             currentEventUI = mileStoneUI;
@@ -48,6 +50,7 @@ public class LiveEventUIManager : MonoBehaviour
     public void Back()
     {
         currentEventUI.SetActive(false);
+        eventPanel.SetActive(false);
         currentEventUI = null;
     }
 }
