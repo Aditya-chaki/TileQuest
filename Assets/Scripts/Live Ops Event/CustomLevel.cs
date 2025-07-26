@@ -20,6 +20,11 @@ public class CustomLevel : MonoBehaviour
     private float nextTime;
     private bool isGameOver = false;
     private bool gameWon = false;
+        
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +44,7 @@ public class CustomLevel : MonoBehaviour
             time--;
             timeText.text = time.ToString();
         }
-        if(time<=0 && isGameOver==false)
+        if(time<=0 && isGameOver==false&& gameWon==false)
         {
             isGameOver = true;
             losePopUp.SetActive(false);
@@ -50,19 +55,22 @@ public class CustomLevel : MonoBehaviour
     }
     public void LevelWin()
     {
+        if(gameWon==false)
+        {
         winPopUp.SetActive(true);
         int currentLevelCompleted=PlayerPrefs.GetInt("Event_CurrentLevel",0)+1; 
         PlayerPrefs.SetInt("Event_CurrentLevel",currentLevelCompleted); 
         gameWon = true;
+        }
     }
 
     public void Home()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Menu");
     }
 
     public void Next()
     {
-        SceneManager.LoadScene("Play");
+        SceneManager.LoadScene("CustomEventTilematch");
     }
 }

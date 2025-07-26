@@ -131,8 +131,7 @@ public class EventManager : MonoBehaviour
 
     public void ClaimReward()
     {
-
-        if (activeEvents != null && activeEvents.IsCompleted())
+       if (activeEvents != null && activeEvents.IsCompleted())
         {
             activeEvents.ClaimReward();
             activeEvents = null;

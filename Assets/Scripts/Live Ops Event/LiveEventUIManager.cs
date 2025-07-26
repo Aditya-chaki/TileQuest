@@ -17,6 +17,7 @@ public class LiveEventUIManager : MonoBehaviour
     void Start()
     {
         activeEvents = PlayerPrefs.GetString("ActiveEvent");
+        
         liveEventButton.onClick.AddListener(ShowActiveEvent);
     }
 
@@ -28,6 +29,7 @@ public class LiveEventUIManager : MonoBehaviour
 
     public void ShowActiveEvent()
     {
+        
         eventPanel.SetActive(true);
         if(activeEvents=="MileStone")
         {
@@ -36,8 +38,9 @@ public class LiveEventUIManager : MonoBehaviour
         }
         else if(activeEvents=="CustomLevel")
         {
-            currentEventUI = customLevelEventUI;
             customLevelEventUI.SetActive(true);
+            currentEventUI = customLevelEventUI;
+            Debug.Log(activeEvents+" LiveUi"+currentEventUI.name);
         }
         else if(activeEvents=="MinigamesEvent")
         {
