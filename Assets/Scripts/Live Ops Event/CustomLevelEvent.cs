@@ -25,7 +25,7 @@ public class CustomLevelEvent : BaseEvent
 
     public override bool IsCompleted()
     {
-        return requiredLevelToComplete == currentLevelCompleted;
+        return requiredLevelToComplete <= currentLevelCompleted;
     }
 
     public override void ClaimReward()

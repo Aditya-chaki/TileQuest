@@ -36,7 +36,7 @@ public class CustomLevelEventUI : MonoBehaviour
         progressSlider.value = currentLevel;
         progressText.text = $"{currentLevel}/{requiredLevel}";
         discriptionTxt.text = "Complete 5 level of Event tile match";
-        if(currentLevel==requiredLevel)
+        if(currentLevel>=requiredLevel)
         {
             completedIndicator.enabled = true;
         }
