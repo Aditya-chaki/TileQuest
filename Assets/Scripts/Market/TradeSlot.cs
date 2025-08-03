@@ -134,6 +134,15 @@ public class TradeSlot : MonoBehaviour
         
         if (marketplaceUI != null)
         {
+            DailyQuest.UpdateResourcesTraded();
+            if(giveResource==ResourceType.Magic)
+            {
+            WeeklyQuest.UpdateMagicSpent(giveAmount);
+            }
+            if(giveResource==ResourceType.Gold)
+            {
+            WeeklyQuest.UpdateMoreGoldSpent(giveAmount);
+            }
             marketplaceUI.ExecuteTrade(giveResource, giveAmount, getResource, getAmount);
             currentTrades++;
             UpdateDisplay();

@@ -35,6 +35,7 @@ public class CustomLevelEvent : BaseEvent
             Debug.Log("Custom Level Event Completed!");
             PlayerPrefs.SetInt("Event_CurrentLevel",0);
             PlayerPrefs.Save();
+            Config.Magic = Config.Magic+1000;
         }
     }
 }

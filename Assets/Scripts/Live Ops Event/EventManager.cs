@@ -48,10 +48,10 @@ public class EventManager : MonoBehaviour
         else if(currentEvent=="MileStone")
         {
             activeEvents = new MilestoneEvent() {
-            eventName = "Resource Collection",
+            eventName = "Kingdom Ascent",
             startTime = DateTime.Now,
             endTime = nextResetTime,
-            requiredFood = 1000,
+            requiredInfluence = 1000,
             requiredGold = 1000,
             requiredMagic = 1000,
                 };
@@ -62,7 +62,7 @@ public class EventManager : MonoBehaviour
         {
             activeEvents = new CustomLevelEvent()
             {
-            eventName = "Custom Level Challange",
+            eventName = "The Queen's Challange",
             startTime = DateTime.Now,
             endTime = nextResetTime,
             requiredLevelToComplete = 5,
@@ -73,7 +73,7 @@ public class EventManager : MonoBehaviour
         {
             activeEvents = new OnetMiniGamesEvent()
             {
-            eventName = "MinigamesEvent Challange",
+            eventName = "Memory of the Relam",
             startTime = DateTime.Now,
             endTime = nextResetTime,
             requiredLevelToCompleteOnet=5,
@@ -145,10 +145,10 @@ public class EventManager : MonoBehaviour
     {
         PlayerPrefs.SetString("ActiveEvent","MileStone");
         var milestone = new MilestoneEvent() {
-            eventName = "Resource Collection",
+            eventName = "Kingdom Ascent",
             startTime = DateTime.Now,
             endTime = DateTime.Now.AddDays(3),
-            requiredFood = 1000,
+            requiredInfluence = 1000,
             requiredGold = 1000,
             requiredMagic = 1000,
         };
@@ -164,7 +164,7 @@ public class EventManager : MonoBehaviour
         PlayerPrefs.SetString("ActiveEvent","CustomLevel");
         var customLevel = new CustomLevelEvent()
         {
-            eventName = "Custom Level Challange",
+            eventName = "The Queen's Challange",
             startTime = DateTime.Now,
             endTime = DateTime.Now.AddDays(2),
             requiredLevelToComplete = 5,
@@ -182,7 +182,7 @@ public class EventManager : MonoBehaviour
         PlayerPrefs.SetString("ActiveEvent","MinigamesEvent");
         var minigameEvent = new OnetMiniGamesEvent()
         {
-            eventName = "MinigamesEvent Challange",
+            eventName = "Memory of the Relam",
             startTime = DateTime.Now,
             endTime = DateTime.Now.AddDays(2),
             requiredLevelToCompleteOnet=5,

@@ -1,20 +1,20 @@
 using UnityEngine;
 public class MilestoneEvent : BaseEvent
 {
-    public int requiredFood;
+    public int requiredInfluence;
     public int requiredGold;
     public int requiredMagic;
     
-    private int currentFood;
+    private int currentInfluence;
     private int currentGold;
     private int currentMagic;
 
     public override void Initialize()
     {
-        currentFood = PlayerPrefs.GetInt("Event_currentFood",0);
+        currentInfluence = PlayerPrefs.GetInt("Event_currentInfluence",0);
         currentGold = PlayerPrefs.GetInt("Event_currentGold",0);
         currentMagic = PlayerPrefs.GetInt("Event_currentMagic",0);
-        PlayerPrefs.SetInt("Event_requiredFood",requiredFood);
+        PlayerPrefs.SetInt("Event_requiredInfluence",requiredInfluence);
         PlayerPrefs.SetInt("Event_requiredGold",requiredGold);
         PlayerPrefs.SetInt("Event_requiredMagic",requiredMagic);
         PlayerPrefs.Save();
@@ -22,7 +22,7 @@ public class MilestoneEvent : BaseEvent
 
     public override void UpdateProgress()
     {
-        currentFood = PlayerPrefs.GetInt("Event_currentFood");
+        currentInfluence = PlayerPrefs.GetInt("Event_currentInfluence");
         currentGold = PlayerPrefs.GetInt("Event_currentGold");
         currentMagic = PlayerPrefs.GetInt("Event_currentMagic");
         PlayerPrefs.Save();
@@ -31,7 +31,7 @@ public class MilestoneEvent : BaseEvent
     public override bool IsCompleted()
     {
         
-        if(currentFood<requiredFood)
+        if(currentInfluence<requiredInfluence)
             return false;
         else if(currentGold<requiredGold)
             return false;
@@ -48,9 +48,10 @@ public class MilestoneEvent : BaseEvent
             // Give rewards
             Debug.Log("Milestone Reward Claimed!");
 
-            PlayerPrefs.SetInt("Event_currentFood",0);
+            PlayerPrefs.SetInt("Event_currentInfluence",0);
             PlayerPrefs.SetInt("Event_currentGold",0);
             PlayerPrefs.SetInt("Event_currentMagic",0);
+            Config.Gold = Config.Gold+1000;
         }
     }
 }
