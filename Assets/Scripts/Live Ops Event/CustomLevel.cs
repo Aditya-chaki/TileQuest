@@ -38,16 +38,16 @@ public class CustomLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time>nextTime && time>0)
+        if(Time.time>nextTime && time>0f)
         {
             nextTime = Time.time+1f;
             time--;
             timeText.text = time.ToString();
         }
-        if(time<=0 && isGameOver==false&& gameWon==false)
+        if(time<=0f && isGameOver==false&& gameWon==false)
         {
             isGameOver = true;
-            losePopUp.SetActive(false);
+            losePopUp.SetActive(true);
         }
 
         

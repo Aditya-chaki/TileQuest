@@ -118,7 +118,16 @@ public class SimpleMarketplaceUI : MonoBehaviour
     public void CloseMarketplace()
     {
         if (marketplacePanel != null)
+        {
+            Debug.Log("Marketplace closed.");
             marketplacePanel.SetActive(false);
+        }
+            
+    }
+
+    public void testbtn()
+    {
+        Debug.Log("Test button clicked!");
     }
     
     public void ExecuteTrade(ResourceType giveType, int giveAmount, ResourceType getType, int getAmount)
@@ -130,12 +139,12 @@ public class SimpleMarketplaceUI : MonoBehaviour
             Debug.Log($"Not enough {giveType}! Need {giveAmount}, have {currentGiveResource}");
             return;
         }
-        
+
         // Execute the trade
         SetResourceValue(giveType, currentGiveResource - giveAmount);
         int currentGetResource = GetResourceValue(getType);
         SetResourceValue(getType, currentGetResource + getAmount);
-        
+
         Debug.Log($"Trade completed: Gave {giveAmount} {giveType}, received {getAmount} {getType}");
     }
     

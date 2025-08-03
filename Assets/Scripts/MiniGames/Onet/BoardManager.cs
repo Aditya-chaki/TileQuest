@@ -334,6 +334,7 @@ public class BoardManager : MonoBehaviour
         if(isEventLevel==true)
         {
             eventGameOverPanel.SetActive(true);
+            boardParent.gameObject.SetActive(false);
             return;
         }
 

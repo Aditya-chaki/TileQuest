@@ -6,7 +6,7 @@ using System.Linq;
 public class MileStoneEventUI : MonoBehaviour
 {
     [Header("Event Configuration")]
-    [SerializeField] private int requiredFood;
+    [SerializeField] private int requiredInfluence;
     [SerializeField] private int requiredGold;
     [SerializeField] private int requiredMagic;
     [SerializeField] private int questNumber;
@@ -33,11 +33,10 @@ public class MileStoneEventUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        requiredFood = PlayerPrefs.GetInt("Event_requiredFood");
+        requiredInfluence = PlayerPrefs.GetInt("Event_requiredInfluence");
         requiredGold = PlayerPrefs.GetInt("Event_requiredGold");
         requiredMagic = PlayerPrefs.GetInt("Event_requiredMagic");
         UpdateUI();
-        Debug.Log(requiredFood+" "+requiredGold+" "+requiredMagic);
     }
 
     // Update is called once per frame
@@ -48,7 +47,7 @@ public class MileStoneEventUI : MonoBehaviour
 
     void UpdateUI()
     {
-       int currentFood = PlayerPrefs.GetInt("Event_currentFood");
+       int currentInfluence = PlayerPrefs.GetInt("Event_currentInfluence");
        int currentGold = PlayerPrefs.GetInt("Event_currentGold");
        int currentMagic = PlayerPrefs.GetInt("Event_currentMagic");
 
@@ -57,17 +56,17 @@ public class MileStoneEventUI : MonoBehaviour
         progressTextGold.text = $"{currentGold}/{requiredGold}";
         discriptionTxtGold.text = "Earn 1000 Gold";
 
-        progressSliderFood.maxValue = requiredFood;
-        progressSliderFood.value = currentFood;
-        progressTextFood.text = $"{currentFood}/{requiredFood}";
-        discriptionTxtFood.text = "Collect 1000 Food";
+        progressSliderFood.maxValue = requiredInfluence;
+        progressSliderFood.value = currentInfluence;
+        progressTextFood.text = $"{currentInfluence}/{requiredInfluence}";
+        discriptionTxtFood.text = "Collect 1000 Influence";
         
         progressSliderMagic.maxValue = requiredMagic;
         progressSliderMagic.value = currentMagic;
         progressTextMagic.text = $"{currentMagic}/{requiredMagic}";
         discriptionTxtMagic.text = "Collect 1000 Magic";
 
-        if(currentFood == requiredFood)
+        if(currentInfluence == requiredInfluence)
         {
             completedIndicatorFood.enabled = true;
         }

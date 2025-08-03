@@ -33,6 +33,7 @@ public class OnetMiniGamesEvent : BaseEvent
         {
             Debug.Log("Custom onet minigame Completed!");
             PlayerPrefs.SetInt("Event_OnetCurrentLevel",0);
+             Config.Influence = Config.Influence+1000;
         }
     }
 }

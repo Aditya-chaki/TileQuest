@@ -128,5 +128,6 @@ public class CollectingFood : MonoBehaviour
         // Update the player's food in Config
         Config.Influence += foodToCollect;
         Debug.Log($"Collected {foodToCollect} food. Total Food: {Config.Influence}");
+        PlayerPrefs.SetInt("Event_currentInfluence",foodToCollect);
     }
 }
