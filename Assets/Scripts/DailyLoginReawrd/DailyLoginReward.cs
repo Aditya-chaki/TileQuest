@@ -55,6 +55,7 @@ public class DailyLoginReward : MonoBehaviour
     {
         for(int i=0;i<rewards.Length;i++)
         {
+            Debug.Log(rewards[i].rewardIcon==null);
             rewardDayContainer[i].transform.Find("RewardIcon").GetComponent<Image>().sprite = rewards[i].rewardIcon;
             rewardDayContainer[i].transform.Find("RewardTxt").GetComponent<TMP_Text>().text ="x"+rewards[i].rewardAmount.ToString();
         }
