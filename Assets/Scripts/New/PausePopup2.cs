@@ -115,7 +115,7 @@ public class PausePopup2 : MonoBehaviour
     {
         if (stateClosePopup == STATE_CLOSEPOPUP.CONTINNUE) {
             Time.timeScale = 1f;
-            GamePlayManager.instance.SetUnPause();
+            GamePlayManager.instance?.SetUnPause();
         }
         else if (stateClosePopup == STATE_CLOSEPOPUP.RESTART)
         {

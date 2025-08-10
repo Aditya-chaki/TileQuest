@@ -415,6 +415,7 @@ public class WinPopup2 : MonoBehaviour
         lockGroup.gameObject.SetActive(true);
 
         {
+            Debug.Log("Load next level");
             GamePlayManager.instance.SetNextGame();
         }
     }
@@ -424,6 +425,7 @@ public class WinPopup2 : MonoBehaviour
         lockGroup.gameObject.SetActive(true);
 
         {
+            Debug.Log("Menu is pressed");
             SceneManager.LoadScene("Menu");
         }
     }

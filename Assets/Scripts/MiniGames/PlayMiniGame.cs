@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -7,28 +8,19 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 public class PlayMiniGame : MonoBehaviour
 {
-    public Button miniGameButton; 
-    public string miniGameSceneName;
-    public bool isValueType;
-    public bool isRandomTime;
-    public int minTime = 20;
-    public int maxTime = 150;
-    public float metricValue;
-    public enum METRIC_TYPE
-    {
-        NONE,
-        Food,
-        STRENGTH,
-        GOLD,
-        ENERGY,
-        HEALTH,
-    }
-
-    public string Metric;
-    int randtime;
-    float nexttime;
-    float requiredValue;
-     void Start()
+    [SerializeField] private Button miniGameButton; 
+    [SerializeField] private string miniGameSceneName;
+    [SerializeField] private bool isValueType;
+    [SerializeField] private bool isRandomTime;
+    [SerializeField] private int minTime = 20;
+    [SerializeField] private int maxTime = 150;
+    [SerializeField] private float metricValue;
+    [SerializeField] private string Metric;
+    private int randtime;
+    private float nexttime;
+    private float requiredValue;
+    
+    private void Start()
     {
         if (miniGameButton != null)
         {
@@ -46,7 +38,7 @@ public class PlayMiniGame : MonoBehaviour
         {
             requiredValue = Config.Gold + metricValue;
         }
-        randtime = Random.Range(minTime,maxTime);
+        randtime = UnityEngine.Random.Range(minTime,maxTime);
     }
 
     void Update()
@@ -57,22 +49,25 @@ public class PlayMiniGame : MonoBehaviour
             {
                 randtime--;
                 nexttime = Time.time+1;
-                ActiveButton();
+                if(randtime<=0)
+                    ActiveButton();
             }
         }
-        if(Metric == "Magic"&&Config.Magic>=requiredValue)
+        if(isValueType)
         {
-          ActiveButton();
+            if(Metric == "Magic"&&Config.Magic>=requiredValue)
+            {
+              ActiveButton();
+            }
+            if(Metric == "Gold"&&Config.Gold>=requiredValue)
+            {
+                ActiveButton();
+            }
+            if(Metric == "Influence"&&Config.Influence>=requiredValue)
+            {
+                ActiveButton();   
+            }
         }
-        if(Metric == "Gold"&&Config.Gold>=requiredValue)
-        {
-           ActiveButton();
-        }
-        if(Metric == "Influence"&&Config.Influence>=requiredValue)
-        {
-            ActiveButton();   
-        }
-
 
     }
 
@@ -86,7 +81,7 @@ public class PlayMiniGame : MonoBehaviour
     public void LoadMiniGame()
     {
         if(isRandomTime){
-            randtime =  Random.Range(minTime,maxTime);
+            randtime =  UnityEngine.Random.Range(minTime,maxTime);
             SceneManager.LoadSceneAsync(miniGameSceneName);
         }
         if(isValueType)
