@@ -177,7 +177,7 @@ public class DailyQuest : MonoBehaviour
 
         if (levelsCompleted >= REQUIRED_LEVELS)
         {
-            DailyRewards.instance.IncrementValue(50);
+            
             RewardQuest1();
         }
         else
