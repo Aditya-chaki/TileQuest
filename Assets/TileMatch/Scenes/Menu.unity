@@ -3095,7 +3095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed65e09e40bf7dd49aaef77155218057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingData: {fileID: 1177803553}
+  buildingData: {fileID: 0}
   timerButton: {fileID: 127581475}
   buttonText: {fileID: 41223335}
   goldToCollect: 100
@@ -87821,7 +87821,7 @@ MonoBehaviour:
   foodToCollect: 50
   timerDuration: 15
   coinAnimationController: {fileID: 2035057646}
-  buildingData: {fileID: 149204949}
+  buildingData: {fileID: 0}
 --- !u!1 &2039183280
 GameObject:
   m_ObjectHideFlags: 0
