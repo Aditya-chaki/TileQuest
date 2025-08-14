@@ -11,7 +11,7 @@ public class CollectingFood : MonoBehaviour
     public float timerDuration = 15f;      // Timer duration in seconds
 
     public CoinAnimationController coinAnimationController; // Reference to CoinAnimationController for animations
-    
+    public BuildingData buildingData;
 
     private bool isTimerActive = false;    // Flag to check if the timer is active
     private bool canCollect = false;       // Flag to check if collection is allowed
@@ -126,7 +126,8 @@ public class CollectingFood : MonoBehaviour
     void CollectFood()
     {
         // Update the player's food in Config
-        Config.Influence += foodToCollect;
+        if(buildingData!=null)
+            Config.Influence += foodToCollect*buildingData.level;
         Debug.Log($"Collected {foodToCollect} food. Total Food: {Config.Influence}");
         PlayerPrefs.SetInt("Event_currentInfluence",foodToCollect);
     }

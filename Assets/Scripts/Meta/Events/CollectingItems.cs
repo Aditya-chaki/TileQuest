@@ -5,11 +5,12 @@ using System;
 
 public class CollectingItems : MonoBehaviour
 {
+    public BuildingData buildingData;
     public Button timerButton;             // Button for timer and gold collection
     public TextMeshProUGUI buttonText;     // TextMeshPro for button text
     public int goldToCollect = 100;        // Amount of gold to collect
     public float timerDuration = 10f;      // Timer duration in seconds
-
+    
     public CoinAnimationController coinAnimationController; // Reference to CoinAnimationController for animations
   
 
@@ -126,7 +127,8 @@ public class CollectingItems : MonoBehaviour
     void CollectGold()
     {
         // Update the player's gold in Config
-        Config.Gold += goldToCollect;
+        if(buildingData!=null)
+            Config.Gold += goldToCollect*buildingData.level;
         Debug.Log($"Collected {goldToCollect} gold. Total Gold: {Config.Gold}");
         WeeklyQuest.UpdateGoldEarned(goldToCollect);
         PlayerPrefs.SetInt("Event_currentGold",goldToCollect);
