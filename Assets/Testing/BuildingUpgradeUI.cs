@@ -6,23 +6,31 @@ using TMPro;
 public class BuildingUpgradeUI : MonoBehaviour
 {
     [Header("UI References")]
-    public GameObject upgradePanel;
+    public GameObject castleUpgradePanel;
+    public GameObject treasuryUpgradePanel;
+    public GameObject foodUpgradePanel;
+
     public Button openUpgradeButton;
     public Button closeUpgradeButton;
     
+    public Button openTreasuryUpgradeButton;
+    public Button closeTreasuryUpgradeButton;
+
+    public Button openFoodUpgradeButton;
+    public Button closeFoodUpgradeButton;
+   
     [Header("Main Building UI")]
     public BuildingUpgradeSlot mainBuildingSlot;
     
     [Header("Other Buildings UI")]
     public Transform otherBuildingsContainer;
     public GameObject buildingSlotPrefab;
-    
     [Header("Resource Display")]
     public TextMeshProUGUI goldAmountText;
     
     private BuildingManager buildingManager;
-    private List<BuildingUpgradeSlot> otherBuildingSlots = new List<BuildingUpgradeSlot>();
-    
+    [SerializeField] private List<BuildingUpgradeSlot> otherBuildingSlots = new List<BuildingUpgradeSlot>();
+ 
     void Start()
     {
         // Find BuildingManager in scene
@@ -38,8 +46,8 @@ public class BuildingUpgradeUI : MonoBehaviour
         SetupUI();
         
         // Start with panel closed
-        if (upgradePanel != null)
-            upgradePanel.SetActive(false);
+        if (castleUpgradePanel != null)
+            castleUpgradePanel.SetActive(false);
         
         // Setup buttons
         if (openUpgradeButton != null)
@@ -48,6 +56,17 @@ public class BuildingUpgradeUI : MonoBehaviour
         if (closeUpgradeButton != null)
             closeUpgradeButton.onClick.AddListener(CloseUpgradePanel);
         
+         if (openTreasuryUpgradeButton != null)
+            openTreasuryUpgradeButton.onClick.AddListener(OpenTreasuryUpgradePanel);
+            
+        if (closeTreasuryUpgradeButton != null)
+            closeTreasuryUpgradeButton.onClick.AddListener(CloseTreasuryUpgradePanel);
+
+         if (openFoodUpgradeButton != null)
+            openFoodUpgradeButton.onClick.AddListener(OpenFoodUpgradePanel);
+            
+        if (closeFoodUpgradeButton != null)
+            closeFoodUpgradeButton.onClick.AddListener(CloseFoodUpgradePanel);    
         // Update UI regularly
         InvokeRepeating(nameof(UpdateUI), 0f, 0.5f);
     }
@@ -66,26 +85,15 @@ public class BuildingUpgradeUI : MonoBehaviour
     
     void SetupOtherBuildingSlots()
     {
-        // Clear existing slots
-        foreach (var slot in otherBuildingSlots)
-        {
-            if (slot != null)
-                Destroy(slot.gameObject);
-        }
-        otherBuildingSlots.Clear();
-        
-        // Create slots for other buildings
         for (int i = 0; i < buildingManager.otherBuildings.Length; i++)
         {
             if (buildingSlotPrefab != null && otherBuildingsContainer != null)
             {
-                GameObject slotGO = Instantiate(buildingSlotPrefab, otherBuildingsContainer);
-                BuildingUpgradeSlot slot = slotGO.GetComponent<BuildingUpgradeSlot>();
-                
+                BuildingUpgradeSlot slot = otherBuildingSlots[i];
                 if (slot != null)
                 {
                     slot.SetupOtherBuilding(buildingManager.otherBuildings[i], buildingManager, i);
-                    otherBuildingSlots.Add(slot);
+                    //otherBuildingSlots.Add(slot);
                 }
             }
         }
@@ -111,16 +119,39 @@ public class BuildingUpgradeUI : MonoBehaviour
     
     public void OpenUpgradePanel()
     {
-        if (upgradePanel != null)
-            upgradePanel.SetActive(true);
+        if (castleUpgradePanel != null)
+            castleUpgradePanel.SetActive(true);
     }
     
     public void CloseUpgradePanel()
     {
-        if (upgradePanel != null)
-            upgradePanel.SetActive(false);
+        if (castleUpgradePanel != null)
+            castleUpgradePanel.SetActive(false);
     }
     
+     public void OpenTreasuryUpgradePanel()
+    {
+        if (treasuryUpgradePanel != null)
+            treasuryUpgradePanel.SetActive(true);
+    }
+    
+    public void CloseTreasuryUpgradePanel()
+    {
+        if (treasuryUpgradePanel != null)
+            treasuryUpgradePanel.SetActive(false);
+    }
+     public void OpenFoodUpgradePanel()
+    {
+        if (foodUpgradePanel != null)
+            foodUpgradePanel.SetActive(true);
+    }
+    
+    public void CloseFoodUpgradePanel()
+    {
+        if (foodUpgradePanel != null)
+            foodUpgradePanel.SetActive(false);
+    }
+
     void OnDestroy()
     {
         CancelInvoke(nameof(UpdateUI));
